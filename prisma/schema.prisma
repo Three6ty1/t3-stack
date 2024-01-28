@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+// 7 Categories
+// gender
+// race
+// allegiance
+// infected status
+// profession
+// rarity
+// cost
+model Operator {
+  // Char id based on in game charid
+  charId String @id
+  name String @unique
+  // Male or Female
+  gender String
+  race String
+  // Group/Team takes priority over Nation
+  // Someone might be in different teams under the same nation
+  // i.e. Rhodes island teams.
+  group String?
+  nation String
+  profession String
+  archetype String
+  position String
+  // yes, no, N/A, undisclosed.
+  infected String
+  // 1-6 inc
+  rarity Int
+  // 0 - however?
+  costE0 Int
+  costE2 Int
+  chosen ChosenOperators[]
+}
+
+model ChosenOperators {
+  gameId Int @id @default(autoincrement())
+  date String
+  operator Operator @relation(fields: [operatorId], references: [charId])
+  operatorId String
+  timesGuessed Int @default(0)
+}
+
+// No sessions in backend
+// The actual wordle uses local storage anyways...
