@@ -1,8 +1,9 @@
-import { randomInteger } from '~/helper/helper';
+import { GuessType, randomInteger } from '~/helper/helper';
 import { Prisma, PrismaClient } from '@prisma/client';
 import { Operator } from '@prisma/client';
 import { Range, Correctness } from '~/helper/helper';
 import { DefaultArgs } from '@prisma/client/runtime/library';
+import { TRPCError } from '@trpc/server';
 
 export type GuessResult = {
     charId: string,
@@ -85,7 +86,7 @@ const getTodayOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, neve
 
 // Get the stats of the currently chosen operator
 export const getOperatorStats = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
-    return await getTodayOperator(db);
+    return getTodayOperator(db);
 }
 
 const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
@@ -136,32 +137,52 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
 }
 
 // Compare the guess with the operator of the day
-export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>, guess: string) => {
-    const compareOp = await db.operator.findFirstOrThrow({ where: { charId: (await getTodayOperator(db)).operatorId } })
+export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>, guess: string, guesses: string[]) => {
+    if (guess.trim() == '') {
+        throw new TRPCError({
+            code: 'BAD_REQUEST',
+            message: 'Please enter an operator name',
+            cause: guess,
+        })
+    }
+
+    if (!guesses.indexOf(guess)) {
+        throw new TRPCError({
+            code: 'BAD_REQUEST',
+            message: `${guess} has already been guessed`,
+            cause: guess,
+        })
+    }
     const guessOp = await db.operator.findFirst({
         where: { name: guess}
     })
 
     if (!guessOp) {
-        return { error: `Not a valid operator name: ${guess}`}
+        throw new TRPCError({
+            code: 'BAD_REQUEST',
+            message: `Not a valid operator name: ${guess}`,
+            cause: guess,
+        })
     }
 
+    const compareOp = await db.operator.findFirstOrThrow({ where: { charId: (await getTodayOperator(db)).operatorId } })
+    
     const result = compareGuessLogic(compareOp, guessOp);
 
     result.correct && updateWins(db);
 
-    return { result: compareGuessLogic(compareOp, guessOp) };
+    return compareGuessLogic(compareOp, guessOp);
 }
 
 // Get a list of all the operator names in the database
-export const getAllOperatorNames = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
+export const getAllOperators = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
     const ops = await db.operator.findMany({
         orderBy: {
             name: 'asc',
         }
     })
-    const names = ops.map(op => [op.name, op.charId, op.profession, op.archetype, op.rarity])
-    return names;
+    const res: GuessType[] = ops.map(op => [op.name, op.charId, op.profession, op.archetype, op.rarity])
+    return res;
 }
 
 const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
