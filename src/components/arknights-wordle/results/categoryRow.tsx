@@ -6,7 +6,7 @@ export default function CategoryRows() {
             {Object.entries(guessCategoryToolTips).map((category, index) => (
                 <span 
                     key={index} 
-                    className='tooltip-answer-row flex h-20 w-20 m-2 items-center justify-center bg-base-200 text-content whitespace-pre-line'
+                    className='tooltip-answer-row answer-row flex bg-base-200 text-content whitespace-pre-line'
                     data-tip={category[1]}
                 >
                     {category[0]}

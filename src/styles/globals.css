@@ -28,6 +28,10 @@
     .tooltip-answer-row {
         @apply md:tooltip md:tooltip-top before:md:w-max before:whitespace-pre-line md:before:content-[attr(data-tip)]
     }
+
+    .answer-row {
+        @apply h-20 w-20 m-1.5 items-center justify-center
+    }
 }
 
 @keyframes flip {
