@@ -22,11 +22,10 @@ export default function AnswerBox({ category, guess, result, boxIndex, rowIndex 
     }
     const url = getOperatorIconUrl(op['charId'], op['rarity'].guess);
 
-    // If its an error prevent any animations (only the last index plays?)
-    
-    //      If the row index isnt the 0th index, which is the newest guess, do not animate
-    //          If the answer is correct, play a seperate animation than the standard flipping animation
-    (rowIndex != guesses.length - 1) && ((rowIndex === 0 ? true : false) && (op['correct'] ? divStyle += ' opacity-0 animate-win ' : divStyle += ' opacity-0 animate-flip '))
+    //  If the row index isnt the 0th index, which is the newest guess, do not animate
+    //      If the answer is correct, play a seperate animation than the standard flipping animation
+
+    (rowIndex === 0 && (op['correct'] ? divStyle += ' opacity-0 animate-win ' : divStyle += ' opacity-0 animate-flip '))
 
     let bg = wordleColors.correct;
     if (typeof result === "boolean" && !result) {
