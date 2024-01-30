@@ -4,7 +4,6 @@ import Link from "next/link";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const stats = api.wordle.stats.useMutation();
 
   return (
     <>
@@ -14,7 +13,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>{stats.data?.operatorId}</p>
       </main>
     </>
   );
