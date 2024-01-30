@@ -128,7 +128,8 @@ export default function ArknightsWordle() {
                     {playing && !isInputDelay && <Search guesses={guesses} handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
                 </div>
 
-                <div className='col-start-1 row-start-1 flex flex-col my-14 w-auto overflow-x-scroll overflow-y-clip md:overflow-visible'>
+                {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
+                <div className='col-start-1 row-start-1 flex flex-col mt-14 w-auto overflow-x-scroll overflow-y-clip md:overflow-visible'>
                     {/** Wrapper for div to expand into scrollable area in mobile */}
                     <div className='flex flex-col items-start'>
                         {guesses && (guesses.length) > 0 &&
@@ -144,12 +145,11 @@ export default function ArknightsWordle() {
                 </div>
             </div>     
             {!playing && !isInputDelay &&
-                <div className='flex flex-col items-center animate-fade-in'>
-                    <span>You guessed the operator!</span>
-                    <ShareBox guesses={guesses} gameInfo={stats}/>
+                <div className='flex flex-col items-center animate-fade-in mt-10'>
+                    <span className='mb-3 text-xl font-bold'>You guessed the operator!</span>
+                    <ShareBox gameInfo={stats}/>
                 </div>
             }
         </main>
-        
     );
 }

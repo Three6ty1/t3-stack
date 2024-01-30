@@ -4,17 +4,19 @@ import React from 'react';
 import { ChosenOperators } from "@prisma/client";
 
 type Props = {
-    guesses: GuessResult[];
     gameInfo: ChosenOperators;
 }
 
-export default function ShareBox({ guesses, gameInfo }: Props) { 
+export default function ShareBox({ gameInfo }: Props) { 
     const [shareString, setShareString] = React.useState('');
     const [isVisible, setIsVisible] = React.useState(false);
 
     React.useEffect(() => {
         const generateshareString = () => {
             let newString = '';
+            const ls = localStorage.getItem("guesses");
+            let guesses: GuessResult[] = ls ? JSON.parse(ls) : [];
+
             for(const guess of guesses.reverse()) {
                 for (const category in guess) {
                     if (category === 'charId' || category === 'name' || category === 'correct') { continue }
@@ -52,7 +54,7 @@ export default function ShareBox({ guesses, gameInfo }: Props) {
    
     return (
         <div className='justify-center flex flex-col'>
-            <span className='whitespace-pre-line'>{shareString}</span>
+            <span className='whitespace-pre-line mb-3'>{shareString}</span>
             <button className='btn btn-success text-white' onClick={() => handleShare()}>
                 Share your results!
             </button>
