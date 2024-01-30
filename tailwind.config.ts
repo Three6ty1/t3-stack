@@ -12,7 +12,7 @@ export default {
         'fade-in': 'fade-in 2s linear forwards'
       },
       fontFamily: {
-        sans: ['Azbuka W01 Condensed', "var(--font-sans)", ...fontFamily.sans],
+        sans: ['Azbuka W01 Condensed', ...fontFamily.sans],
       },
       colors: {
         incorrect: '#919090',
