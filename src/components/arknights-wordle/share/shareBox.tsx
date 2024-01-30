@@ -53,9 +53,8 @@ export default function ShareBox({ gameInfo }: Props) {
     }
    
     return (
-        <div className='justify-center flex flex-col'>
-            <span className='whitespace-pre-line mb-3'>{shareString}</span>
-            <button className='btn btn-success text-white' onClick={() => handleShare()}>
+        <div className='justify-center flex flex-col items-center'>
+            <button className='btn btn-success text-white w-fit' onClick={() => handleShare()}>
                 Share your results!
             </button>
             {isVisible &&

@@ -107,7 +107,7 @@ export default function ArknightsWordle() {
     }
 
     return (
-        <main id='ak-wordle-root' className='flex flex-col w-screen justify-top items-center align-middle text-center font-sans p-5 pt-10 h-screen'>
+        <main id='ak-wordle-root' className='flex flex-col w-full justify-top items-center align-middle text-center font-sans p-5 pt-10 h-full'>
             <Theme handleThemeChange={(e) => handleThemeChange(e)}/>
             <Info darkMode={darkMode} stats={stats} />
 
@@ -119,7 +119,7 @@ export default function ArknightsWordle() {
                 <p className='text-red-500'>{error}</p>
             ) : null}
 
-            <div className='grid w-full justify-center'>
+            <div className='grid w-full justify-center pb-10'>
                 {/** 
                 * Using grid and col-start to force these elements to overlap one another 
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
@@ -127,6 +127,12 @@ export default function ArknightsWordle() {
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in'>
                     {playing && !isInputDelay && <Search handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
                 </div>
+
+                {!playing && !isInputDelay &&
+                <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in pb-10'>
+                    <ShareBox gameInfo={stats}/>
+                </div>
+                }
 
                 {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
                 <div className='col-start-1 row-start-1 flex flex-col mt-14 w-auto overflow-x-scroll overflow-y-clip md:overflow-visible'>
@@ -143,13 +149,7 @@ export default function ArknightsWordle() {
                         }
                     </div>
                 </div>
-            </div>     
-            {!playing && !isInputDelay &&
-                <div className='flex flex-col items-center animate-fade-in my-10'>
-                    <span className='mb-3 text-xl font-bold'>You guessed the operator!</span>
-                    <ShareBox gameInfo={stats}/>
-                </div>
-            }
+            </div>
         </main>
     );
 }
