@@ -5,17 +5,24 @@ import { api } from '~/utils/api';
 
 type Props = {
     op: GuessType;
-    hasGuessed: boolean;
     handleSubmit: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export default function Result({op, hasGuessed, handleSubmit } : Props) {
-    const [_hasGuessed, setHasGuessed] = React.useState(hasGuessed);
+export default function Result({op, handleSubmit } : Props) {
+    const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
+
+    React.useEffect(() => {
+        const ls = localStorage.getItem("guesses");
+        let guessResults: GuessResult[] = ls ? JSON.parse(ls) : [];
+        const pastGuesses = guessResults.map((guess) => guess.name);
+        setPastGuesses(pastGuesses);
+    }, [])
+
     const url = getOperatorIconUrl(op[GuessTypeValue.charId], op[GuessTypeValue.rarity]);
 
     let textStyle = ' '
     // Ternary operator for this line BREAKS the code
-    if (_hasGuessed) { textStyle += 'text-higher' }
+    if (pastGuesses.includes(op[GuessTypeValue.name])) { textStyle += 'text-higher' }
 
     const utils = api.useUtils();
 
@@ -26,17 +33,8 @@ export default function Result({op, hasGuessed, handleSubmit } : Props) {
         if (!guess) {
             throw "Empty operator list entry, please report"
         }
-        const ls = localStorage.getItem("guesses");
-        let guessResults: GuessResult[] = ls ? JSON.parse(ls) : [];
-        const pastGuesses = guessResults.map((guess) => guess.name);
 
-        const callback = (success: boolean) => {
-            if (success) {
-                setHasGuessed(true);
-            }
-        }
-
-        handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback: callback});
+        handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback: () => {}});
     }
 
     return (
@@ -44,7 +42,7 @@ export default function Result({op, hasGuessed, handleSubmit } : Props) {
             <div className='flex w-1/2 justify-end pr-5'>
                 <img src={url} alt={`${op[0]} operator icon`} width={40}/>
             </div>
-            <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={(e) => {setHasGuessed(true); handleClick(e)}}>{op[GuessTypeValue.name]}</div> 
+            <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={(e) => handleClick(e)}>{op[GuessTypeValue.name]}</div> 
         </div>
     );
 }

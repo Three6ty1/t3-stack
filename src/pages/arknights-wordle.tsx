@@ -71,9 +71,9 @@ export default function ArknightsWordle() {
             setError('');
             setIsInputDelay(true)
             const isGuesses = localStorage.getItem('guesses');
-            const guesses = (isGuesses) ? JSON.parse(isGuesses) : [];
+            const pastGuesses = (isGuesses) ? JSON.parse(isGuesses) : [];
             // Insert the newest guess at the first index of the answer row array
-            let newGuesses = [result, ...guesses];
+            let newGuesses = [result, ...pastGuesses];
             localStorage.setItem('guesses', JSON.stringify(newGuesses));
             setGuesses(newGuesses);
 
@@ -125,7 +125,7 @@ export default function ArknightsWordle() {
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in'>
-                    {playing && !isInputDelay && <Search guesses={guesses} handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
+                    {playing && !isInputDelay && <Search handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
                 </div>
 
                 {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}

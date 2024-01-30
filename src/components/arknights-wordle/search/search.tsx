@@ -1,25 +1,22 @@
 import SearchBar from "./searchBar";
 import React from 'react'
-import Results from "./results";
-import { GuessResult } from "~/server/api/routers/wordleServer";
+import Result from "./result";
 
 type Props = {
-    guesses: GuessResult[];
     handleSubmit: React.Dispatch<React.SetStateAction<any>>;
 }
 
-export default function Search({ guesses, handleSubmit }: Props) {
+export default function Search({ handleSubmit }: Props) {
     const [results, setResults] = React.useState([]);
-    let newGuesses: string[] = [];
-
-    for (const guess of guesses) {
-        newGuesses.push(guess.name);
-    }
 
     return (
         <div className='flex flex-col items-center w-full'>
             <SearchBar setResults={(e) => setResults(e)} handleSubmit={handleSubmit}/>
-            <Results results={results} guesses={newGuesses} handleSubmit={handleSubmit}/>
+            {results.length > 0 &&
+                <div className='z-30 flex flex-col max-h-[50vh] overflow-y-scroll w-[80vw] md:w-[30vw] my-2 py-2 rounded-md bg-base-100 shadow-sm shadow-neutral-content no-scrollbar'>
+                    {results.map((op, index) => (<Result key={index} op={op} handleSubmit={handleSubmit}/>))}
+                </div>
+            }
         </div>
     );
 }
