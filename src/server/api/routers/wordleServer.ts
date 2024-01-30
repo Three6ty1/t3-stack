@@ -145,8 +145,8 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
             cause: guess,
         })
     }
-
-    if (!guesses.indexOf(guess)) {
+    
+    if (guesses.includes(guess)) {
         throw new TRPCError({
             code: 'BAD_REQUEST',
             message: `${guess} has already been guessed`,

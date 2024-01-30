@@ -28,7 +28,7 @@ export default function Result({op, hasGuessed, handleSubmit } : Props) {
         }
         const ls = localStorage.getItem("guesses");
         let guessResults: GuessResult[] = ls ? JSON.parse(ls) : [];
-        const guessesNames = guessResults.map((guess) => guess.name);
+        const pastGuesses = guessResults.map((guess) => guess.name);
 
         const callback = (success: boolean) => {
             if (success) {
@@ -36,7 +36,7 @@ export default function Result({op, hasGuessed, handleSubmit } : Props) {
             }
         }
 
-        handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: guessesNames}), callback: callback});
+        handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback: callback});
     }
 
     return (
