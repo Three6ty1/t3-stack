@@ -57,11 +57,11 @@ export default function HintWorldMap({ amtGuesses, }: Props) {
                 </button>
             </div>
             <dialog id="world_map_modal" className="modal w-screen overflow-visible">
-                <div className="modal-box max-w-[95vw] md:max-w-[80vw]">
+                <div className="modal-box max-w-[95vw] md:max-w-[80vw] no-scrollbar no-scrollbar::-webkit-scrollbar">
                     <div className='w-full h-48 md:h-auto overflow-auto touch-auto'>
                         <img className='max-w-none w-[400%] md:w-[100%] h-auto' src={map.src}/>
                     </div>
-
+                    
                     {amtGuesses >= HintBreakpoints.one &&
                     <div className='flex flex-wrap flex-row justify-start mt-5'>
                         {Object.entries(regions).map((region) => (

@@ -1,5 +1,6 @@
 import React, { BaseSyntheticEvent } from 'react';
 import { api } from "~/utils/api";
+import { TRPCClientError } from '@trpc/client';
 
 // Types
 import { GuessResult } from '~/server/api/routers/wordleServer';
@@ -12,8 +13,7 @@ import Search from '~/components/arknights-wordle/search/search';
 import CategoryRows from '~/components/arknights-wordle/results/categoryRow';
 import AnswerRow from '~/components/arknights-wordle/results/answerRow';
 import ShareBox from '~/components/arknights-wordle/share/shareBox';
-import { ChosenOperators } from '@prisma/client';
-import { TRPCClientError } from '@trpc/client';
+
 
 export default function ArknightsWordle() {
     const statsArgs = api.wordle.stats.useQuery(undefined, {refetchOnWindowFocus: false});
