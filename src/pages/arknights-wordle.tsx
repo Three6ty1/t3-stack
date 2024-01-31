@@ -61,7 +61,7 @@ export default function ArknightsWordle() {
 
     const statsArgs = api.wordle.stats.useQuery(undefined, {refetchOnWindowFocus: false});
     if (!statsArgs.isSuccess) {
-        return statsArgs.error;
+        return <>{statsArgs.error}</>;
     }
     const stats = statsArgs.data;
 
