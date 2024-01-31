@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import * as wordle from "./wordleServer";
-import { GuessResult } from "./wordleServer";
 export const wordleRouter = createTRPCRouter({
     // Mutation because we might generate a new operator
     stats: publicProcedure

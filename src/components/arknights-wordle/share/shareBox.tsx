@@ -1,7 +1,7 @@
-import { GuessResult } from '~/server/api/routers/wordleServer';
+import type { GuessResult } from '~/server/api/routers/wordleServer';
 import { Range, Correctness } from "~/helper/helper";
 import React from 'react';
-import { ChosenOperators } from "@prisma/client";
+import type { ChosenOperators } from "@prisma/client";
 
 type Props = {
     gameInfo: ChosenOperators;
@@ -15,13 +15,13 @@ export default function ShareBox({ gameInfo }: Props) {
         const generateshareString = () => {
             let newString = '';
             const ls = localStorage.getItem("guesses");
-            let guesses: GuessResult[] = ls ? JSON.parse(ls) : [];
+            const guesses: GuessResult[] = (ls) ? JSON.parse(ls) as unknown as GuessResult[]: [];
 
             for(const guess of guesses.reverse()) {
                 for (const category in guess) {
                     if (category === 'charId' || category === 'name' || category === 'correct') { continue }
         
-                    const compare: any = guess[category as keyof typeof guess]
+                    const compare = guess[category as keyof typeof guess] as {guess: unknown, result: unknown}
         
                     // Correctness and Range .corret's are the same, just added for clarity
                     if (compare.result === Range.Correct || compare.result === Correctness.Correct || compare.result === true) {
@@ -47,7 +47,9 @@ export default function ShareBox({ gameInfo }: Props) {
 
     const handleShare = () => {
         const newString = `Arknights Wordle #${gameInfo.gameId}\n` + shareString;
-        navigator.clipboard.writeText(newString);
+        navigator.clipboard.writeText(newString).catch(() => {
+            console.log('Cannot add to clipboard')
+        })
         setIsVisible(true)
         setTimeout(() => setIsVisible(false), 3000);
     }

@@ -6,7 +6,7 @@ type Props = {
     amtGuesses: number,
 }
 
-export enum HintBreakpoints {
+export enum  HintBreakpoints {
     "one" = 5,
     "two" = 8,
 }

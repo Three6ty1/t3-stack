@@ -1,17 +1,19 @@
 import SearchBar from "./searchBar";
 import React from 'react'
 import Result from "./result";
+import type { GuessResult } from "~/server/api/routers/wordleServer";
+import type { GuessType } from "~/helper/helper";
 
 type Props = {
-    handleSubmit: React.Dispatch<React.SetStateAction<any>>;
+    handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
 }
 
 export default function Search({ handleSubmit }: Props) {
-    const [results, setResults] = React.useState([]);
+    const [results, setResults] = React.useState<GuessType[]>([]);
 
     return (
         <div className='flex flex-col items-center w-full'>
-            <SearchBar setResults={(e) => setResults(e)} handleSubmit={handleSubmit}/>
+            <SearchBar setResults={(value) => setResults(value)} handleSubmit={handleSubmit}/>
             {results.length > 0 &&
                 <div className='flex flex-col overflow-y-scroll overflow-x-hidden 
                     w-[80vw] max-h-[35vh] md:w-[40vw] md:max-h-[50vh] 

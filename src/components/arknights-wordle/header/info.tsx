@@ -1,8 +1,9 @@
 import LogoBlack from '../../../../public/logo_black.png'
 import LogoWhite from '../../../../public/logo_white.png';
+import Image from 'next/image';
 
 type Props = {
-    darkMode: Boolean;
+    darkMode: boolean;
     stats: {
         gameId: number,
         date: string,
@@ -13,7 +14,7 @@ type Props = {
 export default function Info({ darkMode, stats } : Props) {
     return (
         <>
-            <img style={{height: '50'}} src={`${darkMode ? LogoWhite.src : LogoBlack.src}`}></img>
+            <Image width={416} height={72} src={`${darkMode ? LogoWhite.src : LogoBlack.src}`} alt='Logo'/>
             <h1 className='font-bold text-4xl'>WORDLE</h1>
             <div className='mt-2'>
                 <p>{`#${stats?.gameId}, ${stats?.date} (AEST)`}</p>

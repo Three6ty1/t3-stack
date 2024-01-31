@@ -1,11 +1,12 @@
+import Image from 'next/image';
 import React from 'react';
-import { GuessType, GuessTypeValue, getOperatorIconUrl } from "~/helper/helper";
-import { GuessResult } from '~/server/api/routers/wordleServer';
+import { type GuessType, GuessTypeValue, getOperatorIconUrl } from "~/helper/helper";
+import type { GuessResult } from '~/server/api/routers/wordleServer';
 import { api } from '~/utils/api';
 
 type Props = {
     op: GuessType;
-    handleSubmit: React.Dispatch<React.SetStateAction<any>>;
+    handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
 }
 
 export default function Result({op, handleSubmit } : Props) {
@@ -13,8 +14,8 @@ export default function Result({op, handleSubmit } : Props) {
 
     React.useEffect(() => {
         const ls = localStorage.getItem("guesses");
-        let guessResults: GuessResult[] = ls ? JSON.parse(ls) : [];
-        const pastGuesses = guessResults.map((guess) => guess.name);
+        const _pastGuesses = (ls) ? JSON.parse(ls) as unknown as GuessResult[]: [];
+        const pastGuesses = _pastGuesses.map((guess) => guess.name);
         setPastGuesses(pastGuesses);
     }, [])
 
@@ -33,14 +34,13 @@ export default function Result({op, handleSubmit } : Props) {
         if (!guess) {
             throw "Empty operator list entry, please report"
         }
-
-        handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback: () => {}});
+        handleSubmit(utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), () => {return});
     }
 
     return (
         <div className='flex flex-row self-center w-full items-center m-1'>
             <div className='flex w-1/2 justify-end pr-5'>
-                <img src={url} alt={`${op[0]} operator icon`} width={40}/>
+                <Image src={url} alt={`${op[0]} operator icon`} width={40} height={40} />
             </div>
             <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={(e) => handleClick(e)}>{op[GuessTypeValue.name]}</div> 
         </div>

@@ -1,9 +1,9 @@
-import React, { BaseSyntheticEvent } from 'react';
+import React from 'react';
 import { api } from "~/utils/api";
 import { TRPCClientError } from '@trpc/client';
 
 // Types
-import { GuessResult } from '~/server/api/routers/wordleServer';
+import type { GuessResult } from '~/server/api/routers/wordleServer';
 
 // Components
 import Theme from '~/components/arknights-wordle/header/theme';
@@ -16,13 +16,6 @@ import ShareBox from '~/components/arknights-wordle/share/shareBox';
 
 
 export default function ArknightsWordle() {
-    const statsArgs = api.wordle.stats.useQuery(undefined, {refetchOnWindowFocus: false});
-
-    if (!statsArgs.isSuccess) {
-        return statsArgs.error;
-    }
-    const stats = statsArgs.data;
-
     const [guesses, setGuesses] = React.useState<GuessResult[]>([]);
     const [playing, setPlaying] = React.useState(true);
     const [isInputDelay, setIsInputDelay] = React.useState(false);
@@ -43,9 +36,9 @@ export default function ArknightsWordle() {
             } else {
                 // The reason for storing on both localstorage and state is to make sure state persists through refresh
                 const isGuesses = localStorage.getItem('guesses');
-                const guesses = (isGuesses) ? JSON.parse(isGuesses) : [];
+                const guesses = (isGuesses) ? JSON.parse(isGuesses) as unknown as GuessResult[]: [];
                 const isPlaying = localStorage.getItem('playing');
-                const playing = (isPlaying) ? JSON.parse(isPlaying) as boolean : true;
+                const playing = (isPlaying) ? JSON.parse(isPlaying) as unknown as boolean : true;
                 setPlaying(playing);
                 setGuesses(guesses);
             }
@@ -66,14 +59,20 @@ export default function ArknightsWordle() {
         
     }, [])
 
+    const statsArgs = api.wordle.stats.useQuery(undefined, {refetchOnWindowFocus: false});
+    if (!statsArgs.isSuccess) {
+        return statsArgs.error;
+    }
+    const stats = statsArgs.data;
+
     const handleSubmit = (promise: Promise<GuessResult>, callback: (success: boolean) => void) => {
         promise.then((result) => {
             setError('');
             setIsInputDelay(true)
-            const isGuesses = localStorage.getItem('guesses');
-            const pastGuesses = (isGuesses) ? JSON.parse(isGuesses) : [];
+            const ls = localStorage.getItem("guesses");
+            const pastGuesses: GuessResult[] = (ls) ? JSON.parse(ls) as unknown as GuessResult[]: [];
             // Insert the newest guess at the first index of the answer row array
-            let newGuesses = [result, ...pastGuesses];
+            const newGuesses = [result, ...pastGuesses];
             localStorage.setItem('guesses', JSON.stringify(newGuesses));
             setGuesses(newGuesses);
 
@@ -99,8 +98,8 @@ export default function ArknightsWordle() {
         })
     }
 
-    const handleThemeChange = (e: BaseSyntheticEvent) => {
-        const theme = e.target.checked ? 'dark' : 'light';
+    const handleThemeChange = (e: HTMLInputElement) => {
+        const theme = (e).checked ? 'dark' : 'light';
         localStorage.setItem('data-theme', theme);
         document.getElementById('ak-wordle-root')?.setAttribute('data-theme', theme);
         setDarkMode(theme === 'dark');
@@ -123,7 +122,7 @@ export default function ArknightsWordle() {
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full h-fit animate-fade-in z-10'>
-                    {playing && !isInputDelay && <Search handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
+                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} />}
                 </div>
 
                 {!playing && !isInputDelay &&

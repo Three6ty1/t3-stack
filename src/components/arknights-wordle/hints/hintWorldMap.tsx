@@ -1,6 +1,7 @@
 import map from '../../../../public/world_map.png'
 import { HintBreakpoints } from './hints'
 import React from 'react'
+import Image from 'next/image'
 
 const regions = {
     'Ægir': 'Aquatic animals and Seaborn.\nGroups: Abyssal Hunters.',
@@ -31,14 +32,13 @@ type Props = {
 export default function HintWorldMap({ amtGuesses, }: Props) {
     const [showAlert, setShowAlert] = React.useState(false)
     const handleClick = () => {
-        /* @ts-ignore because this element by id is referenced in the same component */
-        document.getElementById('world_map_modal').showModal()
+        (document.getElementById('world_map_modal') as HTMLDialogElement).showModal()
         setShowAlert(false)
     }
 
     React.useEffect(() => {
         const setAmtGuesses = () => {
-            if (amtGuesses === HintBreakpoints.one) {
+            if (amtGuesses === HintBreakpoints.one.valueOf()) {
                 setShowAlert(true)
             }
         }
@@ -59,10 +59,10 @@ export default function HintWorldMap({ amtGuesses, }: Props) {
             <dialog id="world_map_modal" className="modal w-screen overflow-visible">
                 <div className="modal-box max-w-[95vw] md:max-w-[80vw] no-scrollbar no-scrollbar::-webkit-scrollbar">
                     <div className='w-full h-48 md:h-auto overflow-auto touch-auto'>
-                        <img className='max-w-none w-[400%] md:w-[100%] h-auto' src={map.src}/>
+                        <Image className='max-w-none w-[400%] md:w-[100%] h-auto' src={map} alt='Arknights world map'/>
                     </div>
                     
-                    {amtGuesses >= HintBreakpoints.one &&
+                    {amtGuesses >= HintBreakpoints.one.valueOf() &&
                     <div className='flex flex-wrap flex-row justify-start mt-5'>
                         {Object.entries(regions).map((region) => (
                             <div className='text-left w-1/2 h-32 md:h-20' key={region[0]}>

@@ -1,23 +1,22 @@
-import { TRPCClientError } from "@trpc/client";
 import React from "react";
-import { GuessType, GuessTypeValue } from "~/helper/helper";
-import { GuessResult } from "~/server/api/routers/wordleServer";
+import { type GuessType, GuessTypeValue } from "~/helper/helper";
+import type { GuessResult } from "~/server/api/routers/wordleServer";
 import { api } from "~/utils/api";
 
 type Props = {
-    setResults: React.Dispatch<React.SetStateAction<any>>;
-    handleSubmit: React.Dispatch<React.SetStateAction<any>>;
+    setResults: React.Dispatch<React.SetStateAction<GuessType[]>>;
+    handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
 }
 
 export default function SearchBar({ setResults, handleSubmit } : Props) {
     const allOperatorsArgs= api.wordle.allNames.useQuery(undefined, {refetchOnWindowFocus: false});
+    const [input , setInput] = React.useState('');
+    const [_results, _setResults] = React.useState<GuessType[]>([]);
+
     if (!allOperatorsArgs.isSuccess) {
         return <>{allOperatorsArgs.error}</>
     }
     const allOperators: GuessType[] = allOperatorsArgs.data;
-    const [input , setInput] = React.useState('');
-    const [_results, _setResults] = React.useState<GuessType[]>([]);
-
     const utils = api.useUtils();
 
     const handleChange = (value: string) => {
@@ -49,8 +48,8 @@ export default function SearchBar({ setResults, handleSubmit } : Props) {
         if(e.key === 'Enter') {
             e.preventDefault();
             const ls = localStorage.getItem("guesses");
-            let guessResults: GuessResult[] = ls ? JSON.parse(ls) : [];
-            const pastGuesses = guessResults.map((guess) => guess.name);
+            const _pastGuesses: GuessResult[] = (ls) ? JSON.parse(ls) as unknown as GuessResult[]: [];
+            const pastGuesses = _pastGuesses.map((guess) => guess.name);
 
             let guess;
             if (_results.length > 0 && _results[0]) {
@@ -65,7 +64,7 @@ export default function SearchBar({ setResults, handleSubmit } : Props) {
                 _setResults([]);
             }
 
-            handleSubmit({promise: utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback: callback})
+            handleSubmit(utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback)
         }
     }
 

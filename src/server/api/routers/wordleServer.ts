@@ -1,8 +1,8 @@
-import { GuessType, randomInteger } from '~/helper/helper';
-import { Prisma, PrismaClient } from '@prisma/client';
-import { Operator } from '@prisma/client';
+import { type GuessType, randomInteger } from '~/helper/helper';
+import type { Prisma, PrismaClient } from '@prisma/client';
+import type { Operator } from '@prisma/client';
 import { Range, Correctness } from '~/helper/helper';
-import { DefaultArgs } from '@prisma/client/runtime/library';
+import type { DefaultArgs } from '@prisma/client/runtime/library';
 import { TRPCError } from '@trpc/server';
 
 export type GuessResult = {
@@ -29,13 +29,13 @@ const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, nev
 
     while(true) {
         // Get a random operator
-        let toChoose = operators[randomInteger(0, operators.length)];
+        const toChoose = operators[randomInteger(0, operators.length)];
 
         if (!toChoose) {
             throw "Invalid operator chosen. Not possible?"
         }
 
-        let chosen = await db.operator.findFirst({
+        const chosen = await db.operator.findFirst({
             where: {
                 charId: toChoose.charId
             },
@@ -112,7 +112,7 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
         allegiance_res = (answer.nation == guess.nation) ? Correctness.Half : Correctness.Wrong;
     }
 
-    let res = {
+    const res = {
         gender: {guess: guess.gender, result: answer.gender === guess.gender},
         race: {guess: guess.race, result: answer.race === guess.race},
         allegiance: { guess: guess.group ? guess.group : guess.nation, result: allegiance_res },
@@ -169,7 +169,12 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
     
     const result = compareGuessLogic(compareOp, guessOp);
 
-    result.correct && updateWins(db);
+    result.correct && updateWins(db).catch(() => {
+        throw new TRPCError({
+            code: 'INTERNAL_SERVER_ERROR',
+            message: 'Could not update wins',
+        })
+    });
 
     return compareGuessLogic(compareOp, guessOp);
 }
