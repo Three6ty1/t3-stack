@@ -110,10 +110,8 @@ export default function ArknightsWordle() {
         <main id='ak-wordle-root' className='flex flex-col w-full justify-top items-center align-middle text-center font-sans p-5 pt-10 h-full'>
             <Theme handleThemeChange={(e) => handleThemeChange(e)}/>
             <Info darkMode={darkMode} stats={stats} />
-
-            <div className='flex justify-center align-middle w-3/4 md:w-96 my-2'>
-                <Hints amtGuesses={guesses.length}/>
-            </div>
+            <Hints amtGuesses={guesses.length}/>
+            
 
             {error != '' ? (
                 <p className='text-red-500'>{error}</p>
@@ -124,7 +122,7 @@ export default function ArknightsWordle() {
                 * Using grid and col-start to force these elements to overlap one another 
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
-                <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in'>
+                <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in z-10'>
                     {playing && !isInputDelay && <Search handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
                 </div>
 
@@ -135,9 +133,9 @@ export default function ArknightsWordle() {
                 }
 
                 {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
-                <div className='col-start-1 row-start-1 flex flex-col mt-14 w-auto overflow-x-scroll overflow-y-clip md:overflow-visible'>
+                <div className='col-start-1 row-start-1 flex flex-col relative top-14 overflow-x-scroll overflow-y-clip md:overflow-visible'>
                     {/** Wrapper for div to expand into scrollable area in mobile */}
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col w-fit'>
                         {guesses && (guesses.length) > 0 &&
                             <>
                                 <CategoryRows />

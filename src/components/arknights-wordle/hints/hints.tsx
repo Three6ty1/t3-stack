@@ -19,10 +19,12 @@ export default function Hints({ amtGuesses, } : Props) {
     //      operator list sorted by class and rarity
    
     return (
-        <div className='flex flex-row w-full justify-center'>
-            <HintOperatorList amtGuesses={amtGuesses} />
-            <HintHelp />
-            <HintWorldMap amtGuesses={amtGuesses} />
+        <div className='flex justify-center align-middle w-full md:w-96 my-2'>
+            <div className='flex flex-row justify-center w-3/4'>
+                <HintOperatorList amtGuesses={amtGuesses} />
+                <HintHelp />
+                <HintWorldMap amtGuesses={amtGuesses} />
+            </div>
         </div>
     )
 }

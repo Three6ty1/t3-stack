@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function SearchBar({ setResults, handleSubmit } : Props) {
-    const allOperatorsArgs= api.wordle.allNames.useQuery();
+    const allOperatorsArgs= api.wordle.allNames.useQuery(undefined, {refetchOnWindowFocus: false});
     if (!allOperatorsArgs.isSuccess) {
         return <>{allOperatorsArgs.error}</>
     }
