@@ -14,7 +14,7 @@ export default function Search({ handleSubmit }: Props) {
             <SearchBar setResults={(e) => setResults(e)} handleSubmit={handleSubmit}/>
             {results.length > 0 &&
                 <div className='flex flex-col overflow-y-scroll overflow-x-hidden 
-                    w-[80vw] max-h-[35vh] md:w-[30vw]  md:max-h-[50vh] 
+                    w-[80vw] max-h-[35vh] md:w-[40vw] md:max-h-[50vh] 
                     my-2 py-2 rounded-md bg-base-100 shadow-sm shadow-neutral-content
                     no-scrollbar .no-scrollbar::-webkit-scrollbar'
                 >

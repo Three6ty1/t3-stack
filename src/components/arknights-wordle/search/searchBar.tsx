@@ -76,7 +76,7 @@ export default function SearchBar({ setResults, handleSubmit } : Props) {
             onChange={(e) => handleChange(e.target.value)}
             onKeyDown={(e) => handleKey(e)}
             placeholder='Start typing an operator name'
-            className='input input-bordered w-[80vw] md:w-[30vw] text-center'
+            className='input input-bordered w-[80vw] md:w-[40vw] text-center'
             type='text'/>
         </div>
     );

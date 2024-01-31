@@ -26,7 +26,7 @@
 
 @layer components {
     .tooltip-answer-row {
-        @apply md:tooltip md:tooltip-top before:md:w-max before:whitespace-pre-line md:before:content-[attr(data-tip)]
+        @apply lg:tooltip lg:tooltip-top before:lg:w-max before:whitespace-pre-line lg:before:content-[attr(data-tip)]
     }
 
     .answer-row {

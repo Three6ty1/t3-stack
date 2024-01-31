@@ -133,7 +133,7 @@ export default function ArknightsWordle() {
                 }
 
                 {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
-                <div className='col-start-1 row-start-1 flex flex-col relative top-14 overflow-x-scroll overflow-y-clip md:overflow-visible pb-10'>
+                <div className='col-start-1 row-start-1 flex flex-col relative top-20 overflow-x-scroll overflow-y-clip md:overflow-visible pb-10'>
                     {/** Wrapper for div to expand into scrollable area in mobile */}
                     <div className='flex flex-col w-fit'>
                         {guesses && (guesses.length) > 0 &&
