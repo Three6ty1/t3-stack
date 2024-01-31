@@ -107,7 +107,7 @@ export default function ArknightsWordle() {
     }
 
     return (
-        <main id='ak-wordle-root' className='flex flex-col w-full justify-top items-center align-middle text-center font-sans p-5 pt-10 h-full'>
+        <main id='ak-wordle-root' className='flex flex-col w-full h-full justify-top items-center align-middle text-center font-sans p-5 pt-10'>
             <Theme handleThemeChange={(e) => handleThemeChange(e)}/>
             <Info darkMode={darkMode} stats={stats} />
             <Hints amtGuesses={guesses.length}/>
@@ -117,12 +117,12 @@ export default function ArknightsWordle() {
                 <p className='text-red-500'>{error}</p>
             ) : null}
 
-            <div className='grid w-full justify-center pb-10'>
+            <div className='grid w-full justify-center'>
                 {/** 
                 * Using grid and col-start to force these elements to overlap one another 
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
-                <div className='flex flex-col col-start-1 row-start-1 align-middle w-full animate-fade-in z-10'>
+                <div className='flex flex-col col-start-1 row-start-1 align-middle w-full h-fit animate-fade-in z-10'>
                     {playing && !isInputDelay && <Search handleSubmit={({promise, callback}) => handleSubmit(promise, callback)} />}
                 </div>
 
@@ -133,7 +133,7 @@ export default function ArknightsWordle() {
                 }
 
                 {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
-                <div className='col-start-1 row-start-1 flex flex-col relative top-14 overflow-x-scroll overflow-y-clip md:overflow-visible'>
+                <div className='col-start-1 row-start-1 flex flex-col relative top-14 overflow-x-scroll overflow-y-clip md:overflow-visible pb-10'>
                     {/** Wrapper for div to expand into scrollable area in mobile */}
                     <div className='flex flex-col w-fit'>
                         {guesses && (guesses.length) > 0 &&

@@ -15,7 +15,7 @@ interface Dictionary<T> {
 const Professsions = ['Vanguard', 'Guard', 'Defender', 'Sniper', 'Caster', 'Medic', 'Supporter', 'Specialist'];
 
 export default function HintOperatorList({ amtGuesses }: Props) {
-    const allOperatorsArgs = api.wordle.allNames.useQuery();
+    const allOperatorsArgs = api.wordle.allNames.useQuery(undefined, {refetchOnWindowFocus: false});
 
     if (!allOperatorsArgs.isSuccess) {
         return <>{allOperatorsArgs.error}</>;
