@@ -52,13 +52,13 @@ export default function ArknightsWordle() {
         }
 
         const initTheme = () => {
-            const isTheme = localStorage.getItem('data-theme');
-            const theme: string = (isTheme) ? isTheme : 'light';
-            document.getElementById('ak-wordle-root')?.setAttribute('data-theme', theme);
-            if (theme === 'dark') {
+            if (localStorage['data-theme'] === 'dark' || (!('data-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.getElementById('theme-checkbox')?.setAttribute('checked', '');
+                document.getElementById('ak-wordle-root')?.setAttribute('data-theme', 'dark');
                 setDarkMode(true)
-            }   
+            } else {
+                document.getElementById('ak-wordle-root')?.setAttribute('data-theme', 'light');
+            }
         }
 
         initGuesses();
