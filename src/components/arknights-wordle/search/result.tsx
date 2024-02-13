@@ -35,7 +35,8 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
 
   const utils = api.useUtils();
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     handleSubmit(
       utils.wordle.compare.fetch({
         guessOp: operator,
@@ -51,7 +52,7 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
   return (
     <div
       className="m-1 flex w-full flex-row items-center self-center"
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
       id={String(operator.id)}
     >
       <div className="flex w-1/2 justify-end pr-5">

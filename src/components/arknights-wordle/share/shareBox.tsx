@@ -68,6 +68,9 @@ export default function ShareBox({ gameInfo }: Props) {
     navigator.clipboard.writeText(newString).catch(() => {
       console.log("Cannot add to clipboard");
     });
+    if (isVisible) {
+      return;
+    }
     setIsVisible(true);
     setTimeout(() => setIsVisible(false), 3000);
   };
@@ -81,8 +84,8 @@ export default function ShareBox({ gameInfo }: Props) {
         Share your results!
       </button>
       {isVisible && (
-        <div className="toast toast-end z-50">
-          <div className="alert alert-success">
+        <div className="relative md:absolute toast toast-start md:toast-end text-center">
+          <div className="flex alert alert-success text-center">
             <span>Copied to clipboard.</span>
           </div>
         </div>
