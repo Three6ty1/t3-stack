@@ -37,7 +37,7 @@ export default function Result({operator, handleSubmit, stats } : Props) {
     return (
         <div className='flex flex-row self-center w-full items-center m-1'>
             <div className='flex w-1/2 justify-end pr-5'>
-                <Image src={url} alt={`${operator.name} operator icon`} width={40} height={40} />
+                <Image src={url} alt={`${operator.name} operator icon`} width={50} height={50} />
             </div>
             <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={handleClick} id={String(operator.id)}>{operator.name}</div> 
         </div>

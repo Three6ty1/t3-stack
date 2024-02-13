@@ -21,7 +21,7 @@ export default function AnswerBoxName({ pastGuesses, name, rowIndex }: Props) {
 
     return (
         <div className={`${divStyle} tooltip-answer-row bg-base-200`} data-tip={name} style={{animationDelay: '200ms'}}>
-            <Image fill={true} sizes="80px" src={url} alt={`${name} operator icon`} className='p-1' />
+            <Image width={80} height={80} src={url} alt={`${name} operator icon`} />
         </div>   
     );
 }

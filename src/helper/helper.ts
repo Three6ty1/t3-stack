@@ -37,9 +37,9 @@ export const wordleColors = {
 export function getOperatorIconUrl(charId: string, rarity: number) {
     let url;
     if (rarity > 3) {
-        url = ICON_DIR + charId + '_2.png'
+        url = ICON_DIR + charId + '_2.webp'
     } else {
-        url = ICON_DIR + charId + '.png'
+        url = ICON_DIR + charId + '.webp'
     }
 
     return url;
