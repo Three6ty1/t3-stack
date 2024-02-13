@@ -1,4 +1,4 @@
-import { Stats } from "~/server/api/routers/wordle";
+import type { Stats } from "~/server/api/routers/wordle";
 import LogoBlack from "../../../../public/logo_black.png";
 import LogoWhite from "../../../../public/logo_white.png";
 import Image from "next/image";

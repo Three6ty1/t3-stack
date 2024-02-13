@@ -1,8 +1,7 @@
-import { type GuessType } from "~/helper/helper";
 import HintHelp from "./hintHelp";
 import HintOperatorList from "./hintOperatorList";
 import HintWorldMap from "./hintWorldMap";
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 
 type Props = {
   amtGuesses: number;

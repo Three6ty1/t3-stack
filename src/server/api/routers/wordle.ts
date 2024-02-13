@@ -2,7 +2,6 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import * as wordle from "./wordleServer";
 import { db } from "~/server/db";
-import { Operator } from "@prisma/client";
 
 const operatorSchema = z.object({
     id: z.number(),

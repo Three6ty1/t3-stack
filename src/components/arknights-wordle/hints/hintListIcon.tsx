@@ -1,10 +1,6 @@
-import {
-  type GuessType,
-  GuessTypeValue,
-  getOperatorIconUrl,
-} from "~/helper/helper";
+import { getOperatorIconUrl } from "~/helper/helper";
 import Image from "next/image";
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 type Props = {
   operator: Operator;
 };

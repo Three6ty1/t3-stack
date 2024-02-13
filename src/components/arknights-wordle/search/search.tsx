@@ -2,9 +2,8 @@ import SearchBar from "./searchBar";
 import React from "react";
 import Result from "./result";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
-import type { GuessType } from "~/helper/helper";
 import type { Stats } from "~/server/api/routers/wordle";
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 
 type Props = {
   handleSubmit: (

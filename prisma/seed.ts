@@ -5,9 +5,6 @@ import db from '../operator_db.json'
 // "npx prisma db seed"
 // dumb shit prisma seeding
 // https://github.com/prisma/prisma/issues/7053#issuecomment-1679880184
-interface Dictionary<T> {
-  [Key: string]: T;
-}
 
 // Not the same as prisma operator
 interface Operator {
@@ -27,7 +24,7 @@ interface Operator {
 const prisma = new PrismaClient()
 async function main() {
   let amt = 0
-  const operator_db:Dictionary<Operator> = db;
+  const operator_db: Record<string, Operator> = db;
   // await prisma.operator.deleteMany()
   // const operators = await prisma.operator.count();
   for (const key in operator_db) {

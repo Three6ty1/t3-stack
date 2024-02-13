@@ -139,7 +139,7 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
 
 // Compare the guess with the operator of the day
 export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>, guessOp: Operator, guesses: string[], correctId: number) => {
-    if (guesses.includes(guessOp!.name)) {
+    if (guesses.includes(guessOp.name)) {
         throw new TRPCError({
             code: 'BAD_REQUEST',
             message: `Operator has already been guessed: `,
@@ -148,7 +148,7 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
 
     const compareOp = await db.operator.findFirstOrThrow({ where: { id: correctId } })
     
-    const result = compareGuessLogic(compareOp, guessOp!);
+    const result = compareGuessLogic(compareOp, guessOp);
 
     result.correct && updateWins(db).catch(() => {
         throw new TRPCError({
@@ -157,7 +157,7 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
         })
     });
 
-    return compareGuessLogic(compareOp, guessOp!);
+    return compareGuessLogic(compareOp, guessOp);
 }
 
 // Get a list of all the operator names in the database

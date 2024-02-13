@@ -1,7 +1,6 @@
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 import React from "react";
-import { type GuessType, GuessTypeValue } from "~/helper/helper";
-import { Stats } from "~/server/api/routers/wordle";
+import type { Stats } from "~/server/api/routers/wordle";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
 import { api } from "~/utils/api";
 

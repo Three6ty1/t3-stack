@@ -1,14 +1,9 @@
 import HintListIcon from "./hintListIcon";
 import React from "react";
-import {
-  type GuessType,
-  GuessTypeValue,
-  getProfessionIconUrl,
-  wordleColors,
-} from "~/helper/helper";
+import { getProfessionIconUrl, wordleColors } from "~/helper/helper";
 import { HintBreakpoints } from "./hints";
 import Image from "next/image";
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 
 type Props = {
   amtGuesses: number;

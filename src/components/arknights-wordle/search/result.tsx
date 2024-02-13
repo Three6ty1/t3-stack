@@ -1,8 +1,8 @@
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
 import { getOperatorIconUrl } from "~/helper/helper";
-import { Stats } from "~/server/api/routers/wordle";
+import type { Stats } from "~/server/api/routers/wordle";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
 import { api } from "~/utils/api";
 
