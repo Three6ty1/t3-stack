@@ -1,9 +1,10 @@
-import { type GuessType, randomInteger } from '~/helper/helper';
+import { randomInteger } from '~/helper/helper';
 import type { Prisma, PrismaClient } from '@prisma/client';
 import type { Operator } from '@prisma/client';
 import { Range, Correctness } from '~/helper/helper';
 import type { DefaultArgs } from '@prisma/client/runtime/library';
 import { TRPCError } from '@trpc/server';
+
 
 export type GuessResult = {
     charId: string,
@@ -35,9 +36,9 @@ const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, nev
             throw "Invalid operator chosen. Not possible?"
         }
 
-        const chosen = await db.operator.findFirst({
+        const chosenOperator = await db.operator.findFirst({
             where: {
-                charId: toChoose.charId
+                id: toChoose.id
             },
             include: {
                 chosen: true,
@@ -45,10 +46,10 @@ const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, nev
         });
 
         // An operator might not have been chosen before.
-        if (chosen) {  
+        if (chosenOperator) {  
             // If amount of times chosen is more than the total games played / half the amount of operators, choose a new operator.
-            if (!prev || chosen.chosen.length <= Math.floor(prev.gameId / Math.floor(operators.length / 2))) {
-                return chosen
+            if (!prev || chosenOperator.chosen.length <= Math.floor(prev.gameId / Math.floor(operators.length / 2))) {
+                return chosenOperator
             }
         }
     } 
@@ -60,7 +61,7 @@ const handleNewDay = async(db: PrismaClient<Prisma.PrismaClientOptions, never, D
     const res = await db.chosenOperators.create({
         data: {
             date: date,
-            operatorId: chosen.charId,
+            operatorId: chosen.id,
             timesGuessed: 0,
         }
     });
@@ -137,37 +138,17 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
 }
 
 // Compare the guess with the operator of the day
-export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>, guess: string, guesses: string[]) => {
-    if (guess.trim() == '') {
+export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>, guessOp: Operator, guesses: string[], correctId: number) => {
+    if (guesses.includes(guessOp!.name)) {
         throw new TRPCError({
             code: 'BAD_REQUEST',
-            message: 'Please enter an operator name',
-            cause: guess,
-        })
-    }
-    
-    if (guesses.includes(guess)) {
-        throw new TRPCError({
-            code: 'BAD_REQUEST',
-            message: `${guess} has already been guessed`,
-            cause: guess,
-        })
-    }
-    const guessOp = await db.operator.findFirst({
-        where: { name: guess}
-    })
-
-    if (!guessOp) {
-        throw new TRPCError({
-            code: 'BAD_REQUEST',
-            message: `Not a valid operator name: ${guess}`,
-            cause: guess,
+            message: `Operator has already been guessed: `,
         })
     }
 
-    const compareOp = await db.operator.findFirstOrThrow({ where: { charId: (await getTodayOperator(db)).operatorId } })
+    const compareOp = await db.operator.findFirstOrThrow({ where: { id: correctId } })
     
-    const result = compareGuessLogic(compareOp, guessOp);
+    const result = compareGuessLogic(compareOp, guessOp!);
 
     result.correct && updateWins(db).catch(() => {
         throw new TRPCError({
@@ -176,7 +157,7 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
         })
     });
 
-    return compareGuessLogic(compareOp, guessOp);
+    return compareGuessLogic(compareOp, guessOp!);
 }
 
 // Get a list of all the operator names in the database
@@ -185,9 +166,9 @@ export const getAllOperators = async(db: PrismaClient<Prisma.PrismaClientOptions
         orderBy: {
             name: 'asc',
         }
-    })
-    const res: GuessType[] = ops.map(op => [op.name, op.charId, op.profession, op.archetype, op.rarity])
-    return res;
+    });
+
+    return ops;
 }
 
 const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
