@@ -32,7 +32,7 @@ export default function ArknightsWordle({
 
   React.useEffect(() => {
     const initGuesses = () => {
-      const now = new Date().toDateString();
+      const now = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "short"});
       const lastPlayed = localStorage.getItem("lastPlayed");
       // Refresh the guesses and set playing to true if the last played date is not the current date
       if (now != lastPlayed) {
