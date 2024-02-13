@@ -183,11 +183,7 @@ export default function ArknightsWordle({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=1800, stale-while-revalidate=2700",
-  );
+export const getServerSideProps: GetServerSideProps = async () => {
   const stats = await getStats();
   const allOperators = await getAllOperators();
 

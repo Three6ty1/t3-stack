@@ -49,7 +49,11 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
   };
 
   return (
-    <div className="m-1 flex w-full flex-row items-center self-center">
+    <div
+      className="m-1 flex w-full flex-row items-center self-center"
+      onClick={handleClick}
+      id={String(operator.id)}
+    >
       <div className="flex w-1/2 justify-end pr-5">
         <Image
           src={url}
@@ -60,8 +64,6 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
       </div>
       <div
         className={"flex w-1/2 justify-start text-start text-2xl" + textStyle}
-        onClick={handleClick}
-        id={String(operator.id)}
       >
         {operator.name}
       </div>

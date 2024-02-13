@@ -5,6 +5,7 @@ import AnswerBoxRace from "./answerBoxRace";
 import AnswerBoxCost from "./answerBoxCost";
 import type { Correctness, Range } from "~/helper/helper";
 import AnswerBoxAllegiance from "./answerBoxAllegiance";
+import AnswerBoxRarity from "./answerBoxRarity";
 
 export const answerRowStyle =
   "answer-row flex flex-col p-1 leading-2 break-all text-white";
@@ -101,6 +102,31 @@ export default function AnswerRow({ guess, index }: Props) {
                   guess[key as keyof typeof guess] as {
                     guess: string;
                     result: Correctness;
+                  }
+                ).result
+              }
+              boxIndex={boxIndex}
+              rowIndex={index}
+            />
+          );
+        } else if (key === "rarity") {
+          return (
+            <AnswerBoxRarity
+              key={key}
+              pastGuesses={pastGuesses}
+              guess={
+                (
+                  guess[key as keyof typeof guess] as {
+                    guess: number;
+                    result: Range;
+                  }
+                ).guess
+              }
+              result={
+                (
+                  guess[key as keyof typeof guess] as {
+                    guess: number;
+                    result: Range;
                   }
                 ).result
               }
