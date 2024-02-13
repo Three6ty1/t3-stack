@@ -1,20 +1,16 @@
+import { Stats } from '~/server/api/routers/wordle';
 import LogoBlack from '../../../../public/logo_black.png'
 import LogoWhite from '../../../../public/logo_white.png';
 import Image from 'next/image';
 
 type Props = {
     darkMode: boolean;
-    stats: {
-        gameId: number,
-        date: string,
-        operatorId: string,
-        timesGuessed: number,
-    }
+    stats: Stats;
 }
 export default function Info({ darkMode, stats } : Props) {
     return (
         <>
-            <Image width={416} height={72} src={`${darkMode ? LogoWhite.src : LogoBlack.src}`} alt='Logo'/>
+            <Image width={416} height={72} src={`${darkMode ? LogoWhite.src : LogoBlack.src}`} alt='Logo' priority={true}/>
             <h1 className='font-bold text-4xl'>WORDLE</h1>
             <div className='mt-2'>
                 <p>{`#${stats?.gameId}, ${stats?.date} (AEST)`}</p>

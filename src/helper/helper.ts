@@ -4,13 +4,13 @@ export function randomInteger(min: number, max: number) {
 
 export const ICON_DIR = 'https://raw.githubusercontent.com/Three6ty1/ak-wordle-icons/main/avatars/'
 export const PROFESSION_ICON_DIR = 'https://raw.githubusercontent.com/Three6ty1/ak-wordle-icons/main/classes/black/'
-export type GuessType = [string, string, string, string, number];
+export type GuessType = [number, string, string, string, number];
 
 export enum GuessTypeValue {
-    name = 0,
+    id = 0,
     charId = 1,
-    class = 2,
-    archetype = 3,
+    name= 2,
+    class = 3,
     rarity = 4,
 }
 

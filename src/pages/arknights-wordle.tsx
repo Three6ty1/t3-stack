@@ -13,11 +13,12 @@ import CategoryRows from '~/components/arknights-wordle/results/categoryRow';
 import AnswerRow from '~/components/arknights-wordle/results/answerRow';
 import ShareBox from '~/components/arknights-wordle/share/shareBox';
 import { GetServerSideProps } from 'next';
-import { getAllNames, getStats } from '~/server/api/routers/wordle';
-import { GuessType } from '~/helper/helper';
+import { getAllOperators, getStats } from '~/server/api/routers/wordle';
 import type { Stats } from '~/server/api/routers/wordle';
+import type { Operator } from '@prisma/client';
 
-export default function ArknightsWordle({ stats, allNames } : { stats: Stats, allNames: GuessType[] } ) {
+
+export default function ArknightsWordle({ stats, allOperators } : { stats: Stats, allOperators: Operator[] } ) {
     const [guesses, setGuesses] = React.useState<GuessResult[]>([]);
     const [playing, setPlaying] = React.useState(true);
     const [isInputDelay, setIsInputDelay] = React.useState(false);
@@ -105,9 +106,8 @@ export default function ArknightsWordle({ stats, allNames } : { stats: Stats, al
         <main id='ak-wordle-root' className='flex flex-col w-full h-full justify-top items-center align-middle text-center font-sans p-5 pt-10'>
             <Theme handleThemeChange={(e) => handleThemeChange(e)}/>
             <Info darkMode={darkMode} stats={stats} />
-            <Hints amtGuesses={guesses.length} allNames={allNames} />
+            <Hints amtGuesses={guesses.length} allOperators={allOperators} />
             
-
             {error != '' ? (
                 <p className='text-red-500'>{error}</p>
             ) : null}
@@ -118,7 +118,7 @@ export default function ArknightsWordle({ stats, allNames } : { stats: Stats, al
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full h-fit animate-fade-in z-10'>
-                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} allNames={allNames} stats={stats} />}
+                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} allOperators={allOperators} stats={stats} />}
                 </div>
 
                 {!playing && !isInputDelay &&
@@ -147,14 +147,18 @@ export default function ArknightsWordle({ stats, allNames } : { stats: Stats, al
     );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=1800, stale-while-revalidate=2700'
+    )
     const stats = await getStats();
-    const allNames = await getAllNames();
+    const allOperators = await getAllOperators();
 
     return {
         props: {
             stats,
-            allNames,
+            allOperators,
         }
     };
 }

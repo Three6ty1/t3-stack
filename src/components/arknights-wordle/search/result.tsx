@@ -1,17 +1,18 @@
+import { Operator } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
-import { type GuessType, GuessTypeValue, getOperatorIconUrl } from "~/helper/helper";
+import { getOperatorIconUrl } from "~/helper/helper";
 import { Stats } from '~/server/api/routers/wordle';
 import type { GuessResult } from '~/server/api/routers/wordleServer';
 import { api } from '~/utils/api';
 
 type Props = {
-    op: GuessType;
+    operator: Operator;
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
     stats: Stats;
 }
 
-export default function Result({op, handleSubmit, stats } : Props) {
+export default function Result({operator, handleSubmit, stats } : Props) {
     const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
 
     React.useEffect(() => {
@@ -21,30 +22,24 @@ export default function Result({op, handleSubmit, stats } : Props) {
         setPastGuesses(pastGuesses);
     }, [])
 
-    const url = getOperatorIconUrl(op[GuessTypeValue.charId], op[GuessTypeValue.rarity]);
+    const url = getOperatorIconUrl(operator.charId, operator.rarity);
 
     let textStyle = ' '
     // Ternary operator for this line BREAKS the code
-    if (pastGuesses.includes(op[GuessTypeValue.name])) { textStyle += 'text-higher' }
+    if (pastGuesses.includes(operator.name)) { textStyle += 'text-higher' }
 
     const utils = api.useUtils();
 
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        
-        const guess = e.currentTarget.id;
-        if (!guess) {
-            throw "Empty operator list entry, please report"
-        }
-        handleSubmit(utils.wordle.compare.fetch({guessId: guess, guesses: pastGuesses, correctId: stats.operatorId}), () => {return});
+    const handleClick = () => {
+        handleSubmit(utils.wordle.compare.fetch({guessOp: operator, guesses: pastGuesses, correctId: stats.operatorId}), () => {return});
     }
 
     return (
         <div className='flex flex-row self-center w-full items-center m-1'>
             <div className='flex w-1/2 justify-end pr-5'>
-                <Image src={url} alt={`${op[0]} operator icon`} width={40} height={40} />
+                <Image src={url} alt={`${operator.name} operator icon`} width={40} height={40} />
             </div>
-            <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={(e) => handleClick(e)} id={op[GuessTypeValue.charId]}>{op[GuessTypeValue.name]}</div> 
+            <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={handleClick} id={String(operator.id)}>{operator.name}</div> 
         </div>
     );
 }

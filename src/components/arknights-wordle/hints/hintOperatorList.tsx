@@ -2,17 +2,17 @@ import HintListIcon from "./hintListIcon";
 import React from "react";
 import { type GuessType, GuessTypeValue, getProfessionIconUrl, wordleColors } from "~/helper/helper";
 import { HintBreakpoints } from "./hints";
-import { api } from "~/utils/api";
 import Image from "next/image";
+import { Operator } from "@prisma/client";
 
 type Props = {
     amtGuesses: number,
-    allNames: GuessType[];
+    allOperators: Operator[];
 }
 
 const Professsions = ['Vanguard', 'Guard', 'Defender', 'Sniper', 'Caster', 'Medic', 'Supporter', 'Specialist'];
 
-export default function HintOperatorList({ amtGuesses, allNames }: Props) {
+export default function HintOperatorList({ amtGuesses, allOperators }: Props) {
     const [showAlert, setShowAlert] = React.useState(false);
     const [selectedProfession, setSelectedProfession] = React.useState<string>('');
 
@@ -25,7 +25,7 @@ export default function HintOperatorList({ amtGuesses, allNames }: Props) {
         setAmtGuesses();
     }, [amtGuesses])
 
-    const sortedRarityOperators: Record<string, GuessType[]> = {
+    const sortedRarityOperators: Record<string, Operator[]> = {
         "6": [],
         "5": [],
         "4": [],
@@ -34,12 +34,12 @@ export default function HintOperatorList({ amtGuesses, allNames }: Props) {
         "1": [],
     };
 
-    if (!allNames) {
+    if (!allOperators) {
         return <>Loading...</>
     }
 
     // Sort all operators into sortedRarityOperators
-    allNames.map((operator) => sortedRarityOperators[operator[GuessTypeValue.rarity as keyof typeof operator] as keyof typeof sortedRarityOperators]!.push(operator))
+    allOperators.map((operator) => sortedRarityOperators[operator.rarity]!.push(operator))
 
     const handleProfession = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         const id = (e.target as HTMLImageElement).id
@@ -77,8 +77,8 @@ export default function HintOperatorList({ amtGuesses, allNames }: Props) {
                          */}
                         {amtGuesses < HintBreakpoints.one.valueOf() ?
                                 <>
-                                    {allNames.map((operator) => {
-                                        return (<HintListIcon key={`${operator[GuessTypeValue.name]} list icon`} operator={operator} />)
+                                    {allOperators.map((operator) => {
+                                        return (<HintListIcon key={`${operator.name} list icon`} operator={operator} />)
                                     })}
                                 </>
                             :
@@ -96,14 +96,14 @@ export default function HintOperatorList({ amtGuesses, allNames }: Props) {
                                             {rarity[1].map((operator) => {
                                                 if (amtGuesses >= HintBreakpoints.two.valueOf()) {
                                                     if (selectedProfession === '') {
-                                                        return <HintListIcon key={`${operator[GuessTypeValue.name]} list icon`} operator={operator} />
+                                                        return <HintListIcon key={`${operator.name} list icon`} operator={operator} />
                                                     }
-                                                    if (operator[2] === selectedProfession) {
-                                                        return <HintListIcon key={`${operator[GuessTypeValue.name]} list icon`} operator={operator} />
+                                                    if (operator.profession === selectedProfession) {
+                                                        return <HintListIcon key={`${operator.name} list icon`} operator={operator} />
                                                     } 
                                                     return null
                                                 }
-                                                return <HintListIcon key={`${operator[GuessTypeValue.name]} list icon`} operator={operator} />
+                                                return <HintListIcon key={`${operator.name} list icon`} operator={operator} />
                                             })}
                                         </div>
                                     ))}

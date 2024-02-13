@@ -1,3 +1,4 @@
+import { Operator } from "@prisma/client";
 import React from "react";
 import { type GuessType, GuessTypeValue } from "~/helper/helper";
 import { Stats } from "~/server/api/routers/wordle";
@@ -5,15 +6,15 @@ import type { GuessResult } from "~/server/api/routers/wordleServer";
 import { api } from "~/utils/api";
 
 type Props = {
-    setResults: React.Dispatch<React.SetStateAction<GuessType[]>>;
+    setResults: (value: Operator[]) => void;
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
-    allNames: GuessType[];
+    allOperators: Operator[];
     stats: Stats;
 }
 
-export default function SearchBar({ setResults, handleSubmit, allNames, stats } : Props) {
+export default function SearchBar({ setResults, handleSubmit, allOperators, stats } : Props) {
     const [input , setInput] = React.useState('');
-    const [_results, _setResults] = React.useState<GuessType[]>([]);
+    const [_results, _setResults] = React.useState<Operator[]>([]);
 
     const utils = api.useUtils();
 
@@ -29,8 +30,8 @@ export default function SearchBar({ setResults, handleSubmit, allNames, stats } 
         
         const lower = value.toLowerCase().trim();
 
-        const results = allNames.filter((op) => {
-            const op_lower = op[GuessTypeValue.name].toLowerCase();
+        const results = allOperators.filter((op) => {
+            const op_lower = op.name.toLowerCase();
             return (
                 op_lower.startsWith(lower) || 
                 op_lower.replace("'", "").startsWith(lower.replace("", "")) || 
@@ -51,7 +52,7 @@ export default function SearchBar({ setResults, handleSubmit, allNames, stats } 
 
             let guess;
             if (_results.length > 0 && _results[0]) {
-                guess = _results[0][GuessTypeValue.charId];
+                guess = _results[0];
             } else {
                 return;
             }
@@ -62,7 +63,7 @@ export default function SearchBar({ setResults, handleSubmit, allNames, stats } 
                 _setResults([]);
             }
 
-            handleSubmit(utils.wordle.compare.fetch({guessId: guess, guesses: pastGuesses, correctId: stats.operatorId}), callback)
+            handleSubmit(utils.wordle.compare.fetch({guessOp: guess, guesses: pastGuesses, correctId: stats.operatorId}), callback)
         }
     }
 

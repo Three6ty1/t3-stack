@@ -4,19 +4,20 @@ import Result from "./result";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
 import type { GuessType } from "~/helper/helper";
 import type { Stats } from '~/server/api/routers/wordle';
+import { Operator } from "@prisma/client";
 
 type Props = {
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
-    allNames: GuessType[];
+    allOperators: Operator[];
     stats: Stats;
 }
 
-export default function Search({ handleSubmit, allNames, stats }: Props) {
-    const [results, setResults] = React.useState<GuessType[]>([]);
+export default function Search({ handleSubmit, allOperators, stats }: Props) {
+    const [results, setResults] = React.useState<Operator[]>([]);
 
     return (
         <div className='flex flex-col items-center w-full'>
-            <SearchBar setResults={(value) => setResults(value)} handleSubmit={handleSubmit} allNames={allNames} stats={stats} />
+            <SearchBar setResults={(value) => setResults(value)} handleSubmit={handleSubmit} allOperators={allOperators} stats={stats} />
             {results.length > 0 &&
                 <div className='flex flex-col overflow-y-scroll overflow-x-hidden 
                     w-[80vw] max-h-[35vh] md:w-[30vw] md:max-h-[50vh] 
@@ -24,7 +25,7 @@ export default function Search({ handleSubmit, allNames, stats }: Props) {
                     no-scrollbar .no-scrollbar::-webkit-scrollbar'
                 >
 
-                    {results.map((op, index) => (<Result key={index} op={op} handleSubmit={handleSubmit} stats={stats} />))}
+                    {results.map((op, index) => (<Result key={index} operator={op} handleSubmit={handleSubmit} stats={stats} />))}
                 </div>
             }
         </div>
