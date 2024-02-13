@@ -19,7 +19,7 @@ export default function Info({ darkMode, stats }: Props) {
       />
       <h1 className="text-4xl font-bold">WORDLE</h1>
       <div className="mt-2">
-        <p>{`#${stats?.gameId}, ${stats?.date} (AEST)`}</p>
+        <p>{`#${stats?.gameId}, ${stats?.date}`}</p>
         <p>{`${stats?.timesGuessed === 0 ? "No Dokutah's have" : stats?.timesGuessed + " " + (stats?.timesGuessed && stats.timesGuessed > 1 ? "Dokutah's have" : "Dokutah has")} guessed the operator.`}</p>
       </div>
     </>

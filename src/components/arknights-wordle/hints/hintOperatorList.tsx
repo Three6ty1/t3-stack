@@ -98,7 +98,7 @@ export default function HintOperatorList({ amtGuesses, allOperators }: Props) {
         </button>
       </div>
       <dialog id="operator_list_modal" className="modal">
-        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box flex h-2/3 max-w-[3/5vh] flex-col justify-items-center overflow-x-clip overflow-y-scroll md:h-full">
+        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box flex h-2/3 md:h-auto max-w-[3/5vh] flex-col justify-items-center overflow-x-clip overflow-y-scroll">
           <h1 className="mb-2 w-full text-xl">
             Operator List (Up to Executor Alter)
           </h1>

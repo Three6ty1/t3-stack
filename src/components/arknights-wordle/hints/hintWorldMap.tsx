@@ -2,6 +2,7 @@ import map from "../../../../public/world_map.png";
 import { HintBreakpoints } from "./hints";
 import React from "react";
 import Image from "next/image";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 const regions = {
   Ægir: "Aquatic animals and Seaborn.\nGroups: Abyssal Hunters.",
@@ -74,19 +75,21 @@ export default function HintWorldMap({ amtGuesses }: Props) {
         </button>
       </div>
       <dialog id="world_map_modal" className="modal w-screen overflow-visible">
-        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box max-w-[95vw] md:max-w-[80vw]">
-          <div className="h-48 w-full touch-auto overflow-auto md:h-auto">
-            <Image
-              className="h-auto w-[400%] max-w-none md:w-[100%]"
-              src={map}
-              alt="Arknights world map"
-            />
+        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box h-2/3 md:h-auto max-w-[95vw] md:max-w-[80vw]">
+          <div className="h-auto w-full touch-auto overflow-auto md:h-auto">
+            <TransformWrapper
+              initialScale={1}
+            >
+              <TransformComponent>
+                <img src={map.src} alt="map" />
+              </TransformComponent>
+            </TransformWrapper>
           </div>
 
           {amtGuesses >= HintBreakpoints.one.valueOf() && (
             <div className="mt-5 flex flex-row flex-wrap justify-start">
               {Object.entries(regions).map((region) => (
-                <div className="h-32 w-1/2 text-left md:h-20" key={region[0]}>
+                <div className="h-36 w-1/2 text-left md:h-20 p-2" key={region[0]}>
                   <h1 className="font-bold">{region[0]}</h1>
                   <p className="whitespace-pre-line">{region[1]}</p>
                 </div>

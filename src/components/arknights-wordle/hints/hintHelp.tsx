@@ -28,7 +28,7 @@ export default function HintHelp() {
         </svg>
       </button>
       <dialog id="help_modal" className="modal">
-        <div className="modal-box">
+        <div className="modal-box h-2/3 md:h-auto">
           <h1 className="mb-2 text-xl font-bold">
             How to play Arknights Wordle
           </h1>
