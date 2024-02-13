@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import * as wordle from "./wordleServer";
+import { db } from "~/server/db";
 export const wordleRouter = createTRPCRouter({
     // Mutation because we might generate a new operator
     stats: publicProcedure
@@ -25,3 +26,11 @@ export const wordleRouter = createTRPCRouter({
             return await wordle.getAllOperators(ctx.db);
         }),
 });
+
+export const getStats = async() => {
+    return await wordle.getOperatorStats(db);
+}
+
+export const getAllNames = async() => {
+    return await wordle.getAllOperators(db);
+}

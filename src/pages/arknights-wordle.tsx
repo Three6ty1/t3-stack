@@ -1,9 +1,8 @@
 import React from 'react';
-import { api } from "~/utils/api";
 import { TRPCClientError } from '@trpc/client';
 
 // Types
-import type { GuessResult } from '~/server/api/routers/wordleServer';
+import { type GuessResult } from '~/server/api/routers/wordleServer';
 
 // Components
 import Theme from '~/components/arknights-wordle/header/theme';
@@ -13,9 +12,18 @@ import Search from '~/components/arknights-wordle/search/search';
 import CategoryRows from '~/components/arknights-wordle/results/categoryRow';
 import AnswerRow from '~/components/arknights-wordle/results/answerRow';
 import ShareBox from '~/components/arknights-wordle/share/shareBox';
+import { GetServerSideProps } from 'next';
+import { getAllNames, getStats } from '~/server/api/routers/wordle';
+import { GuessType } from '~/helper/helper';
 
+type Stats = {
+    gameId: number;
+    date: string;
+    operatorId: string;
+    timesGuessed: number;
+}
 
-export default function ArknightsWordle() {
+export default function ArknightsWordle({ stats, allNames } : { stats: Stats, allNames: GuessType[] } ) {
     const [guesses, setGuesses] = React.useState<GuessResult[]>([]);
     const [playing, setPlaying] = React.useState(true);
     const [isInputDelay, setIsInputDelay] = React.useState(false);
@@ -58,12 +66,6 @@ export default function ArknightsWordle() {
         initTheme();
         
     }, [])
-
-    const statsArgs = api.wordle.stats.useQuery(undefined, {refetchOnWindowFocus: false});
-    if (!statsArgs.isSuccess) {
-        return statsArgs.error;
-    }
-    const stats = statsArgs.data;
 
     const handleSubmit = (promise: Promise<GuessResult>, callback: (success: boolean) => void) => {
         promise.then((result) => {
@@ -109,7 +111,7 @@ export default function ArknightsWordle() {
         <main id='ak-wordle-root' className='flex flex-col w-full h-full justify-top items-center align-middle text-center font-sans p-5 pt-10'>
             <Theme handleThemeChange={(e) => handleThemeChange(e)}/>
             <Info darkMode={darkMode} stats={stats} />
-            <Hints amtGuesses={guesses.length}/>
+            <Hints amtGuesses={guesses.length} allNames={allNames} />
             
 
             {error != '' ? (
@@ -122,7 +124,7 @@ export default function ArknightsWordle() {
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full h-fit animate-fade-in z-10'>
-                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} />}
+                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} allNames={allNames} />}
                 </div>
 
                 {!playing && !isInputDelay &&
@@ -149,4 +151,16 @@ export default function ArknightsWordle() {
             </div>
         </main>
     );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const stats = await getStats();
+    const allNames = await getAllNames();
+
+    return {
+        props: {
+            stats,
+            allNames,
+        }
+    };
 }

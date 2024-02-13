@@ -6,17 +6,13 @@ import { api } from "~/utils/api";
 type Props = {
     setResults: React.Dispatch<React.SetStateAction<GuessType[]>>;
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
+    allNames: GuessType[];
 }
 
-export default function SearchBar({ setResults, handleSubmit } : Props) {
-    const allOperatorsArgs= api.wordle.allNames.useQuery(undefined, {refetchOnWindowFocus: false});
+export default function SearchBar({ setResults, handleSubmit, allNames } : Props) {
     const [input , setInput] = React.useState('');
     const [_results, _setResults] = React.useState<GuessType[]>([]);
 
-    if (!allOperatorsArgs.isSuccess) {
-        return <>{allOperatorsArgs.error}</>
-    }
-    const allOperators: GuessType[] = allOperatorsArgs.data;
     const utils = api.useUtils();
 
     const handleChange = (value: string) => {
@@ -31,7 +27,7 @@ export default function SearchBar({ setResults, handleSubmit } : Props) {
         
         const lower = value.toLowerCase().trim();
 
-        const results = allOperators.filter((op) => {
+        const results = allNames.filter((op) => {
             const op_lower = op[GuessTypeValue.name].toLowerCase();
             return (
                 op_lower.startsWith(lower) || 

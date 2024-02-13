@@ -7,12 +7,12 @@ import Image from "next/image";
 
 type Props = {
     amtGuesses: number,
+    allNames: GuessType[];
 }
 
 const Professsions = ['Vanguard', 'Guard', 'Defender', 'Sniper', 'Caster', 'Medic', 'Supporter', 'Specialist'];
 
-export default function HintOperatorList({ amtGuesses }: Props) {
-    const allOperatorsArgs = api.wordle.allNames.useQuery(undefined, {refetchOnWindowFocus: false});
+export default function HintOperatorList({ amtGuesses, allNames }: Props) {
     const [showAlert, setShowAlert] = React.useState(false);
     const [selectedProfession, setSelectedProfession] = React.useState<string>('');
 
@@ -25,12 +25,6 @@ export default function HintOperatorList({ amtGuesses }: Props) {
         setAmtGuesses();
     }, [amtGuesses])
 
-    if (!allOperatorsArgs.isSuccess) {
-        return <>{allOperatorsArgs.error}</>;
-    } 
-
-    const allOperators: GuessType[]  = allOperatorsArgs.data;
-
     const sortedRarityOperators: Record<string, GuessType[]> = {
         "6": [],
         "5": [],
@@ -40,8 +34,12 @@ export default function HintOperatorList({ amtGuesses }: Props) {
         "1": [],
     };
 
+    if (!allNames) {
+        return <>Loading...</>
+    }
+
     // Sort all operators into sortedRarityOperators
-    allOperators.map((operator) => sortedRarityOperators[operator[GuessTypeValue.rarity as keyof typeof operator] as keyof typeof sortedRarityOperators]!.push(operator))
+    allNames.map((operator) => sortedRarityOperators[operator[GuessTypeValue.rarity as keyof typeof operator] as keyof typeof sortedRarityOperators]!.push(operator))
 
     const handleProfession = (e: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         const id = (e.target as HTMLImageElement).id
@@ -79,7 +77,7 @@ export default function HintOperatorList({ amtGuesses }: Props) {
                          */}
                         {amtGuesses < HintBreakpoints.one.valueOf() ?
                                 <>
-                                    {allOperators.map((operator) => {
+                                    {allNames.map((operator) => {
                                         return (<HintListIcon key={`${operator[GuessTypeValue.name]} list icon`} operator={operator} />)
                                     })}
                                 </>

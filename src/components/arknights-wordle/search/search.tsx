@@ -6,14 +6,15 @@ import type { GuessType } from "~/helper/helper";
 
 type Props = {
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
+    allNames: GuessType[];
 }
 
-export default function Search({ handleSubmit }: Props) {
+export default function Search({ handleSubmit, allNames }: Props) {
     const [results, setResults] = React.useState<GuessType[]>([]);
 
     return (
         <div className='flex flex-col items-center w-full'>
-            <SearchBar setResults={(value) => setResults(value)} handleSubmit={handleSubmit}/>
+            <SearchBar setResults={(value) => setResults(value)} handleSubmit={handleSubmit} allNames={allNames} />
             {results.length > 0 &&
                 <div className='flex flex-col overflow-y-scroll overflow-x-hidden 
                     w-[80vw] max-h-[35vh] md:w-[30vw] md:max-h-[50vh] 
