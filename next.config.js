@@ -23,7 +23,7 @@ const config = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
         port: '',
-        pathname: '/Three6ty1/ak-wordle-icons/main/avatars/**'
+        pathname: '/Three6ty1/ak-wordle-icons/main/**'
       }
     ]
   },

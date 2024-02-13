@@ -15,13 +15,7 @@ import ShareBox from '~/components/arknights-wordle/share/shareBox';
 import { GetServerSideProps } from 'next';
 import { getAllNames, getStats } from '~/server/api/routers/wordle';
 import { GuessType } from '~/helper/helper';
-
-type Stats = {
-    gameId: number;
-    date: string;
-    operatorId: string;
-    timesGuessed: number;
-}
+import type { Stats } from '~/server/api/routers/wordle';
 
 export default function ArknightsWordle({ stats, allNames } : { stats: Stats, allNames: GuessType[] } ) {
     const [guesses, setGuesses] = React.useState<GuessResult[]>([]);
@@ -124,7 +118,7 @@ export default function ArknightsWordle({ stats, allNames } : { stats: Stats, al
                 * This is so the search bar appears ontop of the answer row instead of pushing it down.
                 */}
                 <div className='flex flex-col col-start-1 row-start-1 align-middle w-full h-fit animate-fade-in z-10'>
-                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} allNames={allNames} />}
+                    {playing && !isInputDelay && <Search handleSubmit={(promise , callback) => handleSubmit(promise, callback)} allNames={allNames} stats={stats} />}
                 </div>
 
                 {!playing && !isInputDelay &&

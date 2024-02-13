@@ -13,12 +13,13 @@ export const wordleRouter = createTRPCRouter({
     compare: publicProcedure
         .input(z.object(
             { 
-                guess: z.string(), 
-                guesses: z.array(z.string())
+                guessId: z.string(), 
+                guesses: z.array(z.string()),
+                correctId: z.string(),
             }
         ))
         .query(async ({ ctx, input }) => {
-            return await wordle.compareGuess(ctx.db, input.guess, input.guesses);
+            return await wordle.compareGuess(ctx.db, input.guessId, input.guesses, input.correctId);
     }),
 
     allNames: publicProcedure
@@ -33,4 +34,11 @@ export const getStats = async() => {
 
 export const getAllNames = async() => {
     return await wordle.getAllOperators(db);
+}
+
+export type Stats = {
+    gameId: number;
+    date: string;
+    operatorId: string;
+    timesGuessed: number;
 }

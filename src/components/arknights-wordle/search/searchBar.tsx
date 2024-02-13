@@ -1,5 +1,6 @@
 import React from "react";
 import { type GuessType, GuessTypeValue } from "~/helper/helper";
+import { Stats } from "~/server/api/routers/wordle";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
 import { api } from "~/utils/api";
 
@@ -7,9 +8,10 @@ type Props = {
     setResults: React.Dispatch<React.SetStateAction<GuessType[]>>;
     handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
     allNames: GuessType[];
+    stats: Stats;
 }
 
-export default function SearchBar({ setResults, handleSubmit, allNames } : Props) {
+export default function SearchBar({ setResults, handleSubmit, allNames, stats } : Props) {
     const [input , setInput] = React.useState('');
     const [_results, _setResults] = React.useState<GuessType[]>([]);
 
@@ -49,9 +51,9 @@ export default function SearchBar({ setResults, handleSubmit, allNames } : Props
 
             let guess;
             if (_results.length > 0 && _results[0]) {
-                guess = _results[0][GuessTypeValue.name];
+                guess = _results[0][GuessTypeValue.charId];
             } else {
-                guess = input;
+                return;
             }
 
             const callback = () => {
@@ -60,7 +62,7 @@ export default function SearchBar({ setResults, handleSubmit, allNames } : Props
                 _setResults([]);
             }
 
-            handleSubmit(utils.wordle.compare.fetch({guess: guess, guesses: pastGuesses}), callback)
+            handleSubmit(utils.wordle.compare.fetch({guessId: guess, guesses: pastGuesses, correctId: stats.operatorId}), callback)
         }
     }
 
