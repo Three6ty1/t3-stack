@@ -84,7 +84,7 @@ export default function ShareBox({ gameInfo }: Props) {
         Share your results!
       </button>
       {isVisible && (
-        <div className="relative md:absolute toast toast-start md:toast-end text-center">
+        <div className="toast toast-start md:toast-end text-center z-[999]">
           <div className="flex alert alert-success text-center">
             <span>Copied to clipboard.</span>
           </div>

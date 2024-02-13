@@ -142,7 +142,7 @@ export default function ArknightsWordle({
          * Using grid and col-start to force these elements to overlap one another
          * This is so the search bar appears ontop of the answer row instead of pushing it down.
          */}
-        <div className="z-10 col-start-1 row-start-1 flex h-fit w-full animate-fade-in flex-col align-middle">
+        <div className="z-10 col-start-1 row-start-1 flex h-fit w-full flex-col align-middle">
           {playing && !isInputDelay && (
             <Search
               handleSubmit={(promise, callback) =>
@@ -155,7 +155,7 @@ export default function ArknightsWordle({
         </div>
 
         {!playing && !isInputDelay && (
-          <div className="col-start-1 row-start-1 flex w-full animate-fade-in flex-col pb-10 align-middle">
+          <div className="col-start-1 row-start-1 flex w-full flex-col pb-10 align-middle">
             <ShareBox gameInfo={stats} />
           </div>
         )}
