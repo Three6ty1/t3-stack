@@ -8,6 +8,7 @@ import { api } from "~/utils/api";
 
 type Props = {
   operator: Operator;
+  setResults: (value: Operator[]) => void;
   handleSubmit: (
     promise: Promise<GuessResult>,
     callback: (success: boolean) => void,
@@ -15,7 +16,7 @@ type Props = {
   stats: Stats;
 };
 
-export default function Result({ operator, handleSubmit, stats }: Props) {
+export default function Result({ operator, handleSubmit, setResults, stats }: Props) {
   const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
 
   React.useEffect(() => {
@@ -36,7 +37,7 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
   const utils = api.useUtils();
 
   const handleClick = (e: React.MouseEvent) => {
-    e.currentTarget.setAttribute("disabled", "disabled");
+    setResults([]);
     e.preventDefault();
     e.stopPropagation();
     handleSubmit(
@@ -49,7 +50,6 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
         return;
       },
     );
-    e.currentTarget.removeAttribute("disabled");
   };
 
   return (

@@ -37,6 +37,7 @@ export default function Search({ handleSubmit, allOperators, stats }: Props) {
               key={index}
               operator={op}
               handleSubmit={handleSubmit}
+              setResults={(value) => setResults(value)}
               stats={stats}
             />
           ))}
