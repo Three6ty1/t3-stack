@@ -53,6 +53,7 @@ export default function SearchBar({
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      e.stopPropagation();
       const ls = localStorage.getItem("guesses");
       const _pastGuesses: GuessResult[] = ls
         ? (JSON.parse(ls) as unknown as GuessResult[])
