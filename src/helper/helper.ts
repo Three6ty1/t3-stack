@@ -58,7 +58,7 @@ export function getProfessionIconUrl(profession: string) {
 
 // Returns a date string in the format of 15 Feb 2024 in Sydney Australia time AEST UTC+10:00
 export function getDateString() {
-  return new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "medium"});
+  return new Date().toLocaleString("en-AU", {timeZone: "Australia/Sydney", dateStyle: "medium"});
 }
 
 export const raceToolTips = {
