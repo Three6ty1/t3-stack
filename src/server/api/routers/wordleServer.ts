@@ -23,7 +23,7 @@ export type GuessResult = {
 // Restrains the new operator to not have been picked in the last TOTAL_OPERATORS/2 days
 const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
     const prev = await db.chosenOperators.findFirst({
-        where: { date: new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "short"})}
+        where: { date: new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "medium"})}
     });
 
     const operators = await db.operator.findMany();
@@ -71,7 +71,7 @@ const handleNewDay = async(db: PrismaClient<Prisma.PrismaClientOptions, never, D
 }
 
 const getTodayOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
-    const date = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "short"});
+    const date = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "medium"});
 
     // Is there a game created for today?
     let res = await db.chosenOperators.findFirst({
@@ -172,7 +172,7 @@ export const getAllOperators = async(db: PrismaClient<Prisma.PrismaClientOptions
 }
 
 const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
-    const date = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "short"});
+    const date = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "medium"});
 
     // Need transaction here to prevenot race condition on updating the wins.
     await db.$transaction(async (tx) => {

@@ -37,6 +37,7 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     handleSubmit(
       utils.wordle.compare.fetch({
         guessOp: operator,
