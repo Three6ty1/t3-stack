@@ -147,15 +147,6 @@ export const compareGuess = async(db: PrismaClient<Prisma.PrismaClientOptions, n
     }
 
     const compareOp = await db.operator.findFirstOrThrow({ where: { id: correctId } })
-    
-    const result = compareGuessLogic(compareOp, guessOp);
-
-    result.correct && updateWins(db).catch(() => {
-        throw new TRPCError({
-            code: 'INTERNAL_SERVER_ERROR',
-            message: 'Could not update wins',
-        })
-    });
 
     return compareGuessLogic(compareOp, guessOp);
 }
@@ -171,7 +162,7 @@ export const getAllOperators = async(db: PrismaClient<Prisma.PrismaClientOptions
     return ops;
 }
 
-const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
+export const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
     const date = getDateString();
 
     // Need transaction here to prevenot race condition on updating the wins.
@@ -179,6 +170,8 @@ const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, never, Def
         const chosenOperator = await tx.chosenOperators.findFirst({
             where: { date: date },
         })
+
+        console.log(chosenOperator);
 
         await tx.chosenOperators.update({
             where: { gameId: chosenOperator?.gameId },

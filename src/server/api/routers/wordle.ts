@@ -43,7 +43,12 @@ export const wordleRouter = createTRPCRouter({
     allOperators: publicProcedure
         .query(async ({ ctx }) => {
             return await wordle.getAllOperators(ctx.db);
-        }),
+    }),
+
+    updateWins: publicProcedure
+        .mutation(async ({ ctx }) => {
+            await wordle.updateWins(ctx.db);
+        })
 });
 
 export const getStats = async() => {

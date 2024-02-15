@@ -17,6 +17,7 @@ import { getAllOperators, getStats } from "~/server/api/routers/wordle";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
 import { getDateString } from "~/helper/helper";
+import { api } from "~/utils/api";
 
 export default function ArknightsWordle({
   stats,
@@ -30,6 +31,8 @@ export default function ArknightsWordle({
   const [isInputDelay, setIsInputDelay] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
   const [error, setError] = React.useState("");
+
+  const winMutation = api.wordle.updateWins.useMutation();
 
   React.useEffect(() => {
     const initGuesses = () => {
@@ -103,6 +106,7 @@ export default function ArknightsWordle({
           setTimeout(() => setIsInputDelay(false), 4000);
           localStorage.setItem("playing", "false");
           setPlaying(false);
+          winMutation.mutate();
         } else {
           setTimeout(() => setIsInputDelay(false), 2500);
         }
