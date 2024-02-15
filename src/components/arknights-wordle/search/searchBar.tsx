@@ -52,25 +52,24 @@ export default function SearchBar({
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      e.preventDefault();
-      e.stopPropagation();
-      const ls = localStorage.getItem("guesses");
-      const _pastGuesses: GuessResult[] = ls
-        ? (JSON.parse(ls) as unknown as GuessResult[])
-        : [];
-      const pastGuesses = _pastGuesses.map((guess) => guess.name);
-
       let guess;
       if (_results.length > 0 && _results[0]) {
         guess = _results[0];
       } else {
         return;
       }
+      
+      setResults([]);
+      _setResults([]);
+      
+      const ls = localStorage.getItem("guesses");
+      const _pastGuesses: GuessResult[] = ls
+        ? (JSON.parse(ls) as unknown as GuessResult[])
+        : [];
+      const pastGuesses = _pastGuesses.map((guess) => guess.name);
 
       const callback = () => {
         setInput("");
-        setResults([]);
-        _setResults([]);
       };
 
       handleSubmit(
