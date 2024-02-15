@@ -13,11 +13,11 @@ export default function ShareBox({ gameInfo }: Props) {
 
   React.useEffect(() => {
     const generateshareString = () => {
-      let newString = "";
       const ls = localStorage.getItem("guesses");
       const guesses: GuessResult[] = ls
         ? (JSON.parse(ls) as unknown as GuessResult[])
         : [];
+      let newString = guesses.length + " guesses\n";
 
       for (const guess of guesses.reverse()) {
         for (const category in guess) {
