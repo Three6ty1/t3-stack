@@ -16,6 +16,7 @@ import type { GetServerSideProps } from "next";
 import { getAllOperators, getStats } from "~/server/api/routers/wordle";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
+import { getDateString } from "~/helper/helper";
 
 export default function ArknightsWordle({
   stats,
@@ -32,7 +33,7 @@ export default function ArknightsWordle({
 
   React.useEffect(() => {
     const initGuesses = () => {
-      const now = new Date().toLocaleString(undefined, {timeZone: "Australia/Sydney", dateStyle: "short"});
+      const now = getDateString();
       const lastPlayed = localStorage.getItem("lastPlayed");
       // Refresh the guesses and set playing to true if the last played date is not the current date
       if (now != lastPlayed) {
