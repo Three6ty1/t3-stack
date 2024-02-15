@@ -41,6 +41,7 @@ async function main() {
           },
           update: {
             charId: operator.charId,
+            group: operator.group ? operator.group : null,
           },
           create: {
               id: undefined,
@@ -48,6 +49,7 @@ async function main() {
               name: key,
               gender: operator.gender,
               race: operator.race,
+              group: operator.group ? operator.group : null,
               nation: operator.nation,
               profession: operator.profession,
               archetype: operator.archetype,
