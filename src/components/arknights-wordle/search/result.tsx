@@ -36,6 +36,7 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
   const utils = api.useUtils();
 
   const handleClick = (e: React.MouseEvent) => {
+    e.currentTarget.setAttribute("disabled", "disabled");
     e.preventDefault();
     e.stopPropagation();
     handleSubmit(
@@ -48,10 +49,11 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
         return;
       },
     );
+    e.currentTarget.removeAttribute("disabled");
   };
 
   return (
-    <div
+    <button
       className="m-1 flex w-full flex-row items-center self-center"
       onClick={(e) => handleClick(e)}
       id={String(operator.id)}
@@ -69,6 +71,6 @@ export default function Result({ operator, handleSubmit, stats }: Props) {
       >
         {operator.name}
       </div>
-    </div>
+    </button>
   );
 }
