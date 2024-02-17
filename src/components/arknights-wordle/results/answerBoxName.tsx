@@ -1,26 +1,15 @@
 import { getOperatorIconUrl } from "~/helper/helper";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { answerRowStyle } from "./answerRow";
 import Image from "next/image";
 
 type Props = {
-  pastGuesses: GuessResult[];
+  op: GuessResult;
   name: string;
-  rowIndex: number;
+  divStyle: string;
 };
 
-export default function AnswerBoxName({ pastGuesses, name, rowIndex }: Props) {
-  let divStyle = answerRowStyle;
-  const op = pastGuesses[rowIndex];
-  if (!op) {
-    return <>Loading...</>;
-  }
-
+export default function AnswerBoxName({ op, name, divStyle }: Props) {
   const url = getOperatorIconUrl(op.charId, op.rarity.guess);
-  rowIndex === 0 &&
-    (op.correct
-      ? (divStyle += " opacity-0 animate-win ")
-      : (divStyle += " opacity-0 animate-flip "));
 
   return (
     <div

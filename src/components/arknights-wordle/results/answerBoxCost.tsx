@@ -1,35 +1,20 @@
 import { wordleColors, Range, costToolTips } from "~/helper/helper";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { answerRowStyle } from "./answerRow";
 
 type Props = {
-  pastGuesses: GuessResult[];
   guess: number[];
   result: Range;
   boxIndex: number;
-  rowIndex: number;
+  divStyle: string;
 };
 
 const animationDelay = 225;
 
 export default function AnswerBoxCost({
-  pastGuesses,
   guess,
   result,
   boxIndex,
-  rowIndex,
+  divStyle,
 }: Props) {
-  let divStyle = answerRowStyle;
-  const op = pastGuesses[rowIndex];
-  if (!op) {
-    return <>Loading...</>;
-  }
-
-  rowIndex === 0 &&
-    (op.correct
-      ? (divStyle += " opacity-0 animate-win ")
-      : (divStyle += " opacity-0 animate-flip "));
-
   let bg = wordleColors.correct;
   if (result === Range.Lower) {
     bg = wordleColors.lower;

@@ -7,8 +7,6 @@ import type { Correctness, Range } from "~/helper/helper";
 import AnswerBoxAllegiance from "./answerBoxAllegiance";
 import AnswerBoxRarity from "./answerBoxRarity";
 
-export const answerRowStyle =
-  "answer-row flex flex-col p-1 leading-2 break-all text-white";
 export const animationDelay = 225;
 type Props = {
   guess: GuessResult;
@@ -19,6 +17,17 @@ export default function AnswerRow({ guess, index }: Props) {
   // Get the current guess through local storage to persist animation logic
   const ls = localStorage.getItem("guesses");
   const pastGuesses = ls ? (JSON.parse(ls) as unknown as GuessResult[]) : [];
+  let divStyle = "answer-row flex flex-col p-1 leading-2 break-all text-white";
+
+  const op = pastGuesses[index];
+  if (!op) {
+    return <>Loading...</>;
+  }
+
+  index === 0 &&
+    (op.correct
+      ? (divStyle += " opacity-0 animate-win ")
+      : (divStyle += " opacity-0 animate-flip "));
 
   return (
     <div className="flex w-auto flex-row justify-center">
@@ -29,16 +38,15 @@ export default function AnswerRow({ guess, index }: Props) {
           return (
             <AnswerBoxName
               key={key}
-              pastGuesses={pastGuesses}
+              op={op}
               name={guess[key as keyof typeof guess] as string}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         } else if (key === "race") {
           return (
             <AnswerBoxRace
               key={key}
-              pastGuesses={pastGuesses}
               guess={
                 (
                   guess[key as keyof typeof guess] as {
@@ -56,14 +64,13 @@ export default function AnswerRow({ guess, index }: Props) {
                 ).result
               }
               boxIndex={boxIndex}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         } else if (key === "cost") {
           return (
             <AnswerBoxCost
               key={key}
-              pastGuesses={pastGuesses}
               guess={
                 (
                   guess[key as keyof typeof guess] as {
@@ -81,14 +88,13 @@ export default function AnswerRow({ guess, index }: Props) {
                 ).result
               }
               boxIndex={boxIndex}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         } else if (key === "allegiance") {
           return (
             <AnswerBoxAllegiance
               key={key}
-              pastGuesses={pastGuesses}
               guess={
                 (
                   guess[key as keyof typeof guess] as {
@@ -106,14 +112,13 @@ export default function AnswerRow({ guess, index }: Props) {
                 ).result
               }
               boxIndex={boxIndex}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         } else if (key === "rarity") {
           return (
             <AnswerBoxRarity
               key={key}
-              pastGuesses={pastGuesses}
               guess={
                 (
                   guess[key as keyof typeof guess] as {
@@ -131,14 +136,13 @@ export default function AnswerRow({ guess, index }: Props) {
                 ).result
               }
               boxIndex={boxIndex}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         } else {
           return (
             <AnswerBoxBasic
               key={key}
-              pastGuesses={pastGuesses}
               guess={
                 (
                   guess[key as keyof typeof guess] as {
@@ -156,7 +160,7 @@ export default function AnswerRow({ guess, index }: Props) {
                 ).result
               }
               boxIndex={boxIndex}
-              rowIndex={index}
+              divStyle={divStyle}
             />
           );
         }

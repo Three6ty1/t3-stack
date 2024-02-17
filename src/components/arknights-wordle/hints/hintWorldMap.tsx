@@ -1,7 +1,6 @@
 import map from "../../../../public/world_map.png";
 import { HintBreakpoints } from "./hints";
 import React from "react";
-import Image from "next/image";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 const regions = {
