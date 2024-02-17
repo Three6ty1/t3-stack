@@ -17,7 +17,9 @@ export default function ShareBox({ gameInfo }: Props) {
       const guesses: GuessResult[] = ls
         ? (JSON.parse(ls) as unknown as GuessResult[])
         : [];
-      let newString = guesses.length + " guesses\n";
+      let newString = String(guesses.length);
+      guesses.length > 1 ? newString += " tries." : newString += " try!";
+      newString += "\n";
 
       for (const guess of guesses.reverse()) {
         for (const category in guess) {
@@ -56,7 +58,6 @@ export default function ShareBox({ gameInfo }: Props) {
         }
         newString += "\n";
       }
-
       setShareString(newString);
     };
 
@@ -64,7 +65,7 @@ export default function ShareBox({ gameInfo }: Props) {
   }, []);
 
   const handleShare = () => {
-    const newString = `Arknights Wordle #${gameInfo.gameId}\n` + shareString;
+    const newString = `Arknights Wordle #${gameInfo.gameId}\nOperator guessed in ` + shareString + "https://three6ty1.vercel.app/arknights-wordle";
     navigator.clipboard.writeText(newString).catch(() => {
       console.log("Cannot add to clipboard");
     });

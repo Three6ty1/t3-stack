@@ -170,9 +170,7 @@ export const updateWins = async(db: PrismaClient<Prisma.PrismaClientOptions, nev
         const chosenOperator = await tx.chosenOperators.findFirst({
             where: { date: date },
         })
-
-        console.log(chosenOperator);
-
+        
         await tx.chosenOperators.update({
             where: { gameId: chosenOperator?.gameId },
             data: {timesGuessed: {
