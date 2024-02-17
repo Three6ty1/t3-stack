@@ -1,33 +1,19 @@
 import { raceToolTips, wordleColors } from "~/helper/helper";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { animationDelay, answerRowStyle } from "./answerRow";
+import { animationDelay } from "./answerRow";
 
 type Props = {
-  pastGuesses: GuessResult[];
   guess: string;
   result: boolean;
   boxIndex: number;
-  rowIndex: number;
+  divStyle: string;
 };
 
 export default function AnswerBoxRace({
-  pastGuesses,
   guess,
   result,
   boxIndex,
-  rowIndex,
+  divStyle,
 }: Props) {
-  let divStyle = answerRowStyle;
-  const op = pastGuesses[rowIndex];
-  if (!op) {
-    return <>Loading...</>;
-  }
-
-  rowIndex === 0 &&
-    (op.correct
-      ? (divStyle += " opacity-0 animate-win ")
-      : (divStyle += " opacity-0 animate-flip "));
-
   const bg = result ? wordleColors.correct : wordleColors.incorrect;
 
   return (

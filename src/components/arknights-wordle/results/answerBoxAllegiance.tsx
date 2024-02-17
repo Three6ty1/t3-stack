@@ -1,33 +1,20 @@
 import { Correctness, wordleColors } from "~/helper/helper";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { animationDelay, answerRowStyle } from "./answerRow";
+import { animationDelay } from "./answerRow";
 
 type Props = {
-  pastGuesses: GuessResult[];
   guess: string;
   result: Correctness;
   boxIndex: number;
-  rowIndex: number;
+  divStyle: string;
 };
 
 export default function AnswerBoxAllegiance({
-  pastGuesses,
   guess,
   result,
   boxIndex,
-  rowIndex,
+  divStyle,
 }: Props) {
   const allegianceTooltip = "Correct Allegiance but wrong subdivision";
-  let divStyle = answerRowStyle;
-  const op = pastGuesses[rowIndex];
-  if (!op) {
-    return <>Loading...</>;
-  }
-
-  rowIndex === 0 &&
-    (op.correct
-      ? (divStyle += " opacity-0 animate-win ")
-      : (divStyle += " opacity-0 animate-flip "));
 
   let tooltip = false;
   let bg = wordleColors.correct;
