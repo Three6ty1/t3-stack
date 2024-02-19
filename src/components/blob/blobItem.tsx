@@ -9,35 +9,30 @@ export default function BlobItem(props: any) {
     setNodeRef,
     transform,
     transition,
-    isDragging
+    isDragging,
   } = useSortable({ id: props.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
+    transformOrigin: "0 0",
     transition,
-    width: "100px",
-    height: "100px",
-    border: "2px solid red",
-    backgroundColor: "#cccccc",
-    margin: "10px",
     zIndex: isDragging ? "100" : "auto",
-    opacity: isDragging ? 0.3 : 1
+    opacity: isDragging ? 0.3 : 1,
+    width: props.id != "8" ? "100px" : "208px",
+    height: props.id != "8" ? "100px" : "208px",
+    gridRowStart: props.id === "8" ? "span 2" : undefined,
+    gridColumnStart: props.id === "8" ? "span 2" : undefined,
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-      <div>
-        <div
-          style={{
-            minWidth: "30px",
-            minHeight: "20px",
-            border: "1px solid balck",
-            borderColor: "black"
-          }}
-        >
-          {props.value}
-        </div>
-      </div>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="m-1 border-2 border-solid border-red-500 bg-gray-500"
+      {...listeners}
+      {...attributes}
+    >
+      {props.value}
     </div>
   );
-};
+}
