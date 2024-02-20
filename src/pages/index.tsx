@@ -17,24 +17,17 @@ import {
 import { SetStateAction, useState } from "react";
 
 import BlobItem from "./../components/blob/blobItem";
+import { GetServerSideProps } from "next";
+import { type Blob, getAllBlobs } from "~/server/api/routers/blob";
+import CreateBlob from "~/components/blob/createBlob";
 
-export default function Home() {
+type Props = {
+  blobs: Blob[];
+}
+
+export default function Home({ blobs } : Props) {
   const [activeId, setActiveId] = useState(null);
-  const [items, setItems] = useState([
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ]);
+  const [items, setItems] = useState(blobs ? blobs : []);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -103,6 +96,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="font-[Helvetica] w-screen h-screen flex p-5 justify-center align-middle items-start">
+        <div className="absolute top-6 right-6">
+          <CreateBlob />
+        </div>
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
@@ -112,8 +108,8 @@ export default function Home() {
           <div className="flex h-full w-full bg-black justify-center items-center align-middle">
             <div className={`grid ${gridCols}`}>
               <SortableContext items={items} strategy={rectSortingStrategy}>
-                {items.map((id, index) => (
-                  <BlobItem key={id} id={id} value={id} name={index}/>
+                {items.map((blob, index) => (
+                  <BlobItem key={blob.id} id={blob.id} value={blob.title} name={index}/>
                 ))}
               </SortableContext>
             </div>
@@ -123,3 +119,13 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const blobs = await getAllBlobs();
+
+  return {
+    props: {
+      blobs,
+    },
+  };
+};

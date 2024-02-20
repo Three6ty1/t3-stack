@@ -1,8 +1,20 @@
-import { BlobTags } from "@prisma/client";
+import { $Enums, BlobTags } from "@prisma/client";
 import { z } from "zod";
 import { getDateString } from "~/helper/helper";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
+
+export type Blob = {
+  id: number;
+  date: Date;
+  edit: Date | null;
+  title: string;
+  description: string | null;
+  tags: $Enums.BlobTags[];
+  images: string[];
+  videos: string[];
+  likes: number;
+}
 
 export const blobRouter = createTRPCRouter({
   create: publicProcedure
@@ -62,7 +74,7 @@ export const blobRouter = createTRPCRouter({
     })
 })
 
-export const getAll = async() => { 
+export const getAllBlobs = async() => { 
   return await db.blob.findMany({
     orderBy: {
       id: 'asc',
