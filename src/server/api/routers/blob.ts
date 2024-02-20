@@ -25,4 +25,47 @@ export const blobRouter = createTRPCRouter({
         }
       })
     }),
+  edit: publicProcedure
+    .input(z.object({
+      id: z.number().nonnegative(),
+      title: z.string().min(3),
+      description: z.string().nullable(),
+      tags: z.array(z.nativeEnum(BlobTags)),
+      images: z.array(z.string()),
+      videos: z.array(z.string()),
+    }))
+    .mutation(async({ ctx, input}) => {
+      ctx.db.blob.update({
+        where: {
+          id: input.id
+        },
+        data: {
+          edit: getDateString(),
+          title: input.title,
+          description: input.description,
+          tags: input.tags,
+          images: input.images,
+          videos: input.videos,
+        }
+      })
+    }),
+  delete: publicProcedure
+    .input(z.object({
+      id: z.number(),
+    }))
+    .mutation(async({ ctx, input }) => {
+      ctx.db.blob.delete({
+        where: {
+          id: input.id,
+        }
+      })
+    })
 })
+
+export const getAll = async() => { 
+  return await db.blob.findMany({
+    orderBy: {
+      id: 'asc',
+    }
+  })
+}
