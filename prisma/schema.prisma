@@ -52,5 +52,23 @@ model ChosenOperators {
   timesGuessed Int @default(0)
 }
 
-// No sessions in backend
-// The actual wordle uses local storage anyways...
+enum BlobTags {
+  PROJECTS
+  HOBBIES
+  MUSIC
+  GAMES
+  MALARKEY
+  OTHER
+}
+
+model Blob {
+  id Int @id @default(autoincrement())
+  date String
+  edit String?
+  title String
+  description String?
+  tags BlobTags[]
+  images String[]
+  videos String[]
+  likes Int @default(0)
+}
