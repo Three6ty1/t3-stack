@@ -1,6 +1,8 @@
 import { $Enums, BlobTags } from "@prisma/client";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { getDateString } from "~/helper/helper";
+import { isValidYoutubeLink } from "~/helper/blobHelper";
+import { getDateString } from "~/helper/wordleHelper";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
 
@@ -26,7 +28,16 @@ export const blobRouter = createTRPCRouter({
       videos: z.array(z.string()),
     }))
     .mutation(async({ ctx, input }) => {
-      ctx.db.blob.create({
+      for (const link in input.videos) {
+        if (!isValidYoutubeLink(link)) {
+          throw new TRPCError({
+            code: 'BAD_REQUEST',
+            message: "Invalid YouTube link: " + link,
+          });
+        }
+      }
+      console.log("im in here")
+      await ctx.db.blob.create({
         data: {
           date: getDateString(),
           title: input.title,
@@ -47,7 +58,7 @@ export const blobRouter = createTRPCRouter({
       videos: z.array(z.string()),
     }))
     .mutation(async({ ctx, input}) => {
-      ctx.db.blob.update({
+      await ctx.db.blob.update({
         where: {
           id: input.id
         },
@@ -66,7 +77,7 @@ export const blobRouter = createTRPCRouter({
       id: z.number(),
     }))
     .mutation(async({ ctx, input }) => {
-      ctx.db.blob.delete({
+      await ctx.db.blob.delete({
         where: {
           id: input.id,
         }

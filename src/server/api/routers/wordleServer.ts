@@ -1,7 +1,7 @@
-import { getDateString, randomInteger } from '~/helper/helper';
+import { getDateString, randomInteger } from '~/helper/wordleHelper';
 import type { Prisma, PrismaClient } from '@prisma/client';
 import type { Operator } from '@prisma/client';
-import { Range, Correctness } from '~/helper/helper';
+import { Range, Correctness } from '~/helper/wordleHelper';
 import type { DefaultArgs } from '@prisma/client/runtime/library';
 import { TRPCError } from '@trpc/server';
 

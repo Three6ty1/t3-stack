@@ -53,7 +53,6 @@ export default function Home({ blobs } : Props) {
       });
     }
   };
-
   let gridCols;
 
   if (items.length == 1) {
