@@ -1,4 +1,4 @@
-import { wordleColors, Range, costToolTips } from "~/helper/helper";
+import { wordleColors, Range, costToolTips } from "~/helper/wordleHelper";
 
 type Props = {
   guess: number[];

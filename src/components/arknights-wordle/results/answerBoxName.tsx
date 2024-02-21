@@ -1,4 +1,4 @@
-import { getOperatorIconUrl } from "~/helper/helper";
+import { getOperatorIconUrl } from "~/helper/wordleHelper";
 import type { GuessResult } from "~/server/api/routers/wordleServer";
 import Image from "next/image";
 

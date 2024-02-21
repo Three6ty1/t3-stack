@@ -1,4 +1,4 @@
-import { raceToolTips, wordleColors } from "~/helper/helper";
+import { raceToolTips, wordleColors } from "~/helper/wordleHelper";
 import { animationDelay } from "./answerRow";
 
 type Props = {

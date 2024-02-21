@@ -1,4 +1,4 @@
-import { guessCategoryToolTips } from "~/helper/helper";
+import { guessCategoryToolTips } from "~/helper/wordleHelper";
 
 export default function CategoryRows() {
   return (

@@ -1,4 +1,4 @@
-import { getOperatorIconUrl } from "~/helper/helper";
+import { getOperatorIconUrl } from "~/helper/wordleHelper";
 import Image from "next/image";
 import type { Operator } from "@prisma/client";
 type Props = {

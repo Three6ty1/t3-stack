@@ -1,5 +1,5 @@
 import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { Range, Correctness } from "~/helper/helper";
+import { Range, Correctness } from "~/helper/wordleHelper";
 import React from "react";
 import type { ChosenOperators } from "@prisma/client";
 

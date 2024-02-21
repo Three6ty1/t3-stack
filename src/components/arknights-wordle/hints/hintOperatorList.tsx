@@ -1,6 +1,6 @@
 import HintListIcon from "./hintListIcon";
 import React from "react";
-import { getProfessionIconUrl, wordleColors } from "~/helper/helper";
+import { getProfessionIconUrl, wordleColors } from "~/helper/wordleHelper";
 import { HintBreakpoints } from "./hints";
 import Image from "next/image";
 import type { Operator } from "@prisma/client";

@@ -16,7 +16,7 @@ import type { GetServerSideProps } from "next";
 import { getAllOperators, getStats } from "~/server/api/routers/wordle";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
-import { getDateString } from "~/helper/helper";
+import { getDateString } from "~/helper/wordleHelper";
 import { api } from "~/utils/api";
 
 export default function ArknightsWordle({

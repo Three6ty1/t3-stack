@@ -3,7 +3,7 @@ import AnswerBoxBasic from "./answerBoxBasic";
 import AnswerBoxName from "./answerBoxName";
 import AnswerBoxRace from "./answerBoxRace";
 import AnswerBoxCost from "./answerBoxCost";
-import type { Correctness, Range } from "~/helper/helper";
+import type { Correctness, Range } from "~/helper/wordleHelper";
 import AnswerBoxAllegiance from "./answerBoxAllegiance";
 import AnswerBoxRarity from "./answerBoxRarity";
 
