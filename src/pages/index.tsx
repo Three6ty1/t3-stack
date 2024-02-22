@@ -74,6 +74,10 @@ export default function Home({ blobs } : Props) {
     setTimeout(() => (document.getElementById("blob_modal")! as HTMLDialogElement).showModal(), 100);
   }
 
+  const handleBlobEdit = () => {
+
+  }
+
   let gridCols;
 
   if (items.length == 1) {
@@ -118,6 +122,7 @@ export default function Home({ blobs } : Props) {
       <main className="font-[Helvetica] w-screen h-screen flex p-5 justify-center align-middle items-start">
         <BlobModal 
           blob={selectedBlob}
+          handleBlobEdit={handleBlobEdit}
         />
         <div className="absolute top-6 right-6">
           <CreateBlob />
