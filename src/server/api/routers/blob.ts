@@ -1,22 +1,10 @@
-import { $Enums, BlobTags } from "@prisma/client";
+import { BlobTags } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { isValidYoutubeLink } from "~/helper/blobHelper";
 import { getDateString } from "~/helper/wordleHelper";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
-
-export type Blob = {
-  id: number;
-  date: Date;
-  edit: Date | null;
-  title: string;
-  description: string | null;
-  tags: $Enums.BlobTags[];
-  images: string[];
-  videos: string[];
-  likes: number;
-}
 
 export const blobRouter = createTRPCRouter({
   create: publicProcedure

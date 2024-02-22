@@ -19,7 +19,6 @@ export default function CreateBlob() {
   const submitMutation = api.blob.create.useMutation();
 
   const handleSubmit = () => {
-    console.log(blob.tags)
     submitMutation.mutate({
       ...blob,
       tags: Array.from(blob.tags),
@@ -101,7 +100,7 @@ export default function CreateBlob() {
             <summary className="m-1 btn">Select Tags</summary>
             <ul className="menu dropdown-content z-[1] w-fit rounded-box bg-base-100 p-2 shadow">
               <div className="flex flex-row flex-wrap">
-                {Object.values(BlobTags).map((tag, index) => (
+                {Object.values(BlobTags).map((tag) => (
                   <label key={`${tag} select option`} className="label cursor-pointer w-1/3">
                     <li className="w-full">
                       <div className="flex flex-row justify-end form-control">

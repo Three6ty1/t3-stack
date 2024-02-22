@@ -14,18 +14,33 @@ import {
   rectSortingStrategy,
   rectSwappingStrategy
 } from "@dnd-kit/sortable";
-import { SetStateAction, useState } from "react";
+import { DialogHTMLAttributes, SetStateAction, useState } from "react";
 
 import BlobItem from "./../components/blob/blobItem";
 import { GetServerSideProps } from "next";
-import { type Blob, getAllBlobs } from "~/server/api/routers/blob";
+import { getAllBlobs } from "~/server/api/routers/blob";
+import { Blob } from "@prisma/client";
 import CreateBlob from "~/components/blob/createBlob";
+import BlobModal from "~/components/blob/blobModal";
 
 type Props = {
   blobs: Blob[];
 }
 
 export default function Home({ blobs } : Props) {
+  const initBlob: Blob = {
+    id: -1,
+    date: "",
+    edit: null,
+    title: "",
+    description: null,
+    tags: [],
+    images: [],
+    videos: [],
+    likes: -1,
+  }
+  const [selectedBlob, setSelectedBlob] = useState<Blob>(initBlob);
+  const [isShowModal, setIsShowModal] = useState(false);
   const [activeId, setActiveId] = useState(null);
   const [items, setItems] = useState(blobs ? blobs : []);
 
@@ -53,6 +68,12 @@ export default function Home({ blobs } : Props) {
       });
     }
   };
+
+  const handleModalOpen = (blob: Blob) => {
+    setSelectedBlob(blob);
+    setTimeout(() => (document.getElementById("blob_modal")! as HTMLDialogElement).showModal(), 100);
+  }
+
   let gridCols;
 
   if (items.length == 1) {
@@ -95,6 +116,9 @@ export default function Home({ blobs } : Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="font-[Helvetica] w-screen h-screen flex p-5 justify-center align-middle items-start">
+        <BlobModal 
+          blob={selectedBlob}
+        />
         <div className="absolute top-6 right-6">
           <CreateBlob />
         </div>
@@ -108,7 +132,7 @@ export default function Home({ blobs } : Props) {
             <div className={`grid ${gridCols}`}>
               <SortableContext items={items} strategy={rectSortingStrategy}>
                 {items.map((blob, index) => (
-                  <BlobItem key={blob.id} id={blob.id} value={blob.title} name={index}/>
+                  <BlobItem key={blob.id} blob={blob} handleModalOpen={(blob: Blob) => handleModalOpen(blob)}/>
                 ))}
               </SortableContext>
             </div>
