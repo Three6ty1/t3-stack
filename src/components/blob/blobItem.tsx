@@ -20,7 +20,7 @@ export default function BlobItem({ blob, id, handleModalOpen } : Props) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: id + 1});
+  } = useSortable({ id: id });
 
   const style = {
     transform: CSS.Transform.toString(transform),

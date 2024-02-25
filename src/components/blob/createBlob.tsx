@@ -32,6 +32,7 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
       return;
     }
     (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
+    handleClose();
     handleBlobCreate();
   };
 
@@ -65,8 +66,9 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
 
   const handleClose = () => {
     setBlob(defaultBlob);
+    (document.getElementById("create_blob_tags_dropdown") as HTMLDetailsElement).removeAttribute("open");
     // @ts-ignore
-    (document.getElementById("blob-file-input") as HTMLInputElement).value =
+    (document.getElementById("blob-file-input")! as HTMLInputElement).value =
       null;
   };
 
@@ -100,7 +102,7 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
             value={blob.description}
             onChange={(e) => setBlob({ ...blob, description: e.target.value })}
           />
-          <details className="dropdown">
+          <details id="create_blob_tags_dropdown" className="dropdown">
             <summary className="m-1 btn">Select Tags</summary>
             <ul className="menu dropdown-content z-[1] w-fit rounded-box bg-base-100 p-2 shadow">
               <div className="flex flex-row flex-wrap">
@@ -113,7 +115,7 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
                           id={tag}
                           type="checkbox"
                           className="checkbox"
-                          checked={blob.tags.has(tag)}
+                          checked={blob?.tags.has(tag)}
                           onChange={(e) =>
                             handleCheck(
                               e.target.id.toUpperCase(),

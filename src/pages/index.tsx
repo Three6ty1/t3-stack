@@ -6,6 +6,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragOverlay,
 } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -42,8 +43,8 @@ export default function Home({ ssrBlobs }: Props) {
   };
   const [selectedBlob, setSelectedBlob] = useState<Blob>(initBlob);
   const [isShowModal, setIsShowModal] = useState(false);
-  const [activeId, setActiveId] = useState(null);
   const [blobs, setBlobs] = useState(ssrBlobs ? ssrBlobs : []);
+  const [activeId, setActiveId] = useState(null);
 
   const getAllQuery = api.useUtils().blob.getAll;
 
@@ -54,25 +55,26 @@ export default function Home({ ssrBlobs }: Props) {
     }),
   );
 
-  const handleDragStart = (event: any) => {
+  function handleDragStart(event: any) {
     setActiveId(event.active.id);
-  };
+  }
 
-  const handleDragEnd = (event: any) => {
+  function handleDragEnd(event: any) {
     setActiveId(null);
-    const { active, over } = event;
+    const {active, over} = event;
+
     if (active.id !== over.id) {
       setBlobs((blobs) => {
-        return arrayMove(blobs, active.id - 1, over.id - 1);
+        return arrayMove(blobs, active.id, over.id);
       });
     }
-  };
+  }
 
   const handleBlobCreate = () => {
     setTimeout(() => getAllQuery.fetch().then((data) => {
       setBlobs(data);
       // Reassign the selected blob to the newly changed one
-    }), 200);
+    }), 300);
   }
 
   const handleModalOpen = (blob: Blob) => {
@@ -120,7 +122,7 @@ export default function Home({ ssrBlobs }: Props) {
   if (blobs.length == 1) {
     gridCols = "grid-cols-1";
   } else if (blobs.length <= 13) {
-    gridCols = "grid-cols-4";
+    gridCols = "grid-cols-5";
   } // else if (items.length <= )
   //   case :
   //     gridCols = "grid-cols-3"
@@ -157,6 +159,7 @@ export default function Home({ ssrBlobs }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen w-screen items-start justify-center p-5 align-middle font-[Helvetica]">
+        
         {isShowModal && (
           <BlobModal
             blob={selectedBlob}
@@ -168,16 +171,17 @@ export default function Home({ ssrBlobs }: Props) {
         <div className="absolute right-6 top-6">
           <CreateBlob handleBlobCreate={handleBlobCreate}/>
         </div>
+        
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
-          onDragEnd={handleDragEnd}
           onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
         >
           <div className="flex h-full w-full items-center justify-center bg-black align-middle">
             <div className={`grid ${gridCols}`}>
               <SortableContext items={blobs} strategy={rectSortingStrategy}>
-                {blobs.map((blob, index) => (
+                {blobs?.map((blob, index) => (
                   <BlobItem
                     key={blob.id}
                     id={index}
@@ -188,6 +192,11 @@ export default function Home({ ssrBlobs }: Props) {
               </SortableContext>
             </div>
           </div>
+          <DragOverlay adjustScale={true}>
+            {activeId ? (
+              <div className="w-20 h-20 bg-green">Helelelele</div>
+            ) : null}
+          </DragOverlay>
         </DndContext>
       </main>
     </>

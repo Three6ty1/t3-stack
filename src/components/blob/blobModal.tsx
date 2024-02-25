@@ -18,11 +18,11 @@ export default function BlobModal({
   handleBlobDelete,
 }: Props) {
   const defaultBlob = {
-    title: blob.title,
-    description: blob.description ? blob.description : "",
-    tags: new Set<BlobTags>(blob.tags),
-    images: blob.images ? blob.images : [],
-    videos: blob.videos ? blob.videos : [],
+    title: blob?.title,
+    description: blob?.description ? blob.description : "",
+    tags: new Set<BlobTags>(blob?.tags),
+    images: blob?.images ? blob.images : [],
+    videos: blob?.videos ? blob.videos : [],
   };
 
   const [isEditing, setIsEditing] = useState(false);
