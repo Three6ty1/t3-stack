@@ -20,10 +20,11 @@ import { DialogHTMLAttributes, SetStateAction, useState } from "react";
 import BlobItem from "./../components/blob/blobItem";
 import { GetServerSideProps } from "next";
 import { getAllBlobs } from "~/server/api/routers/blob";
-import { Blob } from "@prisma/client";
+import { Blob, type BlobTags } from "@prisma/client";
 import CreateBlob from "~/components/blob/createBlob";
 import BlobModal from "~/components/blob/blobModal";
 import { api } from "~/utils/api";
+import BlobFilter from "~/components/blob/blobFilter";
 
 type Props = {
   ssrBlobs: Blob[];
@@ -44,8 +45,7 @@ export default function Home({ ssrBlobs }: Props) {
   const [selectedBlob, setSelectedBlob] = useState<Blob>(initBlob);
   const [isShowModal, setIsShowModal] = useState(false);
   const [blobs, setBlobs] = useState(ssrBlobs ? ssrBlobs : []);
-  const [activeId, setActiveId] = useState(null);
-
+  const [filter, setFilter] = useState({tags: new Set<BlobTags>([])});
   const getAllQuery = api.useUtils().blob.getAll;
 
   const sensors = useSensors(
@@ -55,8 +55,8 @@ export default function Home({ ssrBlobs }: Props) {
     }),
   );
 
+  // TODO: Remove any
   function handleDragEnd(event: any) {
-    setActiveId(null);
     const {active, over} = event;
 
     if (active.id !== over.id) {
@@ -113,6 +113,10 @@ export default function Home({ ssrBlobs }: Props) {
     );
   };
 
+  const handleFilter = (filter: Set<BlobTags>) => {
+    setFilter({tags: filter});
+  }
+
   let gridCols;
 
   if (blobs.length == 1) {
@@ -166,6 +170,7 @@ export default function Home({ ssrBlobs }: Props) {
         )}
         <div className="absolute right-6 top-6">
           <CreateBlob handleBlobCreate={handleBlobCreate}/>
+          <BlobFilter filter={filter} handleFilter={(filter: Set<BlobTags>) => handleFilter(filter)} />
         </div>
         
         <DndContext
@@ -176,11 +181,12 @@ export default function Home({ ssrBlobs }: Props) {
           <div className="flex h-full w-full items-center justify-center bg-black align-middle">
             <div className={`grid ${gridCols}`}>
               <SortableContext items={blobs} strategy={rectSortingStrategy}>
-                {blobs?.map((blob, index) => (
+                {blobs?.map((blob) => (
                   <BlobItem
                     key={blob.id}
                     id={blob.id}
                     blob={blob}
+                    isFilter={(new Set([...filter.tags].filter(x => blob.tags.includes(x)))).size > 0}
                     handleModalOpen={(blob: Blob) => handleModalOpen(blob)}
                   />
                 ))}

@@ -10,9 +10,10 @@ type Props = {
   blob: Blob;
   handleModalOpen: (blob: Blob) => void;
   id: number;
+  isFilter: boolean;
 }
 
-export default function BlobItem({ blob, id, handleModalOpen } : Props) {
+export default function BlobItem({ blob, id, handleModalOpen, isFilter } : Props) {
   const {
     attributes,
     listeners,
@@ -33,6 +34,7 @@ export default function BlobItem({ blob, id, handleModalOpen } : Props) {
     margin: defMargin,
     gridRowStart: blob?.id === 1 ? "span 2" : undefined,
     gridColumnStart: blob?.id === 1 ? "span 2" : undefined,
+    background: isFilter ? "yellow" : undefined,
   };
   return (
     <div ref={setNodeRef} style={style} className="border-2 border-solid border-red-500 bg-gray-500 rounded-md p-1 text-sm">
