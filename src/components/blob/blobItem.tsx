@@ -9,9 +9,10 @@ const defMargin = 4
 type Props = {
   blob: Blob;
   handleModalOpen: (blob: Blob) => void;
+  id: number;
 }
 
-export default function BlobItem({ blob, handleModalOpen } : Props) {
+export default function BlobItem({ blob, id, handleModalOpen } : Props) {
   const {
     attributes,
     listeners,
@@ -19,7 +20,7 @@ export default function BlobItem({ blob, handleModalOpen } : Props) {
     transform,
     transition,
     isDragging,
-  } = useSortable({ id: blob?.id });
+  } = useSortable({ id: id + 1});
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -27,17 +28,17 @@ export default function BlobItem({ blob, handleModalOpen } : Props) {
     transition,
     zIndex: isDragging ? "100" : "auto",
     opacity: isDragging ? 0.3 : 1,
-    width: blob?.id != 3 ? defSize : defSize * 2 + defMargin * 2,
-    height: blob?.id != 3 ? defSize : defSize * 2 + defMargin * 2,
+    width: blob?.id != 1 ? defSize : defSize * 2 + defMargin * 2,
+    height: blob?.id != 1 ? defSize : defSize * 2 + defMargin * 2,
     margin: defMargin,
-    gridRowStart: blob?.id === 3 ? "span 2" : undefined,
-    gridColumnStart: blob?.id === 3 ? "span 2" : undefined,
+    gridRowStart: blob?.id === 1 ? "span 2" : undefined,
+    gridColumnStart: blob?.id === 1 ? "span 2" : undefined,
   };
   return (
     <div ref={setNodeRef} style={style} className="border-2 border-solid border-red-500 bg-gray-500 rounded-md p-1 text-sm">
-      <button {...listeners} {...attributes}>
+      <div {...listeners} {...attributes} aria-describedby="">
         Drag handle
-      </button>
+      </div>
       <div
         style={{
           border: "1px solid black",

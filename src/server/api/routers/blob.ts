@@ -24,7 +24,6 @@ export const blobRouter = createTRPCRouter({
           });
         }
       }
-      console.log("im in here")
       await ctx.db.blob.create({
         data: {
           date: getDateString(),
@@ -70,7 +69,15 @@ export const blobRouter = createTRPCRouter({
           id: input.id,
         }
       })
-    })
+    }),
+  getAll: publicProcedure
+    .query(async({ ctx }) => (
+      await ctx.db.blob.findMany({
+        orderBy: {
+          id: 'asc',
+        }
+      })
+    ))
 })
 
 export const getAllBlobs = async() => { 
