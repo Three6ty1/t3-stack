@@ -68,6 +68,13 @@ export default function Home({ ssrBlobs }: Props) {
     }
   };
 
+  const handleBlobCreate = () => {
+    setTimeout(() => getAllQuery.fetch().then((data) => {
+      setBlobs(data);
+      // Reassign the selected blob to the newly changed one
+    }), 200);
+  }
+
   const handleModalOpen = (blob: Blob) => {
     setSelectedBlob(blob);
     setTimeout(
@@ -84,6 +91,17 @@ export default function Home({ ssrBlobs }: Props) {
     setSelectedBlob(initBlob);
     setIsShowModal(false);
   };
+
+  const handleBlobDelete = () => {
+    setTimeout(
+      () =>
+        getAllQuery.fetch().then((data) => {
+          setBlobs(data);
+          // Reassign the selected blob to the newly changed one
+        }),
+      300,
+    );
+  }
 
   const handleBlobEdit = () => {
     setTimeout(
@@ -144,10 +162,11 @@ export default function Home({ ssrBlobs }: Props) {
             blob={selectedBlob}
             handleBlobEdit={handleBlobEdit}
             handleModalClose={handleModalClose}
+            handleBlobDelete={handleBlobDelete}
           />
         )}
         <div className="absolute right-6 top-6">
-          <CreateBlob />
+          <CreateBlob handleBlobCreate={handleBlobCreate}/>
         </div>
         <DndContext
           sensors={sensors}

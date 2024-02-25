@@ -13,7 +13,10 @@ const defaultBlob = {
 
 const MAX_IMAGE_SIZE = 1000000; // 1mb
 
-export default function CreateBlob() {
+type Props = {
+  handleBlobCreate: () => void;
+}
+export default function CreateBlob({ handleBlobCreate } : Props) {
   const [blob, setBlob] = useState(defaultBlob);
   const [uploadError, setUploadError] = useState("");
   const submitMutation = api.blob.create.useMutation();
@@ -29,6 +32,7 @@ export default function CreateBlob() {
       return;
     }
     (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
+    handleBlobCreate();
   };
 
   const handleCheck = (tag: string, checked: boolean) => {
