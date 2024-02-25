@@ -55,17 +55,13 @@ export default function Home({ ssrBlobs }: Props) {
     }),
   );
 
-  function handleDragStart(event: any) {
-    setActiveId(event.active.id);
-  }
-
   function handleDragEnd(event: any) {
     setActiveId(null);
     const {active, over} = event;
 
     if (active.id !== over.id) {
       setBlobs((blobs) => {
-        return arrayMove(blobs, active.id, over.id);
+        return arrayMove(blobs, blobs.findIndex((blob) => blob.id === active.id), blobs.findIndex((blob) => blob.id === over.id));
       });
     }
   }
@@ -175,7 +171,6 @@ export default function Home({ ssrBlobs }: Props) {
         <DndContext
           sensors={sensors}
           collisionDetection={closestCenter}
-          onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
           <div className="flex h-full w-full items-center justify-center bg-black align-middle">
@@ -184,7 +179,7 @@ export default function Home({ ssrBlobs }: Props) {
                 {blobs?.map((blob, index) => (
                   <BlobItem
                     key={blob.id}
-                    id={index}
+                    id={blob.id}
                     blob={blob}
                     handleModalOpen={(blob: Blob) => handleModalOpen(blob)}
                   />
@@ -192,11 +187,6 @@ export default function Home({ ssrBlobs }: Props) {
               </SortableContext>
             </div>
           </div>
-          <DragOverlay adjustScale={true}>
-            {activeId ? (
-              <div className="w-20 h-20 bg-green">Helelelele</div>
-            ) : null}
-          </DragOverlay>
         </DndContext>
       </main>
     </>
