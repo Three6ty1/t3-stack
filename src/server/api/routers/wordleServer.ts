@@ -48,7 +48,7 @@ const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, nev
         // An operator might not have been chosen before.
         if (chosenOperator) {  
             // If amount of times chosen is more than the total games played / half the amount of operators, choose a new operator.
-            if (!prev || chosenOperator.chosen.length <= Math.floor(prev.gameId / Math.floor(operators.length / 2))) {
+            if (!prev || chosenOperator.chosen.length >= Math.floor(prev.gameId / Math.floor(operators.length / 2))) {
                 return chosenOperator
             }
         }
