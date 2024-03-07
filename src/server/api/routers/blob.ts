@@ -16,7 +16,7 @@ export const blobRouter = createTRPCRouter({
       videos: z.array(z.string()),
     }))
     .mutation(async({ ctx, input }) => {
-      for (const link in input.videos) {
+      for (const link of input.videos) {
         if (!isValidYoutubeLink(link)) {
           throw new TRPCError({
             code: 'BAD_REQUEST',
@@ -24,6 +24,7 @@ export const blobRouter = createTRPCRouter({
           });
         }
       }
+
       await ctx.db.blob.create({
         data: {
           date: getDateString(),

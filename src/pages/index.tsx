@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import BlobItem from "./../components/blob/blobItem";
 import { GetServerSideProps } from "next";
@@ -9,6 +9,9 @@ import CreateBlob from "~/components/blob/createBlob";
 import BlobModal from "~/components/blob/blobModal";
 import { api } from "~/utils/api";
 import BlobFilter from "~/components/blob/blobFilter";
+import Login from "~/components/blob/login";
+import { createClient } from "~/utils/supabase/client";
+import SignOut from "~/components/blob/signout";
 
 type Props = {
   ssrBlobs: Blob[];
@@ -31,6 +34,25 @@ export default function Home({ ssrBlobs }: Props) {
   const [blobs, setBlobs] = useState(ssrBlobs ? ssrBlobs : []);
   const [filter, setFilter] = useState({tags: new Set<BlobTags>([])});
   const getAllQuery = api.useUtils().blob.getAll;
+  const supabase = createClient();
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    getUser();
+  }, [userId])
+
+  const getUser = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user !== null) {
+        setUserId(user.id);
+      } else {
+        setUserId('');
+      }
+    }
+    catch (e) {
+    }
+  }
 
   const handleBlobCreate = () => {
     setTimeout(() => getAllQuery.fetch().then((data) => {
@@ -102,6 +124,7 @@ export default function Home({ ssrBlobs }: Props) {
         )}
         <div className="absolute right-6 top-6">
           <CreateBlob handleBlobCreate={handleBlobCreate}/>
+          {userId.length === 0 ? <Login /> : <SignOut />}
           <BlobFilter filter={filter} handleFilter={(filter: Set<BlobTags>) => handleFilter(filter)} />
         </div>
 

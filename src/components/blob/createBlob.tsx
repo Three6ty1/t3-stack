@@ -2,12 +2,12 @@ import { BlobTags } from "@prisma/client";
 import { useState } from "react";
 import { capitalise } from "~/helper/blobHelper";
 import { api } from "~/utils/api";
+import { createClient } from "~/utils/supabase/client";
 
 const defaultBlob = {
   title: "",
   description: "",
   tags: new Set<BlobTags>([]),
-  images: [] as string[],
   videos: "",
 };
 
@@ -17,23 +17,30 @@ type Props = {
   handleBlobCreate: () => void;
 }
 export default function CreateBlob({ handleBlobCreate } : Props) {
+  const supabase = createClient();
+  
   const [blob, setBlob] = useState(defaultBlob);
   const [uploadError, setUploadError] = useState("");
   const submitMutation = api.blob.create.useMutation();
 
-  const handleSubmit = () => {
-    submitMutation.mutate({
-      ...blob,
-      tags: Array.from(blob.tags),
-      videos: blob.videos.length > 0 ? blob.videos.split('\n').map(video => video.trim()) : [],
-    })
-  
-    if (submitMutation.error) {
-      return;
+  const handleSubmit = async () => {
+    for (const file of (document.getElementById("blob-file-input")! as HTMLInputElement).files as FileList) {
+      console.log(file);
+      const {data, error} = await supabase.storage.from("images").upload(file.name.slice(0, -4), file);
+      console.log(data);
+      console.log(error);
     }
-    (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
-    handleClose();
-    handleBlobCreate();
+    // await submitMutation.mutateAsync({
+    //   ...blob,
+    //   tags: Array.from(blob.tags),
+    //   videos: blob.videos.length > 0 ? blob.videos.split('\n').map(video => video.trim()) : [],
+    // }).then(() => {
+    //   (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
+    //   handleClose();
+    //   handleBlobCreate();
+    // }).catch((error) => {
+    //   // do nothing
+    // })
   };
 
   const handleCheck = (tag: string, checked: boolean) => {
@@ -50,22 +57,20 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
     if (!files) {
       return;
     }
-    let objectUrls: string[] = [];
-    console.log(files);
 
     for (const file of files) {
       if (file.size >= MAX_IMAGE_SIZE) {
         setUploadError("File size is too large! Maximum 1mb");
+        // @ts-ignore
+        (document.getElementById("blob-file-input")! as HTMLInputElement).value =
+        null;
         return;
       }
-      objectUrls.push(URL.createObjectURL(file));
     }
-
-    setBlob({ ...blob, images: objectUrls });
   };
 
   const handleClose = () => {
-    setBlob(defaultBlob);
+    setBlob({...defaultBlob, tags: new Set<BlobTags>([])});
     (document.getElementById("create_blob_tags_dropdown") as HTMLDetailsElement).removeAttribute("open");
     // @ts-ignore
     (document.getElementById("blob-file-input")! as HTMLInputElement).value =
@@ -87,7 +92,7 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
       <dialog id="create_blob_modal" className="modal" onClose={handleClose}>
         <div className="modal-box flex flex-col space-y-4 overflow-visible">
           <h3 className="text-lg font-bold">Hello!</h3>
-          {submitMutation.error && <p>Error! {submitMutation.error.message}</p>}
+          {submitMutation.error && <p>Error! {JSON.parse(submitMutation.error.message)[0].message}</p>}
           <input
             type="text"
             placeholder="Enter a title"
