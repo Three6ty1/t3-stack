@@ -18,29 +18,39 @@ type Props = {
 }
 export default function CreateBlob({ handleBlobCreate } : Props) {
   const supabase = createClient();
-  
+
   const [blob, setBlob] = useState(defaultBlob);
   const [uploadError, setUploadError] = useState("");
   const submitMutation = api.blob.create.useMutation();
+  const linkImagesMutation = api.blob.linkImages.useMutation();
 
   const handleSubmit = async () => {
-    for (const file of (document.getElementById("blob-file-input")! as HTMLInputElement).files as FileList) {
-      console.log(file);
-      const {data, error} = await supabase.storage.from("images").upload(file.name.slice(0, -4), file);
-      console.log(data);
-      console.log(error);
+    try {
+      const newBlob = await submitMutation.mutateAsync({
+        ...blob,
+        tags: Array.from(blob.tags),
+        videos: blob.videos.length > 0 ? blob.videos.split('\n').map(video => video.trim()) : [],
+        images: [],
+      });
+      
+      let images = [];
+      for (const file of (document.getElementById("blob-file-input")! as HTMLInputElement).files as FileList) {
+        await supabase.storage.from("images").upload(file.name, file);
+        const { data } = supabase.storage.from('images').getPublicUrl(file.name);
+        images.push(data.publicUrl);
+      }
+
+      await linkImagesMutation.mutateAsync({
+        id: newBlob.id,
+        images: images,
+      });
+
+      (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
+      handleClose();
+      handleBlobCreate();
+
+    } catch (error) {
     }
-    // await submitMutation.mutateAsync({
-    //   ...blob,
-    //   tags: Array.from(blob.tags),
-    //   videos: blob.videos.length > 0 ? blob.videos.split('\n').map(video => video.trim()) : [],
-    // }).then(() => {
-    //   (document.getElementById("create_blob_modal")! as HTMLDialogElement).close();
-    //   handleClose();
-    //   handleBlobCreate();
-    // }).catch((error) => {
-    //   // do nothing
-    // })
   };
 
   const handleCheck = (tag: string, checked: boolean) => {
@@ -73,8 +83,9 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
     setBlob({...defaultBlob, tags: new Set<BlobTags>([])});
     (document.getElementById("create_blob_tags_dropdown") as HTMLDetailsElement).removeAttribute("open");
     // @ts-ignore
-    (document.getElementById("blob-file-input")! as HTMLInputElement).value =
-      null;
+
+    setTimeout(() => (document.getElementById("blob-file-input")! as HTMLInputElement).value = null, 200)
+    
   };
 
   return (

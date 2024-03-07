@@ -25,14 +25,28 @@ export const blobRouter = createTRPCRouter({
         }
       }
 
-      await ctx.db.blob.create({
+      return await ctx.db.blob.create({
         data: {
           date: getDateString(),
           title: input.title,
           description: input.description,
           tags: input.tags,
-          images: input.images,
           videos: input.videos,
+        }
+      })
+    }),
+  linkImages: publicProcedure
+    .input(z.object({
+      id: z.number().nonnegative(),
+      images: z.array(z.string()),
+    }))
+    .mutation(async({ ctx, input }) => {
+      await ctx.db.blob.update({
+        where: {
+          id: input.id,
+        },
+        data: {
+          images: input.images,
         }
       })
     }),
