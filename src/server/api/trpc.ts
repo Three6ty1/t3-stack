@@ -6,12 +6,25 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { initTRPC } from "@trpc/server";
+import { TRPCError, initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
-
 import { db } from "~/server/db";
+import { env } from "~/env";
+import { createClient } from '~/utils/supabase/server'
+import { type User } from "@supabase/supabase-js";
+import { NextRequest } from "next/server";
+
+const getUserFromContext = async (request: NextRequest): Promise<User | null> => {
+  const supabaseServerClient = createClient();
+
+  const {
+    data: { user },
+  } = await supabaseServerClient.auth.getUser();
+
+  return user;
+};
 
 /**
  * 1. CONTEXT
@@ -102,17 +115,18 @@ export const publicProcedure = t.procedure;
  *
  * @see https://trpc.io/docs/procedures
  */
-// export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-//   if (!ctx.session || !ctx.session.user) {
-//     throw new TRPCError({ code: "UNAUTHORIZED" });
-//   }
-//   return next({
-//     ctx: {
-//       // infers the `session` as non-nullable
-//       session: { ...ctx.session, user: ctx.session.user },
-//     },
-//   });
-// });
+export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
+  const user = await getUserFromContext();
+  if (!user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      db: ctx.db,
+      user: user,
+    },
+  });
+});
 
 /**
  * Admin procedure
@@ -122,18 +136,15 @@ export const publicProcedure = t.procedure;
  *
  * @see https://trpc.io/docs/procedures
  */
-// export const adminProcedure = t.procedure.use(({ ctx, next }) => {
-//   if (
-//     !ctx.session ||
-//     !ctx.session.user ||
-//     ctx.session.user.type !== UserType.ADMIN
-//   ) {
-//     throw new TRPCError({ code: "UNAUTHORIZED" });
-//   }
-//   return next({
-//     ctx: {
-//       // infers the `session` as non-nullable
-//       session: { ...ctx.session, user: ctx.session.user },
-//     },
-//   });
-// });
+export const adminProcedure = t.procedure.use(async ({ ctx, next }) => {
+  const user = await getUserFromContext();
+  if (!user || user.id != env.ADMIN_DISCORD_ID) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      db: ctx.db,
+      user: user,
+    },
+  });
+});
