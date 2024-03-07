@@ -96,3 +96,28 @@
     }
 }
 
+@keyframes pop {
+    0% {
+        transform-origin: 50%;
+        scale: 100%;
+    }
+    50% {
+        transform-origin: 50%;
+        scale: 105%;
+    }
+    100% {
+        transform-origin: 50%;
+        scale: 100%;
+    }
+}
+
+@keyframes reveal {
+    0% {
+        transform: translateY(10px);
+        opacity: 0%;
+    }
+    100% {
+        transform: translateY(-10px);
+        opacity: 100%;
+    }
+}

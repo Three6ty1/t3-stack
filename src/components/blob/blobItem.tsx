@@ -1,55 +1,32 @@
 import React from "react";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import { Blob } from "@prisma/client";
-
-const defSize = 100
-const defMargin = 4
 
 type Props = {
   blob: Blob;
   handleModalOpen: (blob: Blob) => void;
   id: number;
   isFilter: boolean;
-}
+};
 
 export default function BlobItem({ blob, id, handleModalOpen, isFilter } : Props) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: id });
-
   const style = {
-    transform: CSS.Transform.toString(transform),
-    transformOrigin: "0 0",
-    transition,
-    zIndex: isDragging ? "100" : "auto",
-    opacity: isDragging ? 0.3 : 1,
-    width: blob?.id != 1 ? defSize : defSize * 2 + defMargin * 2,
-    height: blob?.id != 1 ? defSize : defSize * 2 + defMargin * 2,
-    margin: defMargin,
-    gridRowStart: blob?.id === 1 ? "span 2" : undefined,
-    gridColumnStart: blob?.id === 1 ? "span 2" : undefined,
     background: isFilter ? "yellow" : undefined,
   };
+
   return (
-    <div ref={setNodeRef} style={style} className="border-2 border-solid border-red-500 bg-gray-500 rounded-md p-1 text-sm">
-      <div {...listeners} {...attributes} aria-describedby="">
-        Drag handle
-      </div>
+    <div
+      style={style}
+      className="flex flex-col bg-white p-2 text-sm w-[10%] aspect-square group
+         hover:scale-105 duration-200 transition ease-out"
+    >
       <div
-        style={{
-          border: "1px solid black",
-          borderColor: "black"
-        }}
+        className="flex h-full w-full border-2 border-solid border-black p-2 items-end"
         onClick={() => handleModalOpen(blob)}
       >
-        {blob?.title}
+        <div className="opacity-0 h-1/3 border-2 border-solid border-red-600 relative group-hover:-translate-y-2 group-hover:opacity-100 transition-all ease-out duration-500">
+          {blob?.title}
+        </div>
       </div>
-  </div>
+    </div>
   );
 }
