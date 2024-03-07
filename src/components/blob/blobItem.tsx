@@ -22,7 +22,7 @@ export default function BlobItem({
     <div
       style={style}
       className="group relative flex aspect-square w-[10%] justify-center bg-transparent align-middle text-sm
-        transition duration-200 ease-out hover:z-10 hover:scale-105"
+        transition duration-200 ease-out z-0 hover:z-20 hover:scale-105"
     >
       {blob.images.length > 0 && (
         <img className="min-h-0 w-full object-contain" src={blob.images[0]} />

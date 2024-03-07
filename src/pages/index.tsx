@@ -121,7 +121,7 @@ export default function Home({ ssrBlobs }: Props) {
             handleBlobDelete={handleBlobDelete}
           />
         )}
-        <div className="absolute right-6 top-6">
+        <div className="absolute right-6 top-6 z-10">
           <CreateBlob handleBlobCreate={handleBlobCreate}/>
           {userId.length === 0 ? <Login handleClick={getUser} /> : <SignOut handleClick={getUser} />}
           <BlobFilter filter={filter} handleFilter={(filter: Set<BlobTags>) => handleFilter(filter)} />

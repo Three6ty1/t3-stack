@@ -3,11 +3,11 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { isValidYoutubeLink } from "~/helper/blobHelper";
 import { getDateString } from "~/helper/wordleHelper";
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { adminProcedure, createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { db } from "~/server/db";
 
 export const blobRouter = createTRPCRouter({
-  create: publicProcedure
+  create: adminProcedure
     .input(z.object({
       title: z.string().min(3),
       description: z.string().nullable(),
@@ -35,7 +35,7 @@ export const blobRouter = createTRPCRouter({
         }
       })
     }),
-  linkImages: publicProcedure
+  linkImages: adminProcedure
     .input(z.object({
       id: z.number().nonnegative(),
       images: z.array(z.string()),
@@ -50,7 +50,7 @@ export const blobRouter = createTRPCRouter({
         }
       })
     }),
-  edit: publicProcedure
+  edit: adminProcedure
     .input(z.object({
       id: z.number().nonnegative(),
       title: z.string().min(3),
@@ -74,7 +74,7 @@ export const blobRouter = createTRPCRouter({
         }
       })
     }),
-  delete: publicProcedure
+  delete: adminProcedure
     .input(z.object({
       id: z.number(),
     }))

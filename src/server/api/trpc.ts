@@ -12,19 +12,8 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 import { db } from "~/server/db";
 import { env } from "~/env";
-import { createClient } from '~/utils/supabase/server'
-import { type User } from "@supabase/supabase-js";
-import { NextRequest } from "next/server";
-
-const getUserFromContext = async (request: NextRequest): Promise<User | null> => {
-  const supabaseServerClient = createClient();
-
-  const {
-    data: { user },
-  } = await supabaseServerClient.auth.getUser();
-
-  return user;
-};
+import { CookieOptions, createServerClient, serialize } from "@supabase/ssr";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 /**
  * 1. CONTEXT
@@ -46,9 +35,11 @@ type CreateContextOptions = Record<string, never>;
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+const createInnerTRPCContext = async (_opts: CreateContextOptions, supabase: SupabaseClient<any, "public", any>) => {
+  const user = await supabase.auth.getUser();
   return {
     db,
+    user: user ? user : null,
   };
 };
 
@@ -59,7 +50,25 @@ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = (_opts: CreateNextContextOptions) => {
-  return createInnerTRPCContext({});
+  const supabase = createServerClient(
+    env.NEXT_PUBLIC_SUPABASE_URL!,
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return _opts.req.cookies[name];
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          _opts.res.setHeader("Set-Cookie", serialize(name, value, options));
+        },
+        remove(name: string, options: CookieOptions) {
+          _opts.res.setHeader("Set-Cookie", serialize(name, "", options));
+        },
+      },
+    }
+  )
+
+  return createInnerTRPCContext({}, supabase);
 };
 
 /**
@@ -116,14 +125,13 @@ export const publicProcedure = t.procedure;
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
-  const user = await getUserFromContext();
-  if (!user) {
+  if (!ctx.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
       db: ctx.db,
-      user: user,
+      user: ctx.user,
     },
   });
 });
@@ -137,14 +145,13 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const adminProcedure = t.procedure.use(async ({ ctx, next }) => {
-  const user = await getUserFromContext();
-  if (!user || user.id != env.ADMIN_DISCORD_ID) {
+  if (!ctx.user || ctx.user.data.user?.id != env.ADMIN_DISCORD_ID) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
       db: ctx.db,
-      user: user,
+      user: ctx.user,
     },
   });
 });
