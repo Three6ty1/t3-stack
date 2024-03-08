@@ -21,17 +21,17 @@ export default function BlobItem({
   return (
     <div
       style={style}
-      className="group relative flex aspect-square w-[10%] justify-center bg-transparent align-middle text-sm
+      className="group relative flex aspect-square w-[10%] justify-center bg-inherit align-middle text-sm
         transition duration-200 ease-out z-0 hover:z-20 hover:scale-105"
     >
       {blob.images.length > 0 && (
-        <img className="min-h-0 w-full object-contain" src={blob.images[0]} />
+        <img className="min-h-0 w-full object-cover" src={blob.images[0]} />
       )}
       <div
         className="absolute flex h-full w-full items-end border-solid border-black"
         onClick={() => handleModalOpen(blob)}
       >
-        <div className="relative px-2 -bottom-1 h-1/3 w-full bg-black bg-opacity-0 text-white text-opacity-0 transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:bg-opacity-50 group-hover:text-opacity-100 overflow-hidden overflow-ellipsis">
+        <div className="relative px-2 -bottom-1 h-1/3 w-full bg-black bg-opacity-0 text-white text-opacity-0 transition-all duration-500 ease-out translate-y-2 group-hover:-translate-y-1 group-hover:bg-opacity-50 group-hover:text-opacity-100 overflow-hidden overflow-ellipsis">
           {blob?.title}
         </div>
       </div>

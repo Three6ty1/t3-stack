@@ -22,6 +22,8 @@ export default {
         lower: '#c80000',
         half: '#FFAC1C',
         correct: '#6BBF59',
+        "blob_accent": '#141417',
+        "blob_bg": '#7e7977',
       },
     },
   },

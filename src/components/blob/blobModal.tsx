@@ -3,6 +3,7 @@ import { useState } from "react";
 import { capitalise } from "~/helper/blobHelper";
 import { api } from "~/utils/api";
 import BlobDelete from "./blobDelete";
+import BlobCarousel from "./blobCarousel";
 
 type Props = {
   blob: Blob;
@@ -72,7 +73,7 @@ export default function BlobModal({
 
   return (
     <dialog id={`blob_modal`} className="modal" onClose={handleClose}>
-      <div className="modal-box h-fit overflow-visible">
+      <div className="modal-box p-0 rounded-none h-fit overflow-visible border-solid border-[1px] border-gray-600 bg-gradient-to-b from-gray-400 from-75% to-gray-100 rounded-tr-3xl">
         {isEditing ? (
           <div className="flex flex-col gap-4">
             <div className="absolute right-2 top-2 flex w-fit flex-col gap-y-2">
@@ -134,28 +135,24 @@ export default function BlobModal({
             </button>
           </div>
         ) : (
-          <>
+          <div className="">
             <button
               className="btn btn-sm absolute right-2 top-2"
               onClick={() => setIsEditing(true)}
             >
               Edit
             </button>
-            <h3 className="text-lg font-bold">{blob.title}</h3>
+            <h1 className="text-lg font-bold w-full p-4 bg-blob_accent text-white rounded-tr-3xl">{blob.title}</h1>
             {blob.edit && <p className="py-1">Last edited {blob.edit}</p>}
-            <p className="py-4">{blob.description}</p>
+            <p className="">{blob.description}</p>
+            <BlobCarousel images={blob.images} videos={blob.videos} />
             {blob.tags?.map((tag) => (
               <p key={tag} className="py-1">
                 {tag}
               </p>
             ))}
-            {blob.images?.map((image) => (
-              <p key={image} className="py-1">
-                {image}
-              </p>
-            ))}
             <p className="py-2">{blob.likes}</p>
-          </>
+          </div>
         )}
       </div>
       <form method="dialog" className="modal-backdrop">

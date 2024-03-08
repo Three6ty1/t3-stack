@@ -103,7 +103,7 @@ export default function CreateBlob({ handleBlobCreate } : Props) {
       <dialog id="create_blob_modal" className="modal" onClose={handleClose}>
         <div className="modal-box flex flex-col space-y-4 overflow-visible">
           <h3 className="text-lg font-bold">Hello!</h3>
-          {submitMutation.error && <p>Error! {JSON.parse(submitMutation.error.message)[0].message}</p>}
+          {submitMutation.error && <p>Error! {submitMutation.error.message}</p>}
           <input
             type="text"
             placeholder="Enter a title"
