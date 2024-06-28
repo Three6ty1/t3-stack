@@ -25,7 +25,8 @@ const config = {
         port: '',
         pathname: '/Three6ty1/ak-wordle-icons/main/**'
       }
-    ]
+    ],
+    unoptimized: true,
   },
 };
 

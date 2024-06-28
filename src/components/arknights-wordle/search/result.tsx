@@ -1,50 +1,76 @@
-import Image from 'next/image';
-import React from 'react';
-import { type GuessType, GuessTypeValue, getOperatorIconUrl } from "~/helper/helper";
-import { Stats } from '~/server/api/routers/wordle';
-import type { GuessResult } from '~/server/api/routers/wordleServer';
-import { api } from '~/utils/api';
+import type { Operator } from "@prisma/client";
+import Image from "next/image";
+import React from "react";
+import { getOperatorIconUrl } from "~/helper/helper";
+import type { Stats } from "~/server/api/routers/wordle";
+import type { GuessResult } from "~/server/api/routers/wordleServer";
+import { api } from "~/utils/api";
 
 type Props = {
-    op: GuessType;
-    handleSubmit: (promise: Promise<GuessResult>, callback: (success: boolean) => void) => void;
-    stats: Stats;
-}
+  operator: Operator;
+  setResults: (value: Operator[]) => void;
+  handleSubmit: (
+    promise: Promise<GuessResult>,
+    callback: (success: boolean) => void,
+  ) => void;
+  stats: Stats;
+};
 
-export default function Result({op, handleSubmit, stats } : Props) {
-    const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
+export default function Result({ operator, handleSubmit, setResults, stats }: Props) {
+  const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
 
-    React.useEffect(() => {
-        const ls = localStorage.getItem("guesses");
-        const _pastGuesses = (ls) ? JSON.parse(ls) as unknown as GuessResult[]: [];
-        const pastGuesses = _pastGuesses.map((guess) => guess.name);
-        setPastGuesses(pastGuesses);
-    }, [])
+  React.useEffect(() => {
+    const ls = localStorage.getItem("guesses");
+    const _pastGuesses = ls ? (JSON.parse(ls) as unknown as GuessResult[]) : [];
+    const pastGuesses = _pastGuesses.map((guess) => guess.name);
+    setPastGuesses(pastGuesses);
+  }, []);
 
-    const url = getOperatorIconUrl(op[GuessTypeValue.charId], op[GuessTypeValue.rarity]);
+  const url = getOperatorIconUrl(operator.charId, operator.rarity);
 
-    let textStyle = ' '
-    // Ternary operator for this line BREAKS the code
-    if (pastGuesses.includes(op[GuessTypeValue.name])) { textStyle += 'text-higher' }
+  let textStyle = " ";
+  // Ternary operator for this line BREAKS the code
+  if (pastGuesses.includes(operator.name)) {
+    textStyle += "text-higher";
+  }
 
-    const utils = api.useUtils();
+  const utils = api.useUtils();
 
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        
-        const guess = e.currentTarget.id;
-        if (!guess) {
-            throw "Empty operator list entry, please report"
-        }
-        handleSubmit(utils.wordle.compare.fetch({guessId: guess, guesses: pastGuesses, correctId: stats.operatorId}), () => {return});
-    }
-
-    return (
-        <div className='flex flex-row self-center w-full items-center m-1'>
-            <div className='flex w-1/2 justify-end pr-5'>
-                <Image src={url} alt={`${op[0]} operator icon`} width={40} height={40} />
-            </div>
-            <div className={'flex w-1/2 justify-start text-start text-2xl' + textStyle} onClick={(e) => handleClick(e)} id={op[GuessTypeValue.charId]}>{op[GuessTypeValue.name]}</div> 
-        </div>
+  const handleClick = (e: React.MouseEvent) => {
+    setResults([]);
+    e.preventDefault();
+    e.stopPropagation();
+    handleSubmit(
+      utils.wordle.compare.fetch({
+        guessOp: operator,
+        guesses: pastGuesses,
+        correctId: stats.operatorId,
+      }),
+      () => {
+        return;
+      },
     );
+  };
+
+  return (
+    <button
+      className="m-1 flex w-full flex-row items-center self-center"
+      onClick={(e) => handleClick(e)}
+      id={String(operator.id)}
+    >
+      <div className="flex w-1/2 justify-end pr-5">
+        <Image
+          src={url}
+          alt={`${operator.name} operator icon`}
+          width={50}
+          height={50}
+        />
+      </div>
+      <div
+        className={"flex w-1/2 justify-start text-start text-2xl" + textStyle}
+      >
+        {operator.name}
+      </div>
+    </button>
+  );
 }

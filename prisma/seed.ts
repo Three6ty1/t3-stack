@@ -5,10 +5,8 @@ import db from '../operator_db.json'
 // "npx prisma db seed"
 // dumb shit prisma seeding
 // https://github.com/prisma/prisma/issues/7053#issuecomment-1679880184
-interface Dictionary<T> {
-  [Key: string]: T;
-}
 
+// Not the same as prisma operator
 interface Operator {
   charId: string;
   gender: string;
@@ -26,9 +24,9 @@ interface Operator {
 const prisma = new PrismaClient()
 async function main() {
   let amt = 0
-  const operator_db:Dictionary<Operator> = db;
+  const operator_db: Record<string, Operator> = db;
   // await prisma.operator.deleteMany()
-  const operators = await prisma.operator.count();
+  // const operators = await prisma.operator.count();
   for (const key in operator_db) {
       const operator = operator_db[key]
       if (!operator) {
@@ -39,25 +37,19 @@ async function main() {
       }
       await prisma.operator.upsert({
           where: {
-              charId: operator.charId,
-          },
-          create: { charId: operator.charId,
-              name: key,
-              gender: operator.gender,
-              race: operator.race,
-              nation: operator.nation,
-              profession: operator.profession,
-              archetype: operator.archetype,
-              position: operator.position,
-              rarity: operator.rarity,
-              costE0: operator.cost[0],
-              costE2: operator.cost[1],
-              infected: operator.infected,
+            name: key,
           },
           update: {
+            charId: operator.charId,
+            group: operator.group ? operator.group : null,
+          },
+          create: {
+              id: undefined,
+              charId: operator.charId,
               name: key,
               gender: operator.gender,
               race: operator.race,
+              group: operator.group ? operator.group : null,
               nation: operator.nation,
               profession: operator.profession,
               archetype: operator.archetype,
@@ -69,22 +61,23 @@ async function main() {
           },
       });
 
-      if (operator.group !== '') {
-          await prisma.operator.update({
-              where: {
-                  charId: operator.charId
-              },
-              data: {
-                  group: operator.group
-              }
-          })
-      }
+      // Old fallback code
+      // if (operator.group !== '') {
+      //     await prisma.operator.update({
+      //         where: {
+      //             charId: operator.charId
+      //         },
+      //         data: {
+      //             group: operator.group
+      //         }
+      //     })
+      // }
 
       amt += 1
   }
 
   console.log(amt + ' total operators seeded into db');
-  console.log(`(${await prisma.operator.count() - operators}) new operators seeded (Old ${operators})`);
+  // console.log(`(${await prisma.operator.count() - operators}) new operators seeded (Old ${operators})`);
 
   // Doesnt have an icon yet...
   await prisma.operator.delete(
