@@ -94,6 +94,8 @@ export default function HintHelp() {
               <p>Correct.</p>
             </li>
           </ul>
+          <br />
+          <p>Reset at 12:00AM AEST / 2:00PM UTC / 10AM EST</p>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
