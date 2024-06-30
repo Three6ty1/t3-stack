@@ -2,6 +2,7 @@ import type { Stats } from "~/server/api/routers/wordle";
 import LogoBlack from "../../../../public/logo_black.png";
 import LogoWhite from "../../../../public/logo_white.png";
 import Image from "next/image";
+import VersionLog from "./versions";
 
 type Props = {
   darkMode: boolean;
@@ -19,7 +20,11 @@ export default function Info({ darkMode, stats }: Props) {
       />
       <h1 className="text-4xl font-bold">WORDLE</h1>
       <div className="mt-2">
-        <p>{`#${stats?.gameId}, ${stats?.date}`}</p>
+        <div className="flex flex-row justify-center">
+          <p className="px-2">{`#${stats?.gameId}, ${stats?.date}`}</p>
+          <VersionLog />
+        </div>
+        
         <p>{`${stats?.timesGuessed === 0 ? "No Dokutah's have" : stats?.timesGuessed + " " + (stats?.timesGuessed && stats.timesGuessed > 1 ? "Dokutah's have" : "Dokutah has")} guessed the operator.`}</p>
       </div>
     </>
