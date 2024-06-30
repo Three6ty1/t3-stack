@@ -1,8 +1,11 @@
 import { PrismaClient } from "@prisma/client";
-import db from '../operator_db.json'
+import db from '../operator_db.json';
 
 // To run
 // "npx prisma db seed"
+// npx prisma db seed update // will update all operators with information
+// npx prisma db seed
+// Operator in DB will always be offset by 5 due to deleting the IS operators (5)
 // dumb shit prisma seeding
 // https://github.com/prisma/prisma/issues/7053#issuecomment-1679880184
 
@@ -21,6 +24,14 @@ interface Operator {
   infected: string;
 }
 
+const args = process.argv.slice(2)
+let update = false
+if (args.length > 0) {
+  if (args[0] === "update") {
+    update = true
+  }
+}
+
 const prisma = new PrismaClient()
 async function main() {
   let amt = 0
@@ -35,15 +46,28 @@ async function main() {
       if (!operator.cost[0] || !operator.cost[1]) {
         throw `Missing operator cost for ${key}`
       }
-      await prisma.operator.upsert({
-          where: {
-            name: key,
-          },
-          update: {
-            charId: operator.charId,
-            group: operator.group ? operator.group : null,
-          },
-          create: {
+      // Upsert will auto increment postgres ids...
+      const inDB = await prisma.operator.findFirst({
+        where: {
+          name: key,
+        }
+      })
+
+      if (inDB) {
+        if (update) {
+          await prisma.operator.update({
+            where: {
+              name: key,
+            },
+            data: {
+              charId: operator.charId,
+              group: operator.group ? operator.group : null,
+            },
+          })
+        }
+      } else {
+        await prisma.operator.create({
+          data: {
               id: undefined,
               charId: operator.charId,
               name: key,
@@ -60,7 +84,8 @@ async function main() {
               infected: operator.infected,
           },
       });
-
+      }
+      
       // Old fallback code
       // if (operator.group !== '') {
       //     await prisma.operator.update({
