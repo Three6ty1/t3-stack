@@ -12,7 +12,7 @@ import Search from "~/components/arknights-wordle/search/search";
 import CategoryRows from "~/components/arknights-wordle/results/categoryRow";
 import AnswerRow from "~/components/arknights-wordle/results/answerRow";
 import ShareBox from "~/components/arknights-wordle/share/shareBox";
-import type { GetServerSideProps } from "next";
+import type { GetStaticProps } from "next";
 import { getAllOperators, getStats } from "~/server/api/routers/wordle";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
@@ -188,7 +188,7 @@ export default function ArknightsWordle({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const stats = await getStats();
   const allOperators = await getAllOperators();
 

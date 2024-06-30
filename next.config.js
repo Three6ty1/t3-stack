@@ -28,6 +28,19 @@ const config = {
     ],
     unoptimized: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/arknights-wordle',
+        headers: [
+          {
+            key: 'CDN-Cache-Control',
+            value: 'public, max-age=31536000',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default config;
