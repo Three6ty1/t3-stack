@@ -14,7 +14,7 @@ export default function Info({ darkMode, stats }: Props) {
       <Image
         width={416}
         height={72}
-        src={`${darkMode ? LogoWhite.src : LogoBlack.src}`}
+        src={`${darkMode ? LogoWhite.src : LogoBlack.src}`} // eslint-disable-line
         alt="Logo"
         priority={true}
       />
