@@ -1,7 +1,4 @@
-import map from "../../../../public/world_map.png";
-import { HintBreakpoints } from "./hints";
 import React from "react";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 const regions = {
   Ægir: "Aquatic animals and Seaborn.\nGroups: Abyssal Hunters.",
@@ -26,35 +23,19 @@ const regions = {
   Yan: "Varied. Ruled by Lung.\nGroups: Sui.",
 };
 
-type Props = {
-  amtGuesses: number;
-};
-
-export default function HintWorldMap({ amtGuesses }: Props) {
-  const [showAlert, setShowAlert] = React.useState(false);
+export default function HintWorldMap() {
   const handleClick = () => {
     (
       document.getElementById("world_map_modal") as HTMLDialogElement
     ).showModal();
-    setShowAlert(false);
   };
-
-  React.useEffect(() => {
-    const setAmtGuesses = () => {
-      if (amtGuesses === HintBreakpoints.one.valueOf()) {
-        setShowAlert(true);
-      }
-    };
-    setAmtGuesses();
-  }, [amtGuesses]);
 
   return (
     <>
       <div className="indicator m-2 flex w-1/3">
-        {showAlert && <span className="badge indicator-item bg-higher" />}
         <button
           className="btn tooltip flex w-full items-center"
-          data-tip="World Map and Races"
+          data-tip="Regions and Races"
           onClick={() => handleClick()}
         >
           <svg
@@ -75,26 +56,16 @@ export default function HintWorldMap({ amtGuesses }: Props) {
       </div>
       <dialog id="world_map_modal" className="modal w-screen overflow-visible">
         <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box h-2/3 md:h-auto max-w-[95vw] md:max-w-[80vw]">
-          <div className="h-auto w-full touch-auto overflow-auto md:h-auto">
-            <TransformWrapper
-              initialScale={1}
-            >
-              <TransformComponent>
-                <img src={map.src} alt="map" />
-              </TransformComponent>
-            </TransformWrapper>
-          </div>
-
-          {amtGuesses >= HintBreakpoints.one.valueOf() && (
-            <div className="mt-5 flex flex-row flex-wrap justify-start">
-              {Object.entries(regions).map((region) => (
-                <div className="h-36 w-1/2 text-left md:h-20 p-2" key={region[0]}>
-                  <h1 className="font-bold">{region[0]}</h1>
+          <div className="mt-5 flex flex-row flex-wrap justify-start">
+            {Object.entries(regions).map(region => (
+              <div tabIndex={0} className="collapse w-1/2 md:w-1/4 text-left md:p-2" key={region[0]}>
+                <div className="collapse-title text-xl font-bold">{region[0]}</div>
+                <div className="collapse-content">
                   <p className="whitespace-pre-line">{region[1]}</p>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>

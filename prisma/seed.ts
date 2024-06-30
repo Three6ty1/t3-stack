@@ -26,7 +26,7 @@ async function main() {
   let amt = 0
   const operator_db: Record<string, Operator> = db;
   // await prisma.operator.deleteMany()
-  // const operators = await prisma.operator.count();
+  const operators = await prisma.operator.count();
   for (const key in operator_db) {
       const operator = operator_db[key]
       if (!operator) {
@@ -77,16 +77,7 @@ async function main() {
   }
 
   console.log(amt + ' total operators seeded into db');
-  // console.log(`(${await prisma.operator.count() - operators}) new operators seeded (Old ${operators})`);
-
-  // Doesnt have an icon yet...
-  await prisma.operator.delete(
-    {
-      where: {
-        name: 'Friston-3',
-      }
-    }
-  )
+  console.log(`(${await prisma.operator.count() - operators}) new operators seeded (Old ${operators})`);
 }
 
 main()

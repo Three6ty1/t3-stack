@@ -41,8 +41,7 @@ export default function HintHelp() {
             <span className="font-bold">
               After {HintBreakpoints.one} guesses
             </span>{" "}
-            the operator list will be sorted by Rarity and the world map will
-            include operator Race information.
+            the operator list will be sorted by Rarity.
           </p>
           <p>
             <span className="font-bold">
