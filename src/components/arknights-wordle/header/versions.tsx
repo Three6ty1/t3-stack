@@ -6,8 +6,8 @@ export default function VersionLog() {
     const versions = [
         {
         version: "1.1",
-        content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+11)\n- Added missing operators Friston-3 and U-Official (+2)",
-        added: [["char_2012_typhon", 6], ["char_341_sntlla", 5], ["char_4032_provs", 5], ["char_1034_jesca2", 6], ["char_4105_almond", 5], ["char_4088_hodrer", 6],["char_494_vendla", 5],["char_4107_vrdant", 4],["char_4098_vvana", 6],["char_245_cello", 6],["char_4109_baslin", 5], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
+        content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+20)\n- Added missing operators Friston-3 and U-Official (+2)",
+        added: [["char_2012_typhon", 6], ["char_1034_jesca2", 6], ["char_4088_hodrer", 6],["char_4098_vvana", 6],["char_245_cello", 6], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
         },
         {
         version: "1.0",
@@ -19,8 +19,8 @@ export default function VersionLog() {
             <button className="underline" onClick={()=>(document.getElementById('version_modal') as HTMLDialogElement).showModal()}>v{versions[0]?.version}</button>
             <dialog id="version_modal" className="modal">
                 <div className="modal-box flex flex-col space-y-2 md:space-y-6 no-scrollbar no-scrollbar::-webkit-scrollbar overflow-y-scroll h-2/3">
-                    {versions.map((currentVersion, key) => (
-                        <div className="flex flex-col" key={versions + " " + key}>
+                    {versions.map((currentVersion) => (
+                        <div className="flex flex-col" key={`${currentVersion.version} key`}>
                             <h3 className="font-bold text-lg">Version {currentVersion.version}</h3>
                             <p className="whitespace-pre-line float-left text-left">{currentVersion.content}</p>
                             {currentVersion.added ?
@@ -30,7 +30,7 @@ export default function VersionLog() {
                                             const url = getOperatorIconUrl(char[0], char[1])
                 
                                             return <Image
-                                                key={char + " version icon"}
+                                                key={`${char[0]} version icon`}
                                                 className="m-[0.5px] rounded-md border-[0.1px] border-solid border-incorrect"
                                                 src={url}
                                                 alt={`${char[0]} operator icon`}
