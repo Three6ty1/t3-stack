@@ -79,6 +79,22 @@
         ],
         "infected": "No"
     },
+    "U-Official": {
+        "charId": "char_4091_ulika",
+        "gender": "Female",
+        "race": "Zalak",
+        "group": "",
+        "nation": "Rhodes Island",
+        "position": "Ranged",
+        "profession": "Supporter",
+        "archetype": "Bard",
+        "rarity": 1,
+        "cost": [
+            3,
+            3
+        ],
+        "infected": "No"
+    },
     "Friston-3": {
         "charId": "char_4093_frston",
         "gender": "Male",
@@ -652,6 +668,22 @@
         "cost": [
             20,
             22
+        ],
+        "infected": "Yes"
+    },
+    "Caper": {
+        "charId": "char_4100_caper",
+        "gender": "Female",
+        "race": "Cautus",
+        "group": "",
+        "nation": "Bolivar",
+        "position": "Ranged",
+        "profession": "Sniper",
+        "archetype": "Loopshooter",
+        "rarity": 4,
+        "cost": [
+            12,
+            14
         ],
         "infected": "Yes"
     },
@@ -1247,6 +1279,22 @@
         ],
         "infected": "No"
     },
+    "Verdant": {
+        "charId": "char_4107_vrdant",
+        "gender": "Male",
+        "race": "Pythia",
+        "group": "",
+        "nation": "Victoria",
+        "position": "Melee",
+        "profession": "Specialist",
+        "archetype": "Dollkeeper",
+        "rarity": 4,
+        "cost": [
+            12,
+            14
+        ],
+        "infected": "Yes"
+    },
     "Ptilopsis": {
         "charId": "char_128_plosis",
         "gender": "Female",
@@ -1327,19 +1375,19 @@
         ],
         "infected": "Yes"
     },
-    "Tulip": {
-        "charId": "char_513_apionr",
+    "Poncirus": {
+        "charId": "char_488_buildr",
         "gender": "Female",
-        "race": "Pythia",
-        "group": "",
-        "nation": "None",
+        "race": "Liberi",
+        "group": "Siesta",
+        "nation": "Columbia",
         "position": "Melee",
         "profession": "Vanguard",
         "archetype": "Pioneer",
         "rarity": 5,
         "cost": [
-            10,
-            12
+            11,
+            13
         ],
         "infected": "Yes"
     },
@@ -1471,6 +1519,22 @@
         ],
         "infected": "No"
     },
+    "Bryophyta": {
+        "charId": "char_4106_bryota",
+        "gender": "Male",
+        "race": "Liberi",
+        "group": "Siesta",
+        "nation": "Columbia",
+        "position": "Melee",
+        "profession": "Guard",
+        "archetype": "Instructor",
+        "rarity": 5,
+        "cost": [
+            16,
+            18
+        ],
+        "infected": "Yes"
+    },
     "Franka": {
         "charId": "char_106_franka",
         "gender": "Female",
@@ -1518,22 +1582,6 @@
             20
         ],
         "infected": "No"
-    },
-    "Sharp": {
-        "charId": "char_508_aguard",
-        "gender": "Male",
-        "race": "Pythia",
-        "group": "",
-        "nation": "None",
-        "position": "Melee",
-        "profession": "Guard",
-        "archetype": "Fearless",
-        "rarity": 5,
-        "cost": [
-            15,
-            17
-        ],
-        "infected": "Yes"
     },
     "Indra": {
         "charId": "char_155_tiger",
@@ -1855,22 +1903,6 @@
         ],
         "infected": "No"
     },
-    "Stormeye": {
-        "charId": "char_511_asnipe",
-        "gender": "Male",
-        "race": "Sarkaz",
-        "group": "",
-        "nation": "None",
-        "position": "Ranged",
-        "profession": "Sniper",
-        "archetype": "Fastshot",
-        "rarity": 5,
-        "cost": [
-            10,
-            12
-        ],
-        "infected": "Yes"
-    },
     "April": {
         "charId": "char_365_aprl",
         "gender": "Female",
@@ -2079,22 +2111,6 @@
         ],
         "infected": "No"
     },
-    "Pith": {
-        "charId": "char_509_acast",
-        "gender": "Female",
-        "race": "Liberi",
-        "group": "",
-        "nation": "None",
-        "position": "Ranged",
-        "profession": "Caster",
-        "archetype": "Splashcaster",
-        "rarity": 5,
-        "cost": [
-            29,
-            32
-        ],
-        "infected": "Yes"
-    },
     "Leizi": {
         "charId": "char_306_leizi",
         "gender": "Female",
@@ -2159,6 +2175,22 @@
         ],
         "infected": "Yes"
     },
+    "Santalla": {
+        "charId": "char_341_sntlla",
+        "gender": "Female",
+        "race": "Feline",
+        "group": "",
+        "nation": "Sami",
+        "position": "Ranged",
+        "profession": "Caster",
+        "archetype": "Splashcaster",
+        "rarity": 5,
+        "cost": [
+            30,
+            33
+        ],
+        "infected": "Yes"
+    },
     "Mint": {
         "charId": "char_388_mint",
         "gender": "Female",
@@ -2204,6 +2236,22 @@
         "cost": [
             22,
             24
+        ],
+        "infected": "No"
+    },
+    "Delphine": {
+        "charId": "char_4110_delphn",
+        "gender": "Female",
+        "race": "Feline",
+        "group": "",
+        "nation": "Victoria",
+        "position": "Ranged",
+        "profession": "Caster",
+        "archetype": "Mystic",
+        "rarity": 5,
+        "cost": [
+            24,
+            26
         ],
         "infected": "No"
     },
@@ -2287,6 +2335,22 @@
         ],
         "infected": "Yes"
     },
+    "Diamante": {
+        "charId": "char_499_kaitou",
+        "gender": "Male",
+        "race": "Caprinae",
+        "group": "",
+        "nation": "Leithanien",
+        "position": "Ranged",
+        "profession": "Caster",
+        "archetype": "Primcaster",
+        "rarity": 5,
+        "cost": [
+            18,
+            20
+        ],
+        "infected": "Yes"
+    },
     "Mayer": {
         "charId": "char_242_otter",
         "gender": "Female",
@@ -2364,22 +2428,6 @@
         "cost": [
             19,
             21
-        ],
-        "infected": "Yes"
-    },
-    "Touch": {
-        "charId": "char_510_amedic",
-        "gender": "Female",
-        "race": "Caprinae",
-        "group": "",
-        "nation": "None",
-        "position": "Ranged",
-        "profession": "Medic",
-        "archetype": "Physician",
-        "rarity": 5,
-        "cost": [
-            16,
-            18
         ],
         "infected": "Yes"
     },
@@ -2479,6 +2527,22 @@
         ],
         "infected": "Yes"
     },
+    "Vendela": {
+        "charId": "char_494_vendla",
+        "gender": "Female",
+        "race": "Feline",
+        "group": "",
+        "nation": "Victoria",
+        "position": "Ranged",
+        "profession": "Medic",
+        "archetype": "Incantationmedic",
+        "rarity": 5,
+        "cost": [
+            15,
+            17
+        ],
+        "infected": "Yes"
+    },
     "Paprika": {
         "charId": "char_4071_peper",
         "gender": "Female",
@@ -2517,6 +2581,22 @@
         "race": "Perro",
         "group": "Lee's Detective Agency",
         "nation": "Lungmen",
+        "position": "Melee",
+        "profession": "Defender",
+        "archetype": "Guardian",
+        "rarity": 5,
+        "cost": [
+            17,
+            21
+        ],
+        "infected": "No"
+    },
+    "Bassline": {
+        "charId": "char_4109_baslin",
+        "gender": "Male",
+        "race": "Lupo",
+        "group": "",
+        "nation": "Leithanien",
         "position": "Melee",
         "profession": "Defender",
         "archetype": "Guardian",
@@ -2927,6 +3007,22 @@
         ],
         "infected": "Yes"
     },
+    "Coldshot": {
+        "charId": "char_4104_coldst",
+        "gender": "Female",
+        "race": "Elafia",
+        "group": "",
+        "nation": "Columbia",
+        "position": "Ranged",
+        "profession": "Sniper",
+        "archetype": "Hunter",
+        "rarity": 5,
+        "cost": [
+            17,
+            21
+        ],
+        "infected": "No"
+    },
     "Spuria": {
         "charId": "char_4015_spuria",
         "gender": "Female",
@@ -2974,6 +3070,22 @@
             15
         ],
         "infected": "No"
+    },
+    "Almond": {
+        "charId": "char_4105_almond",
+        "gender": "Female",
+        "race": "Perro",
+        "group": "Blacksteel",
+        "nation": "Columbia",
+        "position": "Melee",
+        "profession": "Specialist",
+        "archetype": "Hookmaster",
+        "rarity": 5,
+        "cost": [
+            11,
+            13
+        ],
+        "infected": "Yes"
     },
     "Pramanix": {
         "charId": "char_174_slbell",
@@ -3150,6 +3262,22 @@
             12
         ],
         "infected": "No"
+    },
+    "Valarqvin": {
+        "charId": "char_4102_threye",
+        "gender": "Female",
+        "race": "Sarkaz",
+        "group": "",
+        "nation": "Sami",
+        "position": "Ranged",
+        "profession": "Supporter",
+        "archetype": "Ritualist",
+        "rarity": 5,
+        "cost": [
+            13,
+            15
+        ],
+        "infected": "Yes"
     },
     "Manticore": {
         "charId": "char_215_mantic",
@@ -3422,6 +3550,22 @@
             24
         ],
         "infected": "No"
+    },
+    "Typhon": {
+        "charId": "char_2012_typhon",
+        "gender": "Female",
+        "race": "Sarkaz",
+        "group": "",
+        "nation": "Sami",
+        "position": "Ranged",
+        "profession": "Sniper",
+        "archetype": "Siegesniper",
+        "rarity": 6,
+        "cost": [
+            22,
+            24
+        ],
+        "infected": "Yes"
     },
     "Rosmontis": {
         "charId": "char_391_rosmon",
@@ -3887,6 +4031,22 @@
         ],
         "infected": "No"
     },
+    "Virtuosa": {
+        "charId": "char_245_cello",
+        "gender": "Female",
+        "race": "Sankta",
+        "group": "",
+        "nation": "Laterano",
+        "position": "Ranged",
+        "profession": "Supporter",
+        "archetype": "Ritualist",
+        "rarity": 6,
+        "cost": [
+            14,
+            16
+        ],
+        "infected": "No"
+    },
     "Phantom": {
         "charId": "char_250_phatom",
         "gender": "Male",
@@ -3940,6 +4100,22 @@
         "gender": "Male",
         "race": "Lung",
         "group": "Lee's Detective Agency",
+        "nation": "Lungmen",
+        "position": "Melee",
+        "profession": "Specialist",
+        "archetype": "Merchant",
+        "rarity": 6,
+        "cost": [
+            7,
+            9
+        ],
+        "infected": "No"
+    },
+    "Swire the Elegant Wit": {
+        "charId": "char_1033_swire2",
+        "gender": "Female",
+        "race": "Feline",
+        "group": "",
         "nation": "Lungmen",
         "position": "Melee",
         "profession": "Specialist",
@@ -4111,6 +4287,22 @@
         ],
         "infected": "No"
     },
+    "Eyjafjalla the Hvít Aska": {
+        "charId": "char_1016_agoat2",
+        "gender": "Female",
+        "race": "Caprinae",
+        "group": "",
+        "nation": "Leithanien",
+        "position": "Ranged",
+        "profession": "Medic",
+        "archetype": "Wandermedic",
+        "rarity": 6,
+        "cost": [
+            14,
+            16
+        ],
+        "infected": "Yes"
+    },
     "Reed the Flame Shadow": {
         "charId": "char_1020_reed2",
         "gender": "Female",
@@ -4255,6 +4447,22 @@
         ],
         "infected": "No"
     },
+    "Jessica the Liberated": {
+        "charId": "char_1034_jesca2",
+        "gender": "Female",
+        "race": "Feline",
+        "group": "Blacksteel",
+        "nation": "Columbia",
+        "position": "Melee",
+        "profession": "Defender",
+        "archetype": "Shotprotector",
+        "rarity": 6,
+        "cost": [
+            19,
+            23
+        ],
+        "infected": "No"
+    },
     "Mountain": {
         "charId": "char_264_f12yin",
         "gender": "Male",
@@ -4334,6 +4542,22 @@
             20
         ],
         "infected": "No"
+    },
+    "Hoederer": {
+        "charId": "char_4088_hodrer",
+        "gender": "Male",
+        "race": "Sarkaz",
+        "group": "",
+        "nation": "Rhodes Island",
+        "position": "Melee",
+        "profession": "Guard",
+        "archetype": "Crusher",
+        "rarity": 6,
+        "cost": [
+            20,
+            24
+        ],
+        "infected": "Yes"
     },
     "Ch'en": {
         "charId": "char_010_chen",
@@ -4415,6 +4639,22 @@
         ],
         "infected": "Yes"
     },
+    "Viviana": {
+        "charId": "char_4098_vvana",
+        "gender": "Female",
+        "race": "Elafia",
+        "group": "",
+        "nation": "Leithanien",
+        "position": "Melee",
+        "profession": "Guard",
+        "archetype": "Artsfghter",
+        "rarity": 6,
+        "cost": [
+            19,
+            21
+        ],
+        "infected": "No"
+    },
     "Hellagur": {
         "charId": "char_188_helage",
         "gender": "Male",
@@ -4460,6 +4700,22 @@
         "cost": [
             17,
             19
+        ],
+        "infected": "No"
+    },
+    "Lessing": {
+        "charId": "char_4011_lessng",
+        "gender": "Male",
+        "race": "Caprinae",
+        "group": "",
+        "nation": "Leithanien",
+        "position": "Melee",
+        "profession": "Guard",
+        "archetype": "Fearless",
+        "rarity": 6,
+        "cost": [
+            19,
+            21
         ],
         "infected": "No"
     },

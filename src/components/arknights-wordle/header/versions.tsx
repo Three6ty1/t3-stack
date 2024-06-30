@@ -6,8 +6,8 @@ export default function VersionLog() {
     const versions = [
         {
         version: "1.1",
-        content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+11)",
-        added: [["char_2012_typhon", 6], ["char_341_sntlla", 5], ["char_4032_provs", 5], ["char_1034_jesca2", 6], ["char_4105_almond", 5], ["char_4088_hodrer", 6],["char_494_vendla", 5],["char_4107_vrdant", 4],["char_4098_vvana", 6],["char_245_cello", 6],["char_4109_baslin", 5]],
+        content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+11)\n- Added missing operators Friston-3 and U-Official (+2)",
+        added: [["char_2012_typhon", 6], ["char_341_sntlla", 5], ["char_4032_provs", 5], ["char_1034_jesca2", 6], ["char_4105_almond", 5], ["char_4088_hodrer", 6],["char_494_vendla", 5],["char_4107_vrdant", 4],["char_4098_vvana", 6],["char_245_cello", 6],["char_4109_baslin", 5], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
         },
         {
         version: "1.0",
