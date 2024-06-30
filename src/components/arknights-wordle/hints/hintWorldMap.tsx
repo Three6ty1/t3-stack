@@ -54,18 +54,16 @@ export default function HintWorldMap() {
           </svg>
         </button>
       </div>
-      <dialog id="world_map_modal" className="modal w-screen overflow-visible">
-        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box h-2/3 md:h-auto max-w-[95vw] md:max-w-[80vw]">
-          <div className="mt-5 flex flex-row flex-wrap justify-start">
-            {Object.entries(regions).map(region => (
-              <div tabIndex={0} className="collapse w-1/2 md:w-1/4 text-left md:p-2" key={region[0]}>
-                <div className="collapse-title text-xl font-bold">{region[0]}</div>
-                <div className="collapse-content">
-                  <p className="whitespace-pre-line">{region[1]}</p>
-                </div>
+      <dialog id="world_map_modal" className="modal overflow-visible">
+        <div className="no-scrollbar no-scrollbar::-webkit-scrollbar modal-box h-2/3 md:h-auto max-w-[95vw] md:w-3/5 mt-5 p-2 md:p-6 flex flex-row flex-wrap justify-start">
+          {Object.entries(regions).map(region => (
+            <div tabIndex={0} className="collapse w-1/2 md:w-1/4 text-left md:p-2" key={region[0]}>
+              <div className="collapse-title text-xl font-bold">{region[0]}</div>
+              <div className="collapse-content">
+                <p className="whitespace-pre-line">{region[1]}</p>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
