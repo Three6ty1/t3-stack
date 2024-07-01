@@ -20,8 +20,10 @@ import { getDateString } from "~/helper/helper";
 import { api } from "~/utils/api";
 
 export default function ArknightsWordle({
+  stats,
   allOperators,
 }: {
+  stats: Stats;
   allOperators: Operator[];
 }) {
   const [guesses, setGuesses] = React.useState<GuessResult[]>([]);
@@ -29,20 +31,8 @@ export default function ArknightsWordle({
   const [isInputDelay, setIsInputDelay] = React.useState(false);
   const [darkMode, setDarkMode] = React.useState(false);
   const [error, setError] = React.useState("");
-  const [stats, setStats] = React.useState<Stats>();
-  const statsData = api.wordle.stats.useQuery();
 
   const winMutation = api.wordle.updateWins.useMutation();
-
-  React.useEffect(() => {
-    const initStats = () => {
-      if (!statsData.error) {
-        setStats(statsData.data)
-      }
-    }
-
-    initStats()
-  }, [statsData])
 
   React.useEffect(() => {
     const initGuesses = () => {
@@ -146,58 +136,54 @@ export default function ArknightsWordle({
       id="ak-wordle-root"
       className="justify-top flex h-full w-full flex-col items-center p-5 pt-10 text-center align-middle font-sans"
     >
-      {stats && 
-        <>
-          <Theme handleThemeChange={(e) => handleThemeChange(e)} />
-          <Info darkMode={darkMode} stats={stats} />
-          <Hints amtGuesses={guesses.length} allOperators={allOperators} />
+      <Theme handleThemeChange={(e) => handleThemeChange(e)} />
+      <Info darkMode={darkMode} stats={stats} />
+      <Hints amtGuesses={guesses.length} allOperators={allOperators} />
 
-          {error != "" ? <p className="text-red-500">{error}</p> : null}
+      {error != "" ? <p className="text-red-500">{error}</p> : null}
 
-          <div className="grid w-full justify-center">
-            {/**
-             * Using grid and col-start to force these elements to overlap one another
-             * This is so the search bar appears ontop of the answer row instead of pushing it down.
-             */}
-            <div className="z-10 col-start-1 row-start-1 flex h-fit w-full flex-col align-middle">
-              {playing && !isInputDelay && (
-                <Search
-                  handleSubmit={(promise, callback) =>
-                    handleSubmit(promise, callback)
-                  }
-                  allOperators={allOperators}
-                  stats={stats}
-                />
-              )}
-            </div>
+      <div className="grid w-full justify-center">
+        {/**
+         * Using grid and col-start to force these elements to overlap one another
+         * This is so the search bar appears ontop of the answer row instead of pushing it down.
+         */}
+        <div className="z-10 col-start-1 row-start-1 flex h-fit w-full flex-col align-middle">
+          {playing && !isInputDelay && (
+            <Search
+              handleSubmit={(promise, callback) =>
+                handleSubmit(promise, callback)
+              }
+              allOperators={allOperators}
+              stats={stats}
+            />
+          )}
+        </div>
 
-            {!playing && !isInputDelay && (
-              <div className="col-start-1 row-start-1 flex w-full flex-col pb-10 align-middle">
-                <ShareBox gameInfo={stats} />
-              </div>
-            )}
-
-            {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
-            <div className="relative top-20 col-start-1 row-start-1 flex flex-col overflow-y-clip overflow-x-scroll pb-10 md:overflow-x-visible md:overflow-y-visible">
-              {/** Wrapper for div to expand into scrollable area in mobile */}
-              <div className="flex w-fit flex-col">
-                {guesses && guesses.length > 0 && (
-                  <>
-                    <CategoryRows />
-                    {guesses.map((guess: GuessResult, index) => (
-                      <AnswerRow
-                        key={guess.charId ? guess.charId : index}
-                        guess={guess}
-                        index={index}
-                      />
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
+        {!playing && !isInputDelay && (
+          <div className="col-start-1 row-start-1 flex w-full flex-col pb-10 align-middle">
+            <ShareBox gameInfo={stats} />
           </div>
-        </>
-      }
+        )}
+
+        {/** Needs margin top or else it overlaps with search bar due to the grid formatting. */}
+        <div className="relative top-20 col-start-1 row-start-1 flex flex-col overflow-y-clip overflow-x-scroll pb-10 md:overflow-x-visible md:overflow-y-visible">
+          {/** Wrapper for div to expand into scrollable area in mobile */}
+          <div className="flex w-fit flex-col">
+            {guesses && guesses.length > 0 && (
+              <>
+                <CategoryRows />
+                {guesses.map((guess: GuessResult, index) => (
+                  <AnswerRow
+                    key={guess.charId ? guess.charId : index}
+                    guess={guess}
+                    index={index}
+                  />
+                ))}
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
