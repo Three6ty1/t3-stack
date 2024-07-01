@@ -1,4 +1,4 @@
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 import { Range, Correctness } from '~/helper/helper';
 
 export type GuessResult = {

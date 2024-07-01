@@ -1,25 +1,25 @@
-import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import * as wordle from "./wordleServer";
 import { db } from "~/server/db";
-import { Operator } from "@prisma/client";
+import type { Operator } from "@prisma/client";
 
-const operatorSchema = z.object({
-    id: z.number(),
-    charId: z.string(),
-    name: z.string(),
-    gender: z.string(),
-    race: z.string(),
-    group: z.string().nullable(),
-    nation: z.string(),
-    profession: z.string(),
-    archetype: z.string(),
-    position: z.string(),
-    infected: z.string(),
-    rarity: z.number(),
-    costE0: z.number(),
-    costE2: z.number(),
-})
+// import { z } from "zod";
+// const operatorSchema = z.object({
+//     id: z.number(),
+//     charId: z.string(),
+//     name: z.string(),
+//     gender: z.string(),
+//     race: z.string(),
+//     group: z.string().nullable(),
+//     nation: z.string(),
+//     profession: z.string(),
+//     archetype: z.string(),
+//     position: z.string(),
+//     infected: z.string(),
+//     rarity: z.number(),
+//     costE0: z.number(),
+//     costE2: z.number(),
+// })
 
 export const wordleRouter = createTRPCRouter({
     // Mutation because we might generate a new operator
@@ -28,7 +28,7 @@ export const wordleRouter = createTRPCRouter({
             const res = await wordle.getOperatorStats(ctx.db);
             return res;
     }),
-    
+
     allOperators: publicProcedure
         .query(async ({ ctx }) => {
             return await wordle.getAllOperators(ctx.db);

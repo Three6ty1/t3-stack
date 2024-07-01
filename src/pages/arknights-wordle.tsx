@@ -1,8 +1,7 @@
 import React from "react";
-import { TRPCClientError } from "@trpc/client";
 
 // Types
-import { GuessResult, compareGuess, type CompareResponse } from "~/helper/compare";
+import { type GuessResult, compareGuess } from "~/helper/compare";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
 import type { GetStaticProps } from "next";

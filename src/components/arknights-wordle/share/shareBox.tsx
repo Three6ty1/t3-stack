@@ -1,7 +1,6 @@
-import type { GuessResult } from "~/server/api/routers/wordleServer";
+import type { GuessResult } from "~/helper/compare";
 import { Range, Correctness } from "~/helper/helper";
 import React from "react";
-import type { ChosenOperators } from "@prisma/client";
 
 type Props = {
   gameId: number;
