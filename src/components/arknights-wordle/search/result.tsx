@@ -2,23 +2,21 @@ import type { Operator } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
 import { getOperatorIconUrl } from "~/helper/helper";
-import type { Stats } from "~/server/api/routers/wordle";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { api } from "~/utils/api";
+import type { GuessResult } from "~/helper/compare";
 
 type Props = {
   operator: Operator;
   setResults: (value: Operator[]) => void;
   handleSubmit: (
-    promise: Promise<GuessResult>,
+    guess: Operator,
     callback: (success: boolean) => void,
   ) => void;
-  stats: Stats;
 };
 
-export default function Result({ operator, handleSubmit, setResults, stats }: Props) {
+export default function Result({ operator, handleSubmit, setResults }: Props) {
   const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
 
+  // Past guesses here to make the text of a previously guessed operator blue
   React.useEffect(() => {
     const ls = localStorage.getItem("guesses");
     const _pastGuesses = ls ? (JSON.parse(ls) as unknown as GuessResult[]) : [];
@@ -34,18 +32,12 @@ export default function Result({ operator, handleSubmit, setResults, stats }: Pr
     textStyle += "text-higher";
   }
 
-  const utils = api.useUtils();
-
   const handleClick = (e: React.MouseEvent) => {
     setResults([]);
     e.preventDefault();
     e.stopPropagation();
     handleSubmit(
-      utils.wordle.compare.fetch({
-        guessOp: operator,
-        guesses: pastGuesses,
-        correctId: stats.operatorId,
-      }),
+      operator,
       () => {
         return;
       },

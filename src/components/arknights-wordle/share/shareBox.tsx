@@ -4,10 +4,10 @@ import React from "react";
 import type { ChosenOperators } from "@prisma/client";
 
 type Props = {
-  gameInfo: ChosenOperators;
+  gameId: number;
 };
 
-export default function ShareBox({ gameInfo }: Props) {
+export default function ShareBox({ gameId }: Props) {
   const [shareString, setShareString] = React.useState("");
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -65,7 +65,7 @@ export default function ShareBox({ gameInfo }: Props) {
   }, []);
 
   const handleShare = () => {
-    const newString = `Arknights Wordle #${gameInfo.gameId}\nOperator guessed in ` + shareString + "https://three6ty1.vercel.app/arknights-wordle";
+    const newString = `Arknights Wordle #${gameId}\nOperator guessed in ` + shareString + "https://three6ty1.vercel.app/arknights-wordle";
     navigator.clipboard.writeText(newString).catch(() => {
       console.log("Cannot add to clipboard");
     });

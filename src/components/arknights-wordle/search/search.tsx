@@ -1,20 +1,17 @@
 import SearchBar from "./searchBar";
 import React from "react";
 import Result from "./result";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
 
 type Props = {
   handleSubmit: (
-    promise: Promise<GuessResult>,
+    guess: Operator,
     callback: (success: boolean) => void,
   ) => void;
   allOperators: Operator[];
-  stats: Stats;
 };
 
-export default function Search({ handleSubmit, allOperators, stats }: Props) {
+export default function Search({ handleSubmit, allOperators }: Props) {
   const [results, setResults] = React.useState<Operator[]>([]);
 
   return (
@@ -23,7 +20,6 @@ export default function Search({ handleSubmit, allOperators, stats }: Props) {
         setResults={(value) => setResults(value)}
         handleSubmit={handleSubmit}
         allOperators={allOperators}
-        stats={stats}
       />
       {results.length > 0 && (
         <div
@@ -38,7 +34,6 @@ export default function Search({ handleSubmit, allOperators, stats }: Props) {
               operator={op}
               handleSubmit={handleSubmit}
               setResults={(value) => setResults(value)}
-              stats={stats}
             />
           ))}
         </div>

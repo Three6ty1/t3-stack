@@ -1,29 +1,22 @@
 import type { Operator } from "@prisma/client";
 import React from "react";
-import type { Stats } from "~/server/api/routers/wordle";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
-import { api } from "~/utils/api";
 
 type Props = {
   setResults: (value: Operator[]) => void;
   handleSubmit: (
-    promise: Promise<GuessResult>,
+    guess: Operator,
     callback: (success: boolean) => void,
   ) => void;
   allOperators: Operator[];
-  stats: Stats;
 };
 
 export default function SearchBar({
   setResults,
   handleSubmit,
   allOperators,
-  stats,
 }: Props) {
   const [input, setInput] = React.useState("");
   const [_results, _setResults] = React.useState<Operator[]>([]);
-
-  const utils = api.useUtils();
 
   const handleChange = (value: string) => {
     setInput(value);
@@ -62,22 +55,12 @@ export default function SearchBar({
       setResults([]);
       _setResults([]);
       
-      const ls = localStorage.getItem("guesses");
-      const _pastGuesses: GuessResult[] = ls
-        ? (JSON.parse(ls) as unknown as GuessResult[])
-        : [];
-      const pastGuesses = _pastGuesses.map((guess) => guess.name);
-
       const callback = () => {
         setInput("");
       };
 
       handleSubmit(
-        utils.wordle.compare.fetch({
-          guessOp: guess,
-          guesses: pastGuesses,
-          correctId: stats.operatorId,
-        }),
+        guess,
         callback,
       );
     }

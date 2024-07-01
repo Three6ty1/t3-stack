@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import * as wordle from "./wordleServer";
 import { db } from "~/server/db";
+import { Operator } from "@prisma/client";
 
 const operatorSchema = z.object({
     id: z.number(),
@@ -28,18 +29,6 @@ export const wordleRouter = createTRPCRouter({
             return res;
     }),
     
-    compare: publicProcedure
-        .input(z.object(
-            { 
-                guessOp: operatorSchema, 
-                guesses: z.array(z.string()),
-                correctId: z.number(),
-            }
-        ))
-        .query(async ({ ctx, input }) => {
-            return await wordle.compareGuess(ctx.db, input.guessOp, input.guesses, input.correctId);
-    }),
-
     allOperators: publicProcedure
         .query(async ({ ctx }) => {
             return await wordle.getAllOperators(ctx.db);
@@ -62,6 +51,6 @@ export const getAllOperators = async() => {
 export type Stats = {
     gameId: number;
     date: string;
-    operatorId: number;
+    operator: Operator;
     timesGuessed: number;
 }

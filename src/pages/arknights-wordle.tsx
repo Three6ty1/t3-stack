@@ -2,7 +2,10 @@ import React from "react";
 import { TRPCClientError } from "@trpc/client";
 
 // Types
-import { type GuessResult } from "~/server/api/routers/wordleServer";
+import { GuessResult, compareGuess, type CompareResponse } from "~/helper/compare";
+import type { Stats } from "~/server/api/routers/wordle";
+import type { Operator } from "@prisma/client";
+import type { GetStaticProps } from "next";
 
 // Components
 import Theme from "~/components/arknights-wordle/header/theme";
@@ -12,10 +15,7 @@ import Search from "~/components/arknights-wordle/search/search";
 import CategoryRows from "~/components/arknights-wordle/results/categoryRow";
 import AnswerRow from "~/components/arknights-wordle/results/answerRow";
 import ShareBox from "~/components/arknights-wordle/share/shareBox";
-import type { GetStaticProps } from "next";
 import { getAllOperators, getStats } from "~/server/api/routers/wordle";
-import type { Stats } from "~/server/api/routers/wordle";
-import type { Operator } from "@prisma/client";
 import { getDateString } from "~/helper/helper";
 import { api } from "~/utils/api";
 
@@ -83,43 +83,44 @@ export default function ArknightsWordle({
   }, []);
 
   const handleSubmit = (
-    promise: Promise<GuessResult>,
+    guess: Operator,
     callback: (success: boolean) => void,
   ) => {
-    promise
-      .then((result) => {
-        setError("");
-        setIsInputDelay(true);
-        const ls = localStorage.getItem("guesses");
-        const pastGuesses: GuessResult[] = ls
-          ? (JSON.parse(ls) as unknown as GuessResult[])
-          : [];
-        // Insert the newest guess at the first index of the answer row array
-        const newGuesses = [result, ...pastGuesses];
-        localStorage.setItem("guesses", JSON.stringify(newGuesses));
-        setGuesses(newGuesses);
+    const ls = localStorage.getItem("guesses");
+    const pastGuesses: GuessResult[] = ls
+      ? (JSON.parse(ls) as unknown as GuessResult[])
+      : [];
+      const guesses = pastGuesses.map((guess) => guess.name);
+    const res = compareGuess(guess, guesses, stats.operator)
 
-        // Prevent the user from being able to input new guesses with an input delay, and to let the winning animation play fully
-        // state change while this animation is occuring will stop the animation entirely.
-        if (result.correct) {
-          setTimeout(() => setPlaying(false), 4000);
-          setTimeout(() => setIsInputDelay(false), 4000);
-          localStorage.setItem("playing", "false");
-          setPlaying(false);
-          winMutation.mutate();
-        } else {
-          setTimeout(() => setIsInputDelay(false), 2500);
-        }
-        callback(true);
-      })
-      .catch((error) => {
-        if (error instanceof TRPCClientError) {
-          setError(error.message);
-        } else {
-          setError(`Something went wrong ${error}`);
-        }
-        callback(false);
-      });
+    if (res.valid && res.guessResult != null) {
+      setError("");
+      setIsInputDelay(true);
+      // Insert the newest guess at the first index of the answer row array
+      const newGuesses = [res.guessResult, ...pastGuesses];
+      localStorage.setItem("guesses", JSON.stringify(newGuesses));
+      setGuesses(newGuesses);
+
+      // Prevent the user from being able to input new guesses with an input delay, and to let the winning animation play fully
+      // state change while this animation is occuring will stop the animation entirely.
+      if (res.guessResult?.correct) {
+        setTimeout(() => setPlaying(false), 4000);
+        setTimeout(() => setIsInputDelay(false), 4000);
+        localStorage.setItem("playing", "false");
+        setPlaying(false);
+        winMutation.mutate();
+      } else {
+        setTimeout(() => setIsInputDelay(false), 2500);
+      }
+      callback(true);
+    } else {
+      if (res.error.length > 0) {
+        setError(error);
+      } else {
+        setError(`Something went wrong ${error}`);
+      }
+      callback(false)
+    }
   };
 
   const handleThemeChange = (e: HTMLInputElement) => {
@@ -150,18 +151,17 @@ export default function ArknightsWordle({
         <div className="z-10 col-start-1 row-start-1 flex h-fit w-full flex-col align-middle">
           {playing && !isInputDelay && (
             <Search
-              handleSubmit={(promise, callback) =>
-                handleSubmit(promise, callback)
+              handleSubmit={(guess, callback) =>
+                handleSubmit(guess, callback)
               }
               allOperators={allOperators}
-              stats={stats}
             />
           )}
         </div>
 
         {!playing && !isInputDelay && (
           <div className="col-start-1 row-start-1 flex w-full flex-col pb-10 align-middle">
-            <ShareBox gameInfo={stats} />
+            <ShareBox gameId={stats.gameId} />
           </div>
         )}
 
