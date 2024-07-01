@@ -35,6 +35,16 @@ export default function ArknightsWordle({
   const winMutation = api.wordle.updateWins.useMutation();
 
   React.useEffect(() => {
+    const initStats = () => {
+      if (!statsData.error) {
+        setStats(statsData.data)
+      }
+    }
+
+    initStats()
+  }, [statsData])
+
+  React.useEffect(() => {
     const initGuesses = () => {
       const now = getDateString();
       const lastPlayed = localStorage.getItem("lastPlayed");
@@ -78,13 +88,6 @@ export default function ArknightsWordle({
       }
     };
 
-    const initStats = () => {
-      if (!statsData.error) {
-        setStats(statsData.data)
-      }
-    }
-
-    initStats()
     initGuesses();
     initTheme();
   }, []);
