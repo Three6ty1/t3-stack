@@ -6,11 +6,11 @@ export default function VersionLog() {
     const versions = [
         {
             version: "1.3",
-            content: "- Added share with markdown feature to reduce share length by hyperlinking url\n- Added metadata and icon to the site\n"
+            content: "- Added share with markdown feature to reduce text length by hyperlinking url (Mainly for Discord)\n- Added metadata and icon to the site. Wordle and Arknights Rhodes Island icons were used and edited.\n- Added alias searching for cases such as Kirin Yato and Rathalos Noir Corne\n- Added a bunch of joke aliases/nicknames. I hope everyone has as much fun discovering them as I did adding them\n- For example, try searching for \"Doggo\" (sorry namie) :^)\n- I plan on adding an endless mode (Client side)\n- Till next time, Wdance"
         },
         {
             version: "1.2",
-            content: "- Moved all the compare logic to the client side to reduce function invocation limits\n- There was an earlier caching oversight causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
+            content: "- Moved all the compare logic to the client side to reduce function invocation limits\n- There was an earlier caching oversight causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (insert sobbing emoji)\n",
         },
         {
             version: "1.1",

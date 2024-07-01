@@ -1,6 +1,7 @@
 {
     "Lancet-2": {
         "charId": "char_285_medic2",
+        "alias": [],
         "gender": "Female",
         "race": "Robot",
         "group": "",
@@ -17,6 +18,7 @@
     },
     "Castle-3": {
         "charId": "char_286_cast3",
+        "alias": [],
         "gender": "Male",
         "race": "Robot",
         "group": "",
@@ -33,6 +35,7 @@
     },
     "THRM-EX": {
         "charId": "char_376_therex",
+        "alias": [],
         "gender": "Male",
         "race": "Robot",
         "group": "",
@@ -49,6 +52,7 @@
     },
     "'Justice Knight'": {
         "charId": "char_4000_jnight",
+        "alias": [],
         "gender": "Female",
         "race": "Robot",
         "group": "Pinus Sylvestris",
@@ -65,6 +69,7 @@
     },
     "Terra Research Commission": {
         "charId": "char_4077_palico",
+        "alias": [],
         "gender": "Unknown",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -81,6 +86,7 @@
     },
     "U-Official": {
         "charId": "char_4091_ulika",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -97,6 +103,7 @@
     },
     "Friston-3": {
         "charId": "char_4093_frston",
+        "alias": [],
         "gender": "Male",
         "race": "Robot",
         "group": "",
@@ -113,6 +120,7 @@
     },
     "Yato": {
         "charId": "char_502_nblade",
+        "alias": [],
         "gender": "Female",
         "race": "Oni",
         "group": "Action 4",
@@ -129,6 +137,7 @@
     },
     "Noir Corne": {
         "charId": "char_500_noirc",
+        "alias": [],
         "gender": "Male",
         "race": "Oni",
         "group": "Action 4",
@@ -145,6 +154,7 @@
     },
     "Rangers": {
         "charId": "char_503_rang",
+        "alias": [],
         "gender": "Male",
         "race": "Savra",
         "group": "Action 4",
@@ -161,6 +171,7 @@
     },
     "Durin": {
         "charId": "char_501_durin",
+        "alias": [],
         "gender": "Female",
         "race": "Durin",
         "group": "Action 4",
@@ -177,6 +188,7 @@
     },
     "12F": {
         "charId": "char_009_12fce",
+        "alias": [],
         "gender": "Male",
         "race": "Savra",
         "group": "",
@@ -193,6 +205,7 @@
     },
     "Fang": {
         "charId": "char_123_fang",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "Reserve 1",
@@ -209,6 +222,7 @@
     },
     "Vanilla": {
         "charId": "char_240_wyvern",
+        "alias": [],
         "gender": "Female",
         "race": "Vouivre",
         "group": "Blacksteel",
@@ -225,6 +239,7 @@
     },
     "Plume": {
         "charId": "char_192_falco",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -241,6 +256,9 @@
     },
     "Melantha": {
         "charId": "char_208_melan",
+        "alias": [
+            "Kyostinv"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "Reserve 4",
@@ -257,6 +275,7 @@
     },
     "Popukar": {
         "charId": "char_281_popka",
+        "alias": [],
         "gender": "Female",
         "race": "Cautus",
         "group": "Reserve 6",
@@ -273,6 +292,7 @@
     },
     "Cardigan": {
         "charId": "char_209_ardign",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "Reserve 4",
@@ -289,6 +309,7 @@
     },
     "Beagle": {
         "charId": "char_122_beagle",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "Reserve 1",
@@ -305,6 +326,7 @@
     },
     "Spot": {
         "charId": "char_284_spot",
+        "alias": [],
         "gender": "Male",
         "race": "Rebbah",
         "group": "Reserve 6",
@@ -321,6 +343,9 @@
     },
     "Kroos": {
         "charId": "char_124_kroos",
+        "alias": [
+            "Kokodayo"
+        ],
         "gender": "Female",
         "race": "Cautus",
         "group": "Reserve 1",
@@ -337,6 +362,7 @@
     },
     "Adnachiel": {
         "charId": "char_211_adnach",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "Reserve 4",
@@ -353,6 +379,7 @@
     },
     "Lava": {
         "charId": "char_121_lava",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Reserve 1",
@@ -369,6 +396,7 @@
     },
     "Hibiscus": {
         "charId": "char_120_hibisc",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Reserve 1",
@@ -385,6 +413,7 @@
     },
     "Ansel": {
         "charId": "char_212_ansel",
+        "alias": [],
         "gender": "Male",
         "race": "Cautus",
         "group": "Reserve 4",
@@ -401,6 +430,7 @@
     },
     "Steward": {
         "charId": "char_210_stward",
+        "alias": [],
         "gender": "Male",
         "race": "Vulpo",
         "group": "Reserve 4",
@@ -417,6 +447,7 @@
     },
     "Orchid": {
         "charId": "char_278_orchid",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Reserve 6",
@@ -433,6 +464,7 @@
     },
     "Haze": {
         "charId": "char_141_nights",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -449,6 +481,7 @@
     },
     "Gitano": {
         "charId": "char_109_fmout",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -465,6 +498,7 @@
     },
     "Greyy": {
         "charId": "char_253_greyy",
+        "alias": [],
         "gender": "Male",
         "race": "Perro",
         "group": "",
@@ -481,6 +515,7 @@
     },
     "Click": {
         "charId": "char_328_cammou",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -497,6 +532,7 @@
     },
     "Indigo": {
         "charId": "char_469_indigo",
+        "alias": [],
         "gender": "Female",
         "race": "Pythia",
         "group": "",
@@ -513,6 +549,7 @@
     },
     "Pudding": {
         "charId": "char_4004_pudd",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -529,6 +566,11 @@
     },
     "Jessica": {
         "charId": "char_235_jesica",
+        "alias": [
+            "Depressed cat",
+            "Rich",
+            "Sad cat"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "Blacksteel",
@@ -545,6 +587,7 @@
     },
     "Meteor": {
         "charId": "char_126_shotst",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -561,6 +604,7 @@
     },
     "Vermeil": {
         "charId": "char_190_clour",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -577,6 +621,7 @@
     },
     "May": {
         "charId": "char_133_mm",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -593,6 +638,7 @@
     },
     "Shirayuki": {
         "charId": "char_118_yuki",
+        "alias": [],
         "gender": "Female",
         "race": "Anaty",
         "group": "",
@@ -609,6 +655,7 @@
     },
     "Pinecone": {
         "charId": "char_440_pinecn",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -625,6 +672,7 @@
     },
     "Ambriel": {
         "charId": "char_302_glaze",
+        "alias": [],
         "gender": "Female",
         "race": "Sankta",
         "group": "",
@@ -641,6 +689,7 @@
     },
     "Aciddrop": {
         "charId": "char_366_acdrop",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -657,6 +706,7 @@
     },
     "Totter": {
         "charId": "char_4062_totter",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "",
@@ -673,6 +723,7 @@
     },
     "Caper": {
         "charId": "char_4100_caper",
+        "alias": [],
         "gender": "Female",
         "race": "Cautus",
         "group": "",
@@ -689,6 +740,7 @@
     },
     "Courier": {
         "charId": "char_198_blackd",
+        "alias": [],
         "gender": "Male",
         "race": "Itra",
         "group": "Karlan Trade",
@@ -705,6 +757,7 @@
     },
     "Scavenger": {
         "charId": "char_149_scave",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "S.W.E.E.P.",
@@ -721,6 +774,11 @@
     },
     "Vigna": {
         "charId": "char_290_vigna",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Guitar"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -737,6 +795,9 @@
     },
     "Myrtle": {
         "charId": "char_151_myrtle",
+        "alias": [
+            "Printer"
+        ],
         "gender": "Female",
         "race": "Durin",
         "group": "",
@@ -753,6 +814,9 @@
     },
     "Beanstalk": {
         "charId": "char_452_bstalk",
+        "alias": [
+            "Breeder"
+        ],
         "gender": "Female",
         "race": "Rebbah",
         "group": "",
@@ -769,6 +833,7 @@
     },
     "Dobermann": {
         "charId": "char_130_doberm",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "",
@@ -785,6 +850,7 @@
     },
     "Matoimaru": {
         "charId": "char_289_gyuki",
+        "alias": [],
         "gender": "Female",
         "race": "Oni",
         "group": "",
@@ -801,6 +867,7 @@
     },
     "Conviction": {
         "charId": "char_159_peacok",
+        "alias": [],
         "gender": "Conviction",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -817,6 +884,7 @@
     },
     "Frostleaf": {
         "charId": "char_193_frostl",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -833,6 +901,7 @@
     },
     "Estelle": {
         "charId": "char_127_estell",
+        "alias": [],
         "gender": "Female",
         "race": "Archosauria",
         "group": "",
@@ -849,6 +918,7 @@
     },
     "Mousse": {
         "charId": "char_185_frncat",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -865,6 +935,7 @@
     },
     "Cutter": {
         "charId": "char_301_cutter",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -881,6 +952,7 @@
     },
     "Utage": {
         "charId": "char_337_utage",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -897,6 +969,7 @@
     },
     "Arene": {
         "charId": "char_271_spikes",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "",
@@ -913,6 +986,7 @@
     },
     "Luo Xiaohei": {
         "charId": "char_4067_lolxh",
+        "alias": [],
         "gender": "Male",
         "race": "Feline",
         "group": "",
@@ -929,6 +1003,7 @@
     },
     "Quartz": {
         "charId": "char_4063_quartz",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -945,6 +1020,7 @@
     },
     "Humus": {
         "charId": "char_491_humus",
+        "alias": [],
         "gender": "Male",
         "race": "Forte",
         "group": "",
@@ -961,6 +1037,11 @@
     },
     "Gravel": {
         "charId": "char_237_gravel",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Guitar"
+        ],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -977,6 +1058,7 @@
     },
     "Jaye": {
         "charId": "char_272_strong",
+        "alias": [],
         "gender": "Male",
         "race": "Ursus",
         "group": "",
@@ -993,6 +1075,7 @@
     },
     "Rope": {
         "charId": "char_236_rope",
+        "alias": [],
         "gender": "Female",
         "race": "Cautus",
         "group": "",
@@ -1009,6 +1092,7 @@
     },
     "Myrrh": {
         "charId": "char_117_myrrh",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -1025,6 +1109,7 @@
     },
     "Gavial": {
         "charId": "char_187_ccheal",
+        "alias": [],
         "gender": "Female",
         "race": "Archosauria",
         "group": "",
@@ -1041,6 +1126,9 @@
     },
     "Sussurro": {
         "charId": "char_298_susuro",
+        "alias": [
+            "Among Us"
+        ],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -1057,6 +1145,7 @@
     },
     "Perfumer": {
         "charId": "char_181_flower",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -1073,6 +1162,7 @@
     },
     "Purestream": {
         "charId": "char_385_finlpp",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -1089,6 +1179,7 @@
     },
     "Chestnut": {
         "charId": "char_4041_chnut",
+        "alias": [],
         "gender": "Male",
         "race": "Durin",
         "group": "",
@@ -1105,6 +1196,7 @@
     },
     "Matterhorn": {
         "charId": "char_199_yak",
+        "alias": [],
         "gender": "Male",
         "race": "Forte",
         "group": "Karlan Trade",
@@ -1121,6 +1213,7 @@
     },
     "Cuora": {
         "charId": "char_150_snakek",
+        "alias": [],
         "gender": "Female",
         "race": "Petram",
         "group": "",
@@ -1137,6 +1230,7 @@
     },
     "Bubble": {
         "charId": "char_381_bubble",
+        "alias": [],
         "gender": "Female",
         "race": "Cerato",
         "group": "",
@@ -1153,6 +1247,7 @@
     },
     "Gummy": {
         "charId": "char_196_sunbr",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "Ursus Student Self-Governing Group",
@@ -1169,6 +1264,7 @@
     },
     "Dur-nar": {
         "charId": "char_260_durnar",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -1185,6 +1281,7 @@
     },
     "Deepcolor": {
         "charId": "char_110_deepcl",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -1201,6 +1298,7 @@
     },
     "Earthspirit": {
         "charId": "char_183_skgoat",
+        "alias": [],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -1217,6 +1315,7 @@
     },
     "Podenco": {
         "charId": "char_258_podego",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "",
@@ -1233,6 +1332,7 @@
     },
     "Roberta": {
         "charId": "char_484_robrta",
+        "alias": [],
         "gender": "Female",
         "race": "Anaty",
         "group": "",
@@ -1249,6 +1349,7 @@
     },
     "Ethan": {
         "charId": "char_355_ethan",
+        "alias": [],
         "gender": "Male",
         "race": "Savra",
         "group": "",
@@ -1265,6 +1366,10 @@
     },
     "Shaw": {
         "charId": "char_277_sqrrel",
+        "alias": [
+            "Rap god",
+            "Eminem"
+        ],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -1281,6 +1386,7 @@
     },
     "Verdant": {
         "charId": "char_4107_vrdant",
+        "alias": [],
         "gender": "Male",
         "race": "Pythia",
         "group": "",
@@ -1297,6 +1403,10 @@
     },
     "Ptilopsis": {
         "charId": "char_128_plosis",
+        "alias": [
+            "Table",
+            "Tea Apple Sauce"
+        ],
         "gender": "Female",
         "race": "Liberi",
         "group": "Rhine Lab",
@@ -1313,6 +1423,7 @@
     },
     "Breeze": {
         "charId": "char_275_breeze",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -1329,6 +1440,7 @@
     },
     "Zima": {
         "charId": "char_115_headbr",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "Ursus Student Self-Governing Group",
@@ -1345,6 +1457,7 @@
     },
     "Texas": {
         "charId": "char_102_texas",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "Penguin Logistics",
@@ -1361,6 +1474,7 @@
     },
     "Chiave": {
         "charId": "char_349_chiave",
+        "alias": [],
         "gender": "Male",
         "race": "Vulpo",
         "group": "Chiave's Gang",
@@ -1377,6 +1491,7 @@
     },
     "Poncirus": {
         "charId": "char_488_buildr",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Siesta",
@@ -1393,6 +1508,7 @@
     },
     "Reed": {
         "charId": "char_261_sddrag",
+        "alias": [],
         "gender": "Female",
         "race": "Draco",
         "group": "",
@@ -1409,6 +1525,7 @@
     },
     "Wild Mane": {
         "charId": "char_496_wildmn",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "Pinus Sylvestris",
@@ -1425,6 +1542,7 @@
     },
     "Elysium": {
         "charId": "char_401_elysm",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "",
@@ -1441,6 +1559,7 @@
     },
     "Blacknight": {
         "charId": "char_476_blkngt",
+        "alias": [],
         "gender": "Female",
         "race": "Savra",
         "group": "",
@@ -1457,6 +1576,7 @@
     },
     "Cantabile": {
         "charId": "char_497_ctable",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1473,6 +1593,7 @@
     },
     "Puzzle": {
         "charId": "char_4017_puzzle",
+        "alias": [],
         "gender": "Male",
         "race": "Vouivre",
         "group": "",
@@ -1489,6 +1610,10 @@
     },
     "Swire": {
         "charId": "char_308_swire",
+        "alias": [
+            "Gao",
+            "Rich"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "LGD",
@@ -1505,6 +1630,10 @@
     },
     "Whislash": {
         "charId": "char_265_sophia",
+        "alias": [
+            "Auntie",
+            "Aunty"
+        ],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -1521,6 +1650,7 @@
     },
     "Bryophyta": {
         "charId": "char_4106_bryota",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "Siesta",
@@ -1537,6 +1667,7 @@
     },
     "Franka": {
         "charId": "char_106_franka",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "Blacksteel",
@@ -1553,6 +1684,7 @@
     },
     "Flamebringer": {
         "charId": "char_131_flameb",
+        "alias": [],
         "gender": "Male",
         "race": "Sarkaz",
         "group": "",
@@ -1569,6 +1701,7 @@
     },
     "Morgan": {
         "charId": "char_154_morgan",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Glasgow",
@@ -1585,6 +1718,7 @@
     },
     "Indra": {
         "charId": "char_155_tiger",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Glasgow",
@@ -1601,6 +1735,7 @@
     },
     "Flint": {
         "charId": "char_415_flint",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1617,6 +1752,7 @@
     },
     "Dagda": {
         "charId": "char_157_dagda",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Glasgow",
@@ -1633,6 +1769,9 @@
     },
     "Lappland": {
         "charId": "char_140_whitew",
+        "alias": [
+            "Lappy"
+        ],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -1649,6 +1788,7 @@
     },
     "Ayerscarpe": {
         "charId": "char_294_ayer",
+        "alias": [],
         "gender": "Male",
         "race": "Cautus",
         "group": "",
@@ -1665,6 +1805,7 @@
     },
     "Wind Chimes": {
         "charId": "char_4083_chimes",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "",
@@ -1681,6 +1822,7 @@
     },
     "Bibeak": {
         "charId": "char_252_bibeak",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1697,6 +1839,7 @@
     },
     "Tachanka": {
         "charId": "char_459_tachak",
+        "alias": [],
         "gender": "Male",
         "race": "Unknown/Undisclosed",
         "group": "Rainbow 6",
@@ -1713,6 +1856,7 @@
     },
     "Specter": {
         "charId": "char_143_ghost",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Abyssal Hunter",
@@ -1729,6 +1873,7 @@
     },
     "Broca": {
         "charId": "char_356_broca",
+        "alias": [],
         "gender": "Male",
         "race": "Feline",
         "group": "Chiave's Gang",
@@ -1745,6 +1890,7 @@
     },
     "Astesia": {
         "charId": "char_274_astesi",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1761,6 +1907,7 @@
     },
     "Sideroca": {
         "charId": "char_333_sidero",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "",
@@ -1777,6 +1924,7 @@
     },
     "Akafuyu": {
         "charId": "char_475_akafyu",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -1793,6 +1941,9 @@
     },
     "Rathalos S Noir Corne": {
         "charId": "char_1030_noirc2",
+        "alias": [
+            "Noir"
+        ],
         "gender": "Male",
         "race": "Oni",
         "group": "Action 4",
@@ -1809,6 +1960,7 @@
     },
     "La Pluma": {
         "charId": "char_421_crow",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1825,6 +1977,7 @@
     },
     "Highmore": {
         "charId": "char_4066_highmo",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -1841,6 +1994,7 @@
     },
     "Tequila": {
         "charId": "char_486_takila",
+        "alias": [],
         "gender": "Male",
         "race": "Perro",
         "group": "",
@@ -1857,6 +2011,10 @@
     },
     "Blue Poison": {
         "charId": "char_129_bluep",
+        "alias": [
+            "bp",
+            "Table"
+        ],
         "gender": "Female",
         "race": "Anura",
         "group": "",
@@ -1873,6 +2031,10 @@
     },
     "Platinum": {
         "charId": "char_204_platnm",
+        "alias": [
+            "Cutting board",
+            "Ab roller"
+        ],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -1889,6 +2051,7 @@
     },
     "GreyThroat": {
         "charId": "char_367_swllow",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -1905,6 +2068,7 @@
     },
     "April": {
         "charId": "char_365_aprl",
+        "alias": [],
         "gender": "Female",
         "race": "Cautus",
         "group": "",
@@ -1921,6 +2085,9 @@
     },
     "Kroos the Keen Glint": {
         "charId": "char_1021_kroos2",
+        "alias": [
+            "Kokodayo"
+        ],
         "gender": "Female",
         "race": "Cautus",
         "group": "",
@@ -1937,6 +2104,7 @@
     },
     "Insider": {
         "charId": "char_498_inside",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "",
@@ -1953,6 +2121,7 @@
     },
     "Meteorite": {
         "charId": "char_219_meteo",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -1969,6 +2138,7 @@
     },
     "Sesa": {
         "charId": "char_379_sesa",
+        "alias": [],
         "gender": "Male",
         "race": "Vouivre",
         "group": "",
@@ -1985,6 +2155,7 @@
     },
     "Jieyun": {
         "charId": "char_4078_bdhkgt",
+        "alias": [],
         "gender": "Female",
         "race": "Anasa",
         "group": "",
@@ -2001,6 +2172,7 @@
     },
     "Executor": {
         "charId": "char_279_excu",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "",
@@ -2017,6 +2189,7 @@
     },
     "Aosta": {
         "charId": "char_346_aosta",
+        "alias": [],
         "gender": "Male",
         "race": "Lupo",
         "group": "Chiave's Gang",
@@ -2033,6 +2206,9 @@
     },
     "Amiya": {
         "charId": "char_002_amiya",
+        "alias": [
+            "Donkey"
+        ],
         "gender": "Female",
         "race": "Chimera",
         "group": "",
@@ -2049,6 +2225,7 @@
     },
     "Absinthe": {
         "charId": "char_405_absin",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "",
@@ -2065,6 +2242,7 @@
     },
     "Tomimi": {
         "charId": "char_411_tomimi",
+        "alias": [],
         "gender": "Female",
         "race": "Archosauria",
         "group": "",
@@ -2081,6 +2259,7 @@
     },
     "Qanipalaat": {
         "charId": "char_466_qanik",
+        "alias": [],
         "gender": "Male",
         "race": "Vulpo",
         "group": "",
@@ -2097,6 +2276,7 @@
     },
     "Skyfire": {
         "charId": "char_166_skfire",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2113,6 +2293,7 @@
     },
     "Leizi": {
         "charId": "char_306_leizi",
+        "alias": [],
         "gender": "Female",
         "race": "Kylin",
         "group": "",
@@ -2129,6 +2310,7 @@
     },
     "Astgenne": {
         "charId": "char_135_halo",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Rhine Lab",
@@ -2145,6 +2327,7 @@
     },
     "Beeswax": {
         "charId": "char_344_beewax",
+        "alias": [],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -2161,6 +2344,7 @@
     },
     "Leonhardt": {
         "charId": "char_373_lionhd",
+        "alias": [],
         "gender": "Male",
         "race": "Cautus",
         "group": "",
@@ -2177,6 +2361,7 @@
     },
     "Santalla": {
         "charId": "char_341_sntlla",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2193,6 +2378,7 @@
     },
     "Mint": {
         "charId": "char_388_mint",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2209,6 +2395,7 @@
     },
     "Iris": {
         "charId": "char_338_iris",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2225,6 +2412,9 @@
     },
     "Harmonie": {
         "charId": "char_297_hamoni",
+        "alias": [
+            "Smug cat"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "Dublinn",
@@ -2241,6 +2431,7 @@
     },
     "Delphine": {
         "charId": "char_4110_delphn",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2257,6 +2448,7 @@
     },
     "Lava the Purgatory": {
         "charId": "char_1011_lava2",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -2273,6 +2465,7 @@
     },
     "Corroserum": {
         "charId": "char_489_serum",
+        "alias": [],
         "gender": "Male",
         "race": "Pythia",
         "group": "",
@@ -2289,6 +2482,7 @@
     },
     "Kjera": {
         "charId": "char_4013_kjera",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Karlan Trade",
@@ -2305,6 +2499,7 @@
     },
     "Rockrock": {
         "charId": "char_4040_rockr",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2321,6 +2516,7 @@
     },
     "Minimalist": {
         "charId": "char_4054_malist",
+        "alias": [],
         "gender": "Male",
         "race": "Durin",
         "group": "",
@@ -2337,6 +2533,7 @@
     },
     "Diamante": {
         "charId": "char_499_kaitou",
+        "alias": [],
         "gender": "Male",
         "race": "Caprinae",
         "group": "",
@@ -2353,6 +2550,7 @@
     },
     "Mayer": {
         "charId": "char_242_otter",
+        "alias": [],
         "gender": "Female",
         "race": "Anaty",
         "group": "Rhine Lab",
@@ -2369,6 +2567,7 @@
     },
     "Scene": {
         "charId": "char_336_folivo",
+        "alias": [],
         "gender": "Female",
         "race": "Pilosa",
         "group": "",
@@ -2385,6 +2584,7 @@
     },
     "Silence": {
         "charId": "char_108_silent",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Rhine Lab",
@@ -2401,6 +2601,7 @@
     },
     "Warfarin": {
         "charId": "char_171_bldsk",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -2417,6 +2618,9 @@
     },
     "Folinic": {
         "charId": "char_345_folnic",
+        "alias": [
+            "Harmacist"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2433,6 +2637,7 @@
     },
     "Ceylon": {
         "charId": "char_348_ceylon",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Siesta",
@@ -2449,6 +2654,7 @@
     },
     "Whisperain": {
         "charId": "char_436_whispr",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -2465,6 +2671,7 @@
     },
     "Tuye": {
         "charId": "char_402_tuye",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "",
@@ -2481,6 +2688,7 @@
     },
     "Mulberry": {
         "charId": "char_473_mberry",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -2497,6 +2705,7 @@
     },
     "Honeyberry": {
         "charId": "char_449_glider",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -2513,6 +2722,9 @@
     },
     "Hibiscus the Purifier": {
         "charId": "char_1024_hbisc2",
+        "alias": [
+            "Harmacist"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -2529,6 +2741,7 @@
     },
     "Vendela": {
         "charId": "char_494_vendla",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -2545,6 +2758,7 @@
     },
     "Paprika": {
         "charId": "char_4071_peper",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -2561,6 +2775,7 @@
     },
     "Nearl": {
         "charId": "char_148_nearl",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "Followers",
@@ -2577,6 +2792,7 @@
     },
     "Hung": {
         "charId": "char_226_hmau",
+        "alias": [],
         "gender": "Male",
         "race": "Perro",
         "group": "Lee's Detective Agency",
@@ -2593,6 +2809,7 @@
     },
     "Bassline": {
         "charId": "char_4109_baslin",
+        "alias": [],
         "gender": "Male",
         "race": "Lupo",
         "group": "",
@@ -2609,6 +2826,7 @@
     },
     "Projekt Red": {
         "charId": "char_144_red",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "S.W.E.E.P.",
@@ -2625,6 +2843,7 @@
     },
     "Waai Fu": {
         "charId": "char_243_waaifu",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Lee's Detective Agency",
@@ -2641,6 +2860,7 @@
     },
     "Kafka": {
         "charId": "char_214_kafka",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -2657,6 +2877,7 @@
     },
     "Mr. Nothing": {
         "charId": "char_455_nothin",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "",
@@ -2673,6 +2894,7 @@
     },
     "Liskarm": {
         "charId": "char_107_liskam",
+        "alias": [],
         "gender": "Female",
         "race": "Vouivre",
         "group": "Blacksteel",
@@ -2689,6 +2911,7 @@
     },
     "Croissant": {
         "charId": "char_201_moeshd",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "Penguin Logistics",
@@ -2705,6 +2928,7 @@
     },
     "Bison": {
         "charId": "char_325_bison",
+        "alias": [],
         "gender": "Male",
         "race": "Forte",
         "group": "",
@@ -2721,6 +2945,7 @@
     },
     "Vulcan": {
         "charId": "char_163_hpsts",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "",
@@ -2737,6 +2962,11 @@
     },
     "Asbestos": {
         "charId": "char_378_asbest",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Speaker"
+        ],
         "gender": "Female",
         "race": "Savra",
         "group": "",
@@ -2753,6 +2983,7 @@
     },
     "Shalem": {
         "charId": "char_4025_aprot2",
+        "alias": [],
         "gender": "Male",
         "race": "Pythia",
         "group": "",
@@ -2769,6 +3000,7 @@
     },
     "Czerny": {
         "charId": "char_4047_pianst",
+        "alias": [],
         "gender": "Male",
         "race": "Elafia",
         "group": "",
@@ -2785,6 +3017,7 @@
     },
     "Blitz": {
         "charId": "char_457_blitz",
+        "alias": [],
         "gender": "Male",
         "race": "Unknown/Undisclosed",
         "group": "Rainbow 6",
@@ -2801,6 +3034,7 @@
     },
     "Heavyrain": {
         "charId": "char_304_zebra",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -2817,6 +3051,7 @@
     },
     "Ashlock": {
         "charId": "char_431_ashlok",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "Pinus Sylvestris",
@@ -2833,6 +3068,7 @@
     },
     "Firewhistle": {
         "charId": "char_493_firwhl",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -2849,6 +3085,7 @@
     },
     "Aurora": {
         "charId": "char_422_aurora",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "Karlan Trade",
@@ -2865,6 +3102,7 @@
     },
     "Cement": {
         "charId": "char_464_cement",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -2881,6 +3119,7 @@
     },
     "Provence": {
         "charId": "char_145_prove",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -2897,6 +3136,7 @@
     },
     "Melanite": {
         "charId": "char_4006_melnte",
+        "alias": [],
         "gender": "Female",
         "race": "Pythia",
         "group": "",
@@ -2913,6 +3153,7 @@
     },
     "Firewatch": {
         "charId": "char_158_milu",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -2929,6 +3170,11 @@
     },
     "Andreana": {
         "charId": "char_218_cuttle",
+        "alias": [
+            "Lowlight",
+            "UmiNeko",
+            "HaiMao"
+        ],
         "gender": "Female",
         "race": "Ægir",
         "group": "Abyssal Hunter",
@@ -2945,6 +3191,7 @@
     },
     "Lunacub": {
         "charId": "char_4014_lunacu",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -2961,6 +3208,7 @@
     },
     "Toddifons": {
         "charId": "char_363_toddi",
+        "alias": [],
         "gender": "Female",
         "race": "Vouivre",
         "group": "",
@@ -2977,6 +3225,7 @@
     },
     "Erato": {
         "charId": "char_4043_erato",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -2993,6 +3242,7 @@
     },
     "Greyy the Lightningbearer": {
         "charId": "char_1027_greyy2",
+        "alias": [],
         "gender": "Male",
         "race": "Perro",
         "group": "",
@@ -3009,6 +3259,7 @@
     },
     "Coldshot": {
         "charId": "char_4104_coldst",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -3025,6 +3276,7 @@
     },
     "Spuria": {
         "charId": "char_4015_spuria",
+        "alias": [],
         "gender": "Female",
         "race": "Sankta",
         "group": "",
@@ -3041,6 +3293,7 @@
     },
     "Cliffheart": {
         "charId": "char_173_slchan",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Karlan Trade",
@@ -3057,6 +3310,7 @@
     },
     "Snowsant": {
         "charId": "char_383_snsant",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -3073,6 +3327,7 @@
     },
     "Almond": {
         "charId": "char_4105_almond",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "Blacksteel",
@@ -3089,6 +3344,7 @@
     },
     "Pramanix": {
         "charId": "char_174_slbell",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Karlan Trade",
@@ -3105,6 +3361,7 @@
     },
     "Shamare": {
         "charId": "char_254_vodfox",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -3121,6 +3378,7 @@
     },
     "Istina": {
         "charId": "char_195_glassb",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "Ursus Student Self-Governing Group",
@@ -3137,6 +3395,7 @@
     },
     "Glaucus": {
         "charId": "char_326_glacus",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -3153,6 +3412,7 @@
     },
     "Proviso": {
         "charId": "char_4032_provs",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -3169,6 +3429,7 @@
     },
     "Windflit": {
         "charId": "char_433_windft",
+        "alias": [],
         "gender": "Male",
         "race": "Perro",
         "group": "",
@@ -3185,6 +3446,7 @@
     },
     "Sora": {
         "charId": "char_101_sora",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Penguin Logistics",
@@ -3201,6 +3463,7 @@
     },
     "Heidi": {
         "charId": "char_4045_heidi",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -3217,6 +3480,7 @@
     },
     "Tsukinogi": {
         "charId": "char_343_tknogi",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -3233,6 +3497,7 @@
     },
     "Nine-Colored Deer": {
         "charId": "char_4019_ncdeer",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -3249,6 +3514,7 @@
     },
     "Quercus": {
         "charId": "char_492_quercu",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -3265,6 +3531,7 @@
     },
     "Valarqvin": {
         "charId": "char_4102_threye",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -3281,6 +3548,7 @@
     },
     "Manticore": {
         "charId": "char_215_mantic",
+        "alias": [],
         "gender": "Female",
         "race": "Manticore",
         "group": "",
@@ -3297,6 +3565,7 @@
     },
     "Kirara": {
         "charId": "char_478_kirara",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -3313,6 +3582,9 @@
     },
     "FEater": {
         "charId": "char_241_panda",
+        "alias": [
+            "Po"
+        ],
         "gender": "Female",
         "race": "Ursus",
         "group": "",
@@ -3329,6 +3601,7 @@
     },
     "Enforcer": {
         "charId": "char_4036_forcer",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "",
@@ -3345,6 +3618,7 @@
     },
     "Robin": {
         "charId": "char_451_robin",
+        "alias": [],
         "gender": "Female",
         "race": "Anaty",
         "group": "",
@@ -3361,6 +3635,7 @@
     },
     "Frost": {
         "charId": "char_458_rfrost",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Rainbow 6",
@@ -3377,6 +3652,7 @@
     },
     "Bena": {
         "charId": "char_369_bena",
+        "alias": [],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -3393,6 +3669,7 @@
     },
     "Kazemaru": {
         "charId": "char_4016_kazema",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -3409,6 +3686,13 @@
     },
     "Exusiai": {
         "charId": "char_103_angel",
+        "alias": [
+            "Apple pie",
+            "Exia",
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Drums"
+        ],
         "gender": "Female",
         "race": "Sankta",
         "group": "Penguin Logistics",
@@ -3425,6 +3709,7 @@
     },
     "Archetto": {
         "charId": "char_332_archet",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -3441,6 +3726,7 @@
     },
     "Ash": {
         "charId": "char_456_ash",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Rainbow 6",
@@ -3457,6 +3743,7 @@
     },
     "Schwarz": {
         "charId": "char_340_shwaz",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Siesta",
@@ -3473,6 +3760,7 @@
     },
     "Pozëmka": {
         "charId": "char_4055_bgsnow",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -3489,6 +3777,7 @@
     },
     "Fartooth": {
         "charId": "char_430_fartth",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Pinus Sylvestris",
@@ -3505,6 +3794,14 @@
     },
     "W": {
         "charId": "char_113_cqbw",
+        "alias": [
+            "Cockroach",
+            "Wei wai wei wai",
+            "wei wei wei wei",
+            "Dance",
+            "wdance",
+            "Renegade"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Babel",
@@ -3521,6 +3818,9 @@
     },
     "Fiammetta": {
         "charId": "char_300_phenxi",
+        "alias": [
+            "Angry Bird"
+        ],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -3537,6 +3837,7 @@
     },
     "Rosa": {
         "charId": "char_197_poca",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "Ursus Student Self-Governing Group",
@@ -3553,6 +3854,7 @@
     },
     "Typhon": {
         "charId": "char_2012_typhon",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -3569,6 +3871,7 @@
     },
     "Rosmontis": {
         "charId": "char_391_rosmon",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Elite Operators",
@@ -3585,6 +3888,12 @@
     },
     "Ch'en the Holungday": {
         "charId": "char_1013_chen2",
+        "alias": [
+            "Waifu",
+            "Lung Wrath",
+            "Female Tourist C",
+            "Balans"
+        ],
         "gender": "Female",
         "race": "Lung",
         "group": "",
@@ -3601,6 +3910,9 @@
     },
     "Siege": {
         "charId": "char_112_siege",
+        "alias": [
+            "Saber"
+        ],
         "gender": "Female",
         "race": "Aslan",
         "group": "Glasgow",
@@ -3617,6 +3929,10 @@
     },
     "Bagpipe": {
         "charId": "char_222_bpipe",
+        "alias": [
+            "Coco",
+            "Nino"
+        ],
         "gender": "Female",
         "race": "Vouivre",
         "group": "",
@@ -3633,6 +3949,12 @@
     },
     "Saga": {
         "charId": "char_362_saga",
+        "alias": [
+            "Doggo",
+            "Doge",
+            "Natto Gohan",
+            "Aburaage"
+        ],
         "gender": "Female",
         "race": "Perro",
         "group": "",
@@ -3649,6 +3971,7 @@
     },
     "Saileach": {
         "charId": "char_479_sleach",
+        "alias": [],
         "gender": "Female",
         "race": "Vouivre",
         "group": "",
@@ -3665,6 +3988,7 @@
     },
     "Flametail": {
         "charId": "char_420_flamtl",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "Pinus Sylvestris",
@@ -3681,6 +4005,7 @@
     },
     "Vigil": {
         "charId": "char_427_vigil",
+        "alias": [],
         "gender": "Male",
         "race": "Lupo",
         "group": "",
@@ -3697,6 +4022,10 @@
     },
     "Muelsyse": {
         "charId": "char_249_mlyss",
+        "alias": [
+            "Mumu",
+            "Elf"
+        ],
         "gender": "Female",
         "race": "Elf",
         "group": "Rhine Lab",
@@ -3713,6 +4042,7 @@
     },
     "Ines": {
         "charId": "char_4087_ines",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -3729,6 +4059,9 @@
     },
     "Ifrit": {
         "charId": "char_134_ifrit",
+        "alias": [
+            "Tile"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Rhine Lab",
@@ -3745,6 +4078,11 @@
     },
     "Mostima": {
         "charId": "char_213_mostma",
+        "alias": [
+            "Za warudo",
+            "Dio",
+            "Blueberry pie"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -3761,6 +4099,12 @@
     },
     "Eyjafjalla": {
         "charId": "char_180_amgoat",
+        "alias": [
+            "Volcano",
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Vocals"
+        ],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -3777,6 +4121,10 @@
     },
     "Ceobe": {
         "charId": "char_2013_cerber",
+        "alias": [
+            "Doggo",
+            "Kay"
+        ],
         "gender": "Female",
         "race": "Perro",
         "group": "",
@@ -3793,6 +4141,11 @@
     },
     "Ho'olheyak": {
         "charId": "char_4027_heyak",
+        "alias": [
+            "Birb",
+            "Snek",
+            "Shogun"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -3809,6 +4162,9 @@
     },
     "Dusk": {
         "charId": "char_2015_dusk",
+        "alias": [
+            "Bean"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Sui",
@@ -3825,6 +4181,10 @@
     },
     "Passenger": {
         "charId": "char_472_pasngr",
+        "alias": [
+            "Godsenger",
+            "I am the storm that is approaching"
+        ],
         "gender": "Male",
         "race": "Liberi",
         "group": "",
@@ -3841,6 +4201,7 @@
     },
     "Carnelian": {
         "charId": "char_426_billro",
+        "alias": [],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -3857,6 +4218,10 @@
     },
     "Lin": {
         "charId": "char_4080_lin",
+        "alias": [
+            "Lung Wrath",
+            "Rat"
+        ],
         "gender": "Female",
         "race": "Zalak",
         "group": "",
@@ -3873,6 +4238,12 @@
     },
     "Goldenglow": {
         "charId": "char_377_gdglow",
+        "alias": [
+            "Dog",
+            "Namie",
+            "gg",
+            "Doggo"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -3889,6 +4260,7 @@
     },
     "Ebenholz": {
         "charId": "char_4046_ebnhlz",
+        "alias": [],
         "gender": "Male",
         "race": "Caprinae",
         "group": "",
@@ -3905,6 +4277,7 @@
     },
     "Gnosis": {
         "charId": "char_206_gnosis",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "Karlan Trade",
@@ -3921,6 +4294,7 @@
     },
     "Angelina": {
         "charId": "char_291_aglina",
+        "alias": [],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -3937,6 +4311,11 @@
     },
     "Suzuran": {
         "charId": "char_358_lisa",
+        "alias": [
+            "Light",
+            "Sob",
+            "Our light"
+        ],
         "gender": "Female",
         "race": "Vulpo",
         "group": "",
@@ -3953,6 +4332,10 @@
     },
     "Magallan": {
         "charId": "char_248_mgllan",
+        "alias": [
+            "Pingu",
+            "Noot noot"
+        ],
         "gender": "Female",
         "race": "Liberi",
         "group": "Rhine Lab",
@@ -3969,6 +4352,7 @@
     },
     "Skadi the Corrupting Heart": {
         "charId": "char_1012_skadi2",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "",
@@ -3985,6 +4369,7 @@
     },
     "Silence the Paradigmatic": {
         "charId": "char_1031_slent2",
+        "alias": [],
         "gender": "Female",
         "race": "Liberi",
         "group": "Rhine Lab",
@@ -4001,6 +4386,10 @@
     },
     "Ling": {
         "charId": "char_2023_ling",
+        "alias": [
+            "Blue woman",
+            "Bean"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Sui",
@@ -4017,6 +4406,7 @@
     },
     "Stainless": {
         "charId": "char_4072_ironmn",
+        "alias": [],
         "gender": "Male",
         "race": "Feline",
         "group": "",
@@ -4033,6 +4423,7 @@
     },
     "Virtuosa": {
         "charId": "char_245_cello",
+        "alias": [],
         "gender": "Female",
         "race": "Sankta",
         "group": "",
@@ -4049,6 +4440,7 @@
     },
     "Phantom": {
         "charId": "char_250_phatom",
+        "alias": [],
         "gender": "Male",
         "race": "Feline",
         "group": "",
@@ -4065,6 +4457,10 @@
     },
     "Texas the Omertosa": {
         "charId": "char_1028_texas2",
+        "alias": [
+            "Delete",
+            "Taxes"
+        ],
         "gender": "Female",
         "race": "Lupo",
         "group": "Penguin Logistics",
@@ -4081,6 +4477,10 @@
     },
     "Kirin R Yato": {
         "charId": "char_1029_yato2",
+        "alias": [
+            "Delete",
+            "Yato"
+        ],
         "gender": "Female",
         "race": "Oni",
         "group": "Action 4",
@@ -4097,6 +4497,7 @@
     },
     "Lee": {
         "charId": "char_322_lmlee",
+        "alias": [],
         "gender": "Male",
         "race": "Lung",
         "group": "Lee's Detective Agency",
@@ -4113,6 +4514,10 @@
     },
     "Swire the Elegant Wit": {
         "charId": "char_1033_swire2",
+        "alias": [
+            "Gao",
+            "Rich"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -4129,6 +4534,7 @@
     },
     "Weedy": {
         "charId": "char_400_weedy",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "",
@@ -4145,6 +4551,9 @@
     },
     "Aak": {
         "charId": "char_225_haak",
+        "alias": [
+            "Harmacist"
+        ],
         "gender": "Male",
         "race": "Feline",
         "group": "Lee's Detective Agency",
@@ -4161,6 +4570,7 @@
     },
     "Gladiia": {
         "charId": "char_474_glady",
+        "alias": [],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Abyssal Hunter",
@@ -4177,6 +4587,10 @@
     },
     "Mizuki": {
         "charId": "char_437_mizuki",
+        "alias": [
+            "Namie",
+            "Armpits"
+        ],
         "gender": "Male",
         "race": "Ægir",
         "group": "",
@@ -4193,6 +4607,7 @@
     },
     "Specter the Unchained": {
         "charId": "char_1023_ghost2",
+        "alias": [],
         "gender": "Female",
         "race": "Ægir",
         "group": "Abyssal Hunter",
@@ -4209,6 +4624,7 @@
     },
     "Dorothy": {
         "charId": "char_4048_doroth",
+        "alias": [],
         "gender": "Female",
         "race": "Zalak",
         "group": "Rhine Lab",
@@ -4225,6 +4641,11 @@
     },
     "Shining": {
         "charId": "char_147_shining",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Keyboard"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Followers",
@@ -4241,6 +4662,7 @@
     },
     "Nightingale": {
         "charId": "char_179_cgbird",
+        "alias": [],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "Followers",
@@ -4257,6 +4679,14 @@
     },
     "Kal'tsit": {
         "charId": "char_003_kalts",
+        "alias": [
+            "Old Well",
+            "Well",
+            "Ex wife",
+            "Hag",
+            "Fossil",
+            "Harmacist"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -4273,6 +4703,7 @@
     },
     "Lumen": {
         "charId": "char_4042_lumen",
+        "alias": [],
         "gender": "Male",
         "race": "Ægir",
         "group": "",
@@ -4289,6 +4720,11 @@
     },
     "Eyjafjalla the Hvít Aska": {
         "charId": "char_1016_agoat2",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Vocals"
+        ],
         "gender": "Female",
         "race": "Caprinae",
         "group": "",
@@ -4305,6 +4741,9 @@
     },
     "Reed the Flame Shadow": {
         "charId": "char_1020_reed2",
+        "alias": [
+            "Harmacist"
+        ],
         "gender": "Female",
         "race": "Draco",
         "group": "Dublinn",
@@ -4321,6 +4760,11 @@
     },
     "Hoshiguma": {
         "charId": "char_136_hsguma",
+        "alias": [
+            "Yes Im on fire",
+            "Ignited by a burning desire",
+            "Bass"
+        ],
         "gender": "Female",
         "race": "Oni",
         "group": "LGD",
@@ -4337,6 +4781,9 @@
     },
     "Saria": {
         "charId": "char_202_demkni",
+        "alias": [
+            "Dad"
+        ],
         "gender": "Female",
         "race": "Vouivre",
         "group": "Rhine Lab",
@@ -4353,6 +4800,9 @@
     },
     "Blemishine": {
         "charId": "char_423_blemsh",
+        "alias": [
+            "Maria"
+        ],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -4369,6 +4819,9 @@
     },
     "Nian": {
         "charId": "char_2014_nian",
+        "alias": [
+            "Bean"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Sui",
@@ -4385,6 +4838,9 @@
     },
     "Mudrock": {
         "charId": "char_311_mudrok",
+        "alias": [
+            "Bonk"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -4401,6 +4857,9 @@
     },
     "Penance": {
         "charId": "char_4065_judge",
+        "alias": [
+            "Lavinia"
+        ],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -4417,6 +4876,7 @@
     },
     "Eunectes": {
         "charId": "char_416_zumama",
+        "alias": [],
         "gender": "Female",
         "race": "Pythia",
         "group": "",
@@ -4433,6 +4893,7 @@
     },
     "Horn": {
         "charId": "char_4039_horn",
+        "alias": [],
         "gender": "Female",
         "race": "Lupo",
         "group": "",
@@ -4449,6 +4910,11 @@
     },
     "Jessica the Liberated": {
         "charId": "char_1034_jesca2",
+        "alias": [
+            "Depressed cat",
+            "Rich",
+            "Sad cat"
+        ],
         "gender": "Female",
         "race": "Feline",
         "group": "Blacksteel",
@@ -4465,6 +4931,7 @@
     },
     "Mountain": {
         "charId": "char_264_f12yin",
+        "alias": [],
         "gender": "Male",
         "race": "Feline",
         "group": "",
@@ -4481,6 +4948,13 @@
     },
     "Chongyue": {
         "charId": "char_2024_chyue",
+        "alias": [
+            "Kei Nario Nazasu",
+            "Sensou Hyakushiki",
+            "Kisamara no mondai",
+            "KEIHA SUREBA KOUCHOU OCHIRU",
+            "Bean"
+        ],
         "gender": "Male",
         "race": "Unknown/Undisclosed",
         "group": "Sui",
@@ -4497,6 +4971,11 @@
     },
     "SilverAsh": {
         "charId": "char_172_svrash",
+        "alias": [
+            "Shwing",
+            "SA",
+            "Bloodline"
+        ],
         "gender": "Male",
         "race": "Feline",
         "group": "Karlan Trade",
@@ -4513,6 +4992,9 @@
     },
     "Thorns": {
         "charId": "char_293_thorns",
+        "alias": [
+            "Destreza"
+        ],
         "gender": "Male",
         "race": "Ægir",
         "group": "",
@@ -4529,6 +5011,7 @@
     },
     "Qiubai": {
         "charId": "char_4082_qiubai",
+        "alias": [],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -4545,6 +5028,7 @@
     },
     "Hoederer": {
         "charId": "char_4088_hodrer",
+        "alias": [],
         "gender": "Male",
         "race": "Sarkaz",
         "group": "",
@@ -4561,6 +5045,11 @@
     },
     "Ch'en": {
         "charId": "char_010_chen",
+        "alias": [
+            "Waifu",
+            "Lung Wrath",
+            "Female Tourist C"
+        ],
         "gender": "Female",
         "race": "Lung",
         "group": "LGD",
@@ -4577,6 +5066,12 @@
     },
     "Irene": {
         "charId": "char_4009_irene",
+        "alias": [
+            "4head",
+            "5head",
+            "Spin",
+            "Tic Tac Toe"
+        ],
         "gender": "Female",
         "race": "Liberi",
         "group": "",
@@ -4593,6 +5088,7 @@
     },
     "Blaze": {
         "charId": "char_017_huang",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "Elite Operators",
@@ -4609,6 +5105,9 @@
     },
     "Gavial the Invincible": {
         "charId": "char_1026_gvial2",
+        "alias": [
+            "Harmacist"
+        ],
         "gender": "Female",
         "race": "Archosauria",
         "group": "",
@@ -4625,6 +5124,9 @@
     },
     "Surtr": {
         "charId": "char_350_surtr",
+        "alias": [
+            "Delete"
+        ],
         "gender": "Female",
         "race": "Sarkaz",
         "group": "",
@@ -4641,6 +5143,9 @@
     },
     "Viviana": {
         "charId": "char_4098_vvana",
+        "alias": [
+            "Candle Knight"
+        ],
         "gender": "Female",
         "race": "Elafia",
         "group": "",
@@ -4657,6 +5162,7 @@
     },
     "Hellagur": {
         "charId": "char_188_helage",
+        "alias": [],
         "gender": "Male",
         "race": "Liberi",
         "group": "",
@@ -4673,6 +5179,7 @@
     },
     "Pallas": {
         "charId": "char_485_pallas",
+        "alias": [],
         "gender": "Female",
         "race": "Forte",
         "group": "",
@@ -4689,6 +5196,10 @@
     },
     "Nearl the Radiant Knight": {
         "charId": "char_1014_nearl2",
+        "alias": [
+            "NTR",
+            "Netorare"
+        ],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -4705,6 +5216,7 @@
     },
     "Lessing": {
         "charId": "char_4011_lessng",
+        "alias": [],
         "gender": "Male",
         "race": "Caprinae",
         "group": "",
@@ -4721,6 +5233,7 @@
     },
     "Executor the Ex Foedere": {
         "charId": "char_1032_excu2",
+        "alias": [],
         "gender": "Male",
         "race": "Sankta",
         "group": "",
@@ -4737,6 +5250,10 @@
     },
     "Młynar": {
         "charId": "char_4064_mlynar",
+        "alias": [
+            "Uncle",
+            "Shwing"
+        ],
         "gender": "Male",
         "race": "Kuranta",
         "group": "",
@@ -4753,6 +5270,7 @@
     },
     "Savage": {
         "charId": "char_230_savage",
+        "alias": [],
         "gender": "Female",
         "race": "Cautus",
         "group": "",
@@ -4769,6 +5287,7 @@
     },
     "Catapult": {
         "charId": "char_282_catap",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "Reserve 6",
@@ -4785,6 +5304,7 @@
     },
     "Midnight": {
         "charId": "char_283_midn",
+        "alias": [],
         "gender": "Male",
         "race": "Sarkaz",
         "group": "Reserve 6",
@@ -4801,6 +5321,7 @@
     },
     "Beehunter": {
         "charId": "char_137_brownb",
+        "alias": [],
         "gender": "Female",
         "race": "Ursus",
         "group": "",
@@ -4817,6 +5338,7 @@
     },
     "Jackie": {
         "charId": "char_347_jaksel",
+        "alias": [],
         "gender": "Female",
         "race": "Perro",
         "group": "",
@@ -4833,6 +5355,7 @@
     },
     "Nightmare": {
         "charId": "char_164_nightm",
+        "alias": [],
         "gender": "Female",
         "race": "Feline",
         "group": "",
@@ -4849,6 +5372,7 @@
     },
     "Grani": {
         "charId": "char_220_grani",
+        "alias": [],
         "gender": "Female",
         "race": "Kuranta",
         "group": "",
@@ -4865,6 +5389,9 @@
     },
     "Skadi": {
         "charId": "char_263_skadi",
+        "alias": [
+            "Kyaa"
+        ],
         "gender": "Female",
         "race": "Unknown/Undisclosed",
         "group": "Abyssal Hunter",

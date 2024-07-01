@@ -30,6 +30,7 @@ let update = false
 if (args.length > 0) {
   if (args[0] === "update") {
     update = true
+    console.log("Updating Fields arg set")
   }
 }
 
@@ -73,6 +74,7 @@ async function main() {
               id: undefined,
               charId: operator.charId,
               name: key,
+              alias: operator.alias,
               gender: operator.gender,
               race: operator.race,
               group: operator.group ? operator.group : null,

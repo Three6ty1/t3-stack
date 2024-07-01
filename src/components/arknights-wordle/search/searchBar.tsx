@@ -28,19 +28,34 @@ export default function SearchBar({
       return;
     }
 
-    const lower = value.toLowerCase().trim();
+    const inputLower = value.toLowerCase().trim();
 
-    const results = allOperators.filter((op) => {
+    let results: Operator[] = []
+    let aliasResults: Operator[] = []
+
+    for (const op of allOperators) {
       const op_lower = op.name.toLowerCase();
-      return (
-        op_lower.startsWith(lower) ||
-        op_lower.replace("'", "").startsWith(lower.replace("", "")) ||
-        op_lower.replace("ł", "l").startsWith(lower) || // special cases for Pozyomka and Mylnar
-        op_lower.replace("ë", "yo").startsWith(lower)
-      );
-    });
-    _setResults(results);
-    setResults(results);
+
+      if (
+        op_lower.startsWith(inputLower) ||
+        op_lower.replace("'", "").startsWith(inputLower.replace("'", "")) ||
+        op_lower.replace("ł", "l").startsWith(inputLower) || // special cases for Pozyomka and Mylnar
+        op_lower.replace("ë", "yo").startsWith(inputLower)
+      ) {
+        results.push(op)
+      } else {
+        const matchingAlias = op.alias.filter(a => {
+          const lower = a.toLowerCase()
+          return lower.startsWith(inputLower) || lower.startsWith(inputLower.replace("'", ""))
+        })
+        if (matchingAlias.length > 0) {
+          aliasResults.push(op)
+        }
+      }
+    }
+
+    _setResults([...results, ...aliasResults]);
+    setResults([...results, ...aliasResults]);
   };
 
   const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
