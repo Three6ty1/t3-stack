@@ -1,4 +1,4 @@
-import type { GuessResult } from "~/server/api/routers/wordleServer";
+import type { GuessResult } from "~/helper/compare";
 import AnswerBoxBasic from "./answerBoxBasic";
 import AnswerBoxName from "./answerBoxName";
 import AnswerBoxRace from "./answerBoxRace";

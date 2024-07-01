@@ -1,5 +1,5 @@
 import { getOperatorIconUrl } from "~/helper/helper";
-import type { GuessResult } from "~/server/api/routers/wordleServer";
+import type { GuessResult } from "~/helper/compare";
 import Image from "next/image";
 
 type Props = {
