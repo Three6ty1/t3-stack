@@ -5,6 +5,10 @@ export default function VersionLog() {
     
     const versions = [
         {
+        version: "1.2",
+        content: "- Moved all the compare logic to the frontend to reduce function invocation limits.\n- There was an earlier caching error causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
+        },
+        {
         version: "1.1",
         content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+20)\n- Added missing operators Friston-3 and U-Official (+2)",
         added: [["char_2012_typhon", 6], ["char_1034_jesca2", 6], ["char_4088_hodrer", 6],["char_4098_vvana", 6],["char_245_cello", 6], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
