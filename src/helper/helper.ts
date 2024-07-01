@@ -6,15 +6,6 @@ export const ICON_DIR =
   "https://raw.githubusercontent.com/Three6ty1/ak-wordle-icons/main/avatars/";
 export const PROFESSION_ICON_DIR =
   "https://raw.githubusercontent.com/Three6ty1/ak-wordle-icons/main/classes/black/";
-export type GuessType = [number, string, string, string, number];
-
-export enum GuessTypeValue {
-  id = 0,
-  charId = 1,
-  name = 2,
-  class = 3,
-  rarity = 4,
-}
 
 export enum Range {
   Lower = "Lower",

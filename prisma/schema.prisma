@@ -23,6 +23,7 @@ model Operator {
   id Int @id @default(autoincrement())
   charId String @default("x")
   name String @unique
+  alias String[] @default([])
   // Male or Female
   gender String
   race String

@@ -12,6 +12,7 @@ import db from '../operator_db.json';
 // Not the same as prisma operator
 interface Operator {
   charId: string;
+  alias: string[];
   gender: string;
   race: string;
   group?: string;
@@ -60,6 +61,7 @@ async function main() {
               name: key,
             },
             data: {
+              alias: operator.alias,
               charId: operator.charId,
               group: operator.group ? operator.group : null,
             },
