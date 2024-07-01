@@ -30,8 +30,8 @@ export default function SearchBar({
 
     const inputLower = value.toLowerCase().trim();
 
-    let results: Operator[] = []
-    let aliasResults: Operator[] = []
+    const results: Operator[] = []
+    const aliasResults: Operator[] = []
 
     for (const op of allOperators) {
       const op_lower = op.name.toLowerCase();
