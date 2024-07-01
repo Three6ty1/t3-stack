@@ -6,7 +6,7 @@ export default function VersionLog() {
     const versions = [
         {
         version: "1.2",
-        content: "- Moved all the compare logic to the frontend to reduce function invocation limits.\n- There was an earlier caching error causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
+        content: "- Moved all the compare logic to the frontend to reduce function invocation limits.\n- There was an earlier caching oversight causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
         },
         {
         version: "1.1",
