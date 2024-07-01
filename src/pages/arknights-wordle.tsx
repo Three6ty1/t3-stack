@@ -4,7 +4,7 @@ import React from "react";
 import { type GuessResult, compareGuess } from "~/helper/compare";
 import type { Stats } from "~/server/api/routers/wordle";
 import type { Operator } from "@prisma/client";
-import type { GetStaticProps } from "next";
+import type { GetServerSideProps } from "next";
 
 // Components
 import Theme from "~/components/arknights-wordle/header/theme";
@@ -196,7 +196,7 @@ export default function ArknightsWordle({
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const stats = await getStats();
   const allOperators = await getAllOperators();
 
