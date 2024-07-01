@@ -5,17 +5,21 @@ export default function VersionLog() {
     
     const versions = [
         {
-        version: "1.2",
-        content: "- Moved all the compare logic to the client side to reduce function invocation limits.\n- There was an earlier caching oversight causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
+            version: "1.3",
+            content: "- Added share with markdown feature to reduce share length by hyperlinking url\n"
         },
         {
-        version: "1.1",
-        content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+20)\n- Added missing operators Friston-3 and U-Official (+2)",
-        added: [["char_2012_typhon", 6], ["char_1034_jesca2", 6], ["char_4088_hodrer", 6],["char_4098_vvana", 6],["char_245_cello", 6], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
+            version: "1.2",
+            content: "- Moved all the compare logic to the client side to reduce function invocation limits\n- There was an earlier caching oversight causing the client to not rollover to the new operator, apologies for that. Feel free to abuse local storage to refresh/mess around with the guesses\n- Website might be migrated to another host in the near future therefore the URL will change. Vercel charges $30AUD per month (sobbing emoji)\n",
         },
         {
-        version: "1.0",
-            content: "Hello Dokutah's, this is just a personal project of mine that I wanted to make for fun. Don't expect consistent updates since I will definitely fall behind on content eventually.\n\nUntil I figure out a way to get suggestions from the community, I will keep on adding features that I think are appropriate.\n\nThe database of this project depends on the Aceship github icons and gamedata repo, so my thanks goes out for the maintainers of that site.\n\nAnd lastly, thank you for playing - Three6ty1"
+            version: "1.1",
+            content: "- Removed world map to save server costs\n- Deleted IS exclusive 5* operators\n- Added this update log\n- Added operators up to and including Viviana's banner. Previously only up to Executor-Alter banner (+20)\n- Added missing operators Friston-3 and U-Official (+2)",
+            added: [["char_2012_typhon", 6], ["char_1034_jesca2", 6], ["char_4088_hodrer", 6],["char_4098_vvana", 6],["char_245_cello", 6], ["char_4093_frston", 1], ["char_4091_ulika", 1]],
+        },
+        {
+            version: "1.0",
+                content: "Hello Dokutah's, this is just a personal project of mine that I wanted to make for fun. Don't expect consistent updates since I will definitely fall behind on content eventually.\n\nUntil I figure out a way to get suggestions from the community, I will keep on adding features that I think are appropriate.\n\nThe database of this project depends on the Aceship github icons and gamedata repo, so my thanks goes out for the maintainers of that site.\n\nAnd lastly, thank you for playing - Three6ty1"
         }
     ]
     return (

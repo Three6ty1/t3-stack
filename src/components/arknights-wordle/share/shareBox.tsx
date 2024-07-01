@@ -57,6 +57,7 @@ export default function ShareBox({ gameId }: Props) {
         }
         newString += "\n";
       }
+
       setShareString(newString);
     };
 
@@ -75,14 +76,35 @@ export default function ShareBox({ gameId }: Props) {
     setTimeout(() => setIsVisible(false), 3000);
   };
 
+  const handleMarkdownShare = () => {
+    const newString = `[Arknights Worlde](https://three6ty1.vercel.app/arknights-wordle) #${gameId}\nOperator guessed in ` + shareString;
+    navigator.clipboard.writeText(newString).catch(() => {
+      console.log("Cannot add to clipboard");
+    });
+    if (isVisible) {
+      return;
+    }
+    setIsVisible(true);
+    setTimeout(() => setIsVisible(false), 3000);
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <button
-        className="btn btn-success w-fit text-white"
-        onClick={() => handleShare()}
-      >
-        Share your results!
-      </button>
+      <h1 className="text-main font-bold">Share your results!</h1>
+      <div className="flex flex-row items-center justify-evenly space-x-3">
+        <button
+          className="btn btn-success w-fit text-white"
+          onClick={() => handleMarkdownShare()}
+        >
+          With Markdown (Discord)
+        </button>
+        <button
+          className="btn btn-success w-fit text-white"
+          onClick={() => handleShare()}
+        >
+          On other sites
+        </button>
+      </div>
       {isVisible && (
         <div className="toast toast-start md:toast-end text-center z-[999]">
           <div className="flex alert alert-success text-center">
