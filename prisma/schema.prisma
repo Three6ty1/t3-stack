@@ -1,60 +1,51 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-// 7 Categories
-// gender
-// race
-// allegiance
-// infected status
-// profession
-// rarity
-// cost
 model Operator {
-  // Char id based on in game charid
-  id Int @id @default(autoincrement())
-  charId String @default("x")
-  name String @unique
-  alias String[] @default([])
-  // Male or Female
-  gender String
-  race String
-  // Group/Team takes priority over Nation
-  // Someone might be in different teams under the same nation
-  // i.e. Rhodes island teams.
-  group String?
-  nation String
+  name       String            @unique
+  gender     String
+  race       String
+  group      String?
+  nation     String
   profession String
-  archetype String
-  position String
-  // yes, no, N/A, undisclosed.
-  infected String
-  // 1-6 inc
-  rarity Int
-  // 0 - however?
-  costE0 Int
-  costE2 Int
-  chosen ChosenOperators[]
+  archetype  String
+  position   String
+  infected   String
+  rarity     Int
+  costE0     Int
+  costE2     Int
+  alias     String[]
+  id         Int               @id @default(autoincrement())
+  charId     String            @default("x")
+  chosen     ChosenOperators[]
 }
 
 model ChosenOperators {
-  gameId Int @id @default(autoincrement())
-  date String
-  operator Operator @relation(fields: [operatorId], references: [id])
-  operatorId Int
-  timesGuessed Int @default(0)
+  gameId       Int      @id @default(autoincrement())
+  date         String
+  timesGuessed Int      @default(0)
+  operatorId   Int
+  operator     Operator @relation(fields: [operatorId], references: [id])
 }
 
-// No sessions in backend
-// The actual wordle uses local storage anyways...
+model Blob {
+  id          Int        @id @default(autoincrement())
+  date        String
+  edit        String?
+  title       String
+  description String?
+  tags        BlobTags[]
+  images      String[]
+  videos      String[]
+  likes       Int        @default(0)
+}
 
 enum BlobTags {
   PROJECTS
@@ -63,16 +54,4 @@ enum BlobTags {
   GAMES
   MALARKEY
   OTHER
-}
-
-model Blob {
-  id Int @id @default(autoincrement())
-  date String
-  edit String?
-  title String
-  description String?
-  tags BlobTags[]
-  images String[]
-  videos String[]
-  likes Int @default(0)
 }

@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import db from '../operator_db.json';
 
 // To run
+////////// DO NOT SEED BEFORE UPDATING SCHEMA VIA NPX PRISMA MIGRATE DEV
 // "npx prisma db seed"
 // npx prisma db seed update // will update all operators with information
 // npx prisma db seed
