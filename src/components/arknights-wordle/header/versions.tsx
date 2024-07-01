@@ -6,7 +6,7 @@ export default function VersionLog() {
     const versions = [
         {
             version: "1.3",
-            content: "- Added share with markdown feature to reduce share length by hyperlinking url\n"
+            content: "- Added share with markdown feature to reduce share length by hyperlinking url\n- Added metadata and icon to the site\n"
         },
         {
             version: "1.2",
