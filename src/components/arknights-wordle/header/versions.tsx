@@ -5,6 +5,10 @@ export default function VersionLog() {
     
     const versions = [
         {
+            version: "1.3.1",
+            content: "- i mispelled wordle in the discord linking text and forgot to add the <> to remove the embed im very sorry"
+        },
+        {
             version: "1.3",
             content: "- Had to reset the database\n- Added share with markdown feature to reduce text length by hyperlinking url (Mainly for Discord)\n- Added metadata and icon to the site. Wordle and Arknights Rhodes Island icons were used and edited.\n- Added alias searching for cases such as Kirin Yato and Rathalos Noir Corne\n- Added a bunch of joke aliases/nicknames. I hope everyone has as much fun discovering them as I did adding them\n- For example, try searching for \"Doggo\" (sorry namie) :^)\n- I plan on adding an endless mode (Client side)\n- Till next time, Wdance"
         },

@@ -77,7 +77,7 @@ export default function ShareBox({ gameId }: Props) {
   };
 
   const handleMarkdownShare = () => {
-    const newString = `[Arknights Worlde](<https://three6ty1.vercel.app/arknights-wordle>) #${gameId}\nOperator guessed in ` + shareString;
+    const newString = `[Arknights Wordle](<https://three6ty1.vercel.app/arknights-wordle>) #${gameId}\nOperator guessed in ` + shareString;
     navigator.clipboard.writeText(newString).catch(() => {
       console.log("Cannot add to clipboard");
     });
