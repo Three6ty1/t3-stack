@@ -53,17 +53,19 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
         cost: {guess: [guess.costE0, guess.costE2], result: ((answer.costE2 < guess.costE2) ? Range.Lower : (answer.costE2 > guess.costE2) ? Range.Higher : Range.Correct)},
     }
     
+    const correct = res.gender.result &&
+    res.race.result &&
+    res.allegiance.result == Correctness.Correct &&
+    res.profession.result &&
+    res.rarity.result == Range.Correct &&
+    res.cost.result == Range.Correct &&
+    res.infected.result
+
     return {
         charId: guess.charId,
         name: guess.name,
         ...res,
-        correct: res.gender.result &&
-        res.race.result &&
-        res.allegiance.result == Correctness.Correct &&
-        res.profession.result &&
-        res.rarity.result == Range.Correct &&
-        res.cost.result == Range.Correct &&
-        res.infected.result,
+        correct: correct && guess.charId == answer.charId,
     }
 }
 
