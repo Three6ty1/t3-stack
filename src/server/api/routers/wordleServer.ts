@@ -1,39 +1,32 @@
 import { getDateString, randomInteger } from '~/helper/helper';
-import type { Prisma, PrismaClient } from '@prisma/client';
+import type { Operator, Prisma, PrismaClient } from '@prisma/client';
 import type { DefaultArgs } from '@prisma/client/runtime/library';
 
 // Chooses a new operator for today
 // Restrains the new operator to not have been picked in the last TOTAL_OPERATORS/2 days
 const chooseNewOperator = async(db: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>) => {
-    const prev = await db.chosenOperators.findFirst({
-        where: { date: getDateString()}
-    });
-
     const operators = await db.operator.findMany();
+    // Get the operator length / 2 most recent queries
+    const halfChosen = await db.chosenOperators.findMany({
+        select: {
+            operatorId: true,
+        },
+        orderBy: {
+            gameId: 'desc',
+        },
+        take: operators.length/2,
+    })
 
     while(true) {
         // Get a random operator
         const toChoose = operators[randomInteger(0, operators.length)];
 
-        if (!toChoose) {
+        if (toChoose == undefined) {
             throw "Invalid operator chosen. Not possible?"
         }
 
-        const chosenOperator = await db.operator.findFirst({
-            where: {
-                id: toChoose.id
-            },
-            include: {
-                chosen: true,
-            },
-        });
-
-        // An operator might not have been chosen before.
-        if (chosenOperator) {  
-            // If amount of times chosen is more than the total games played / half the amount of operators, choose a new operator.
-            if (!prev || chosenOperator.chosen.length >= Math.floor(prev.gameId / Math.floor(operators.length / 2))) {
-                return chosenOperator
-            }
+        if (halfChosen.filter((o) => o.operatorId == toChoose.id).length == 0) {
+            return toChoose
         }
     } 
 }

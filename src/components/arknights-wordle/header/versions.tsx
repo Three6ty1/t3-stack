@@ -5,6 +5,10 @@ export default function VersionLog() {
     
     const versions = [
         {
+            version: "1.4",
+            content: "- Fixed bug where recent chosen operators will be chosen again.\n"
+        },
+        {
             version: "1.3.1",
             content: "- i mispelled wordle in the discord linking text and forgot to add the <> to remove the embed im very sorry"
         },
