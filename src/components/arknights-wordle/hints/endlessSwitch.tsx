@@ -7,7 +7,7 @@ export default function EndlessSwitch() {
   return (
     <button 
       className={"btn indicator-item tooltip m-2 flex items-center " + (!isNormalMode && "btn-success")}
-      data-tip="Endless mode"
+      data-tip="Endless Mode"
       onClick={() => setIsNormalMode(!isNormalMode)}
     >
       <svg className={"w-6 h-6 " + (!isNormalMode && "text-white animate-slow-spin")} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

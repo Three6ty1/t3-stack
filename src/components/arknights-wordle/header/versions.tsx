@@ -6,7 +6,7 @@ export default function VersionLog() {
     const versions = [
         {
             version: "1.4",
-            content: "- Fixed bug where recent chosen operators will be chosen again. From now on, operators chosen in the last 100ish games will not be chosen again.\n- Keep in mind that the database did get nuked so there will be overlaps with the previous month of operators.\n- Added Endless mode. I did not add the share functionality as I didn't find a reason as to why you'll share endless. It's easy enough to add it in the future though.\n- Code base refactoring and cleaning up. Me from 6 months ago would be proud.\n- This will be the last update ON THIS DOMAIN. I will start porting over this project off of Vercel.\n- No promises as to when it will happen but everyone will have a weeks notice and I'll have a popup when you visit the site."
+            content: "- Fixed bug where recent chosen operators are chosen again.\n- Keep in mind that the database did get nuked so there will be overlaps with the previous month of operators.\n- I manually reset the operator, so reset your cache for the operator today if you've already guessed.\n- Added Endless mode. I did not add the share functionality as I didn't find a reason as to why you'll share endless. It's easy enough to add it in the future though.\n- Code base refactoring and cleaning up. Me from 6 months ago would be proud.\n- This will be the last update ON THIS DOMAIN. I will start porting over this project off of Vercel.\n- No promises as to when it will happen but everyone will have a weeks notice and I'll have a popup when you visit the site."
         },
         {
             version: "1.3.1",
