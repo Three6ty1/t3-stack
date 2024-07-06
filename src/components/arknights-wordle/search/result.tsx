@@ -26,12 +26,6 @@ export default function Result({ operator, handleSubmit, setResults }: Props) {
 
   const url = getOperatorIconUrl(operator.charId, operator.rarity);
 
-  let textStyle = " ";
-  // Ternary operator for this line BREAKS the code
-  if (pastGuesses.includes(operator.name)) {
-    textStyle += "text-higher";
-  }
-
   const handleClick = (e: React.MouseEvent) => {
     setResults([]);
     e.preventDefault();
@@ -59,7 +53,7 @@ export default function Result({ operator, handleSubmit, setResults }: Props) {
         />
       </div>
       <div
-        className={"flex w-1/2 justify-start text-start text-2xl" + textStyle}
+        className={"flex w-1/2 justify-start text-start text-2xl " + (pastGuesses.includes(operator.name) && "text-higher")}
       >
         {operator.name}
       </div>
