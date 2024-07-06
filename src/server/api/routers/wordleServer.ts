@@ -1,5 +1,5 @@
 import { getDateString, randomInteger } from '~/helper/helper';
-import type { Operator, Prisma, PrismaClient } from '@prisma/client';
+import type { Prisma, PrismaClient } from '@prisma/client';
 import type { DefaultArgs } from '@prisma/client/runtime/library';
 
 // Chooses a new operator for today
