@@ -22,19 +22,15 @@ interface GameModeContextValue {
   allOperators: Operator[],
   stats: Stats,
   guesses: GuessResult[],
-  setGuesses: (v: GuessResult[]) => void,
   endlessGuesses: GuessResult[],
-  setEndlessGuesses: (v: GuessResult[]) => void,
   endlessPlaying: boolean,
   isNormalMode: boolean,
   setIsNormalMode: (v: boolean) => void,
   handleSubmit: (guess: Operator, callback: (success: boolean) => void) => void, 
   endlessOp: Operator,
-  setEndlessOp: (v: Operator) => void,
   handleEndlessReset: () => void,
 }
 
-// TODO: Fix
 export const GameModeContext = React.createContext<GameModeContextValue>(undefined as unknown as GameModeContextValue);
 
 export default function ArknightsWordle({
@@ -221,7 +217,7 @@ export default function ArknightsWordle({
         <Theme handleThemeChange={(e) => handleThemeChange(e)} />
         <Info darkMode={darkMode} stats={stats} />
 
-        <GameModeContext.Provider value={{allOperators, stats, guesses, setGuesses, endlessGuesses, setEndlessGuesses, endlessPlaying, isNormalMode, setIsNormalMode, handleSubmit, endlessOp, setEndlessOp, handleEndlessReset}}>
+        <GameModeContext.Provider value={{allOperators, stats, guesses, endlessGuesses, endlessPlaying, isNormalMode, setIsNormalMode, handleSubmit, endlessOp, handleEndlessReset}}>
           <Hints />
           <SearchError error={error} endlessError={endlessError} />
 

@@ -9,7 +9,8 @@ export default {
         flip: 'flip 1s ease-out forwards',
         win: 'win 2.5s linear forwards',
         'fade-in-out': 'fade-in-out 3s linear forwards',
-        'fade-in': 'fade-in 2s linear forwards'
+        'fade-in': 'fade-in 2s linear forwards',
+        'slow-spin': 'spin 4s linear infinite'
       },
       fontFamily: {
         sans: ['Azbuka W01 Condensed', ...fontFamily.sans],
