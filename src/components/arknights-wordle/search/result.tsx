@@ -2,27 +2,29 @@ import type { Operator } from "@prisma/client";
 import Image from "next/image";
 import React from "react";
 import { getOperatorIconUrl } from "~/helper/helper";
-import type { GuessResult } from "~/helper/compare";
+import { GameModeContext } from "~/pages/arknights-wordle";
+import { SearchContext } from "./search";
 
 type Props = {
   operator: Operator;
-  setResults: (value: Operator[]) => void;
-  handleSubmit: (
-    guess: Operator,
-    callback: (success: boolean) => void,
-  ) => void;
 };
 
-export default function Result({ operator, handleSubmit, setResults }: Props) {
+export default function Result({ operator }: Props) {
   const [pastGuesses, setPastGuesses] = React.useState<string[]>([]);
+
+  const {guesses, endlessGuesses, isNormalMode, handleSubmit} = React.useContext(GameModeContext)
+  const {setResults} = React.useContext(SearchContext)
 
   // Past guesses here to make the text of a previously guessed operator blue
   React.useEffect(() => {
-    const ls = localStorage.getItem("guesses");
-    const _pastGuesses = ls ? (JSON.parse(ls) as unknown as GuessResult[]) : [];
-    const pastGuesses = _pastGuesses.map((guess) => guess.name);
-    setPastGuesses(pastGuesses);
-  }, []);
+    if (isNormalMode) {
+      const pastGuesses = guesses.map((guess) => guess.name);
+      setPastGuesses(pastGuesses);
+    } else {
+      const pastGuesses = endlessGuesses.map((guess) => guess.name);
+      setPastGuesses(pastGuesses);
+    }
+  }, [isNormalMode, guesses, endlessGuesses]);
 
   const url = getOperatorIconUrl(operator.charId, operator.rarity);
 

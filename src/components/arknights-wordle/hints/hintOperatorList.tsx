@@ -4,11 +4,7 @@ import { getProfessionIconUrl, wordleColors } from "~/helper/helper";
 import { HintBreakpoints } from "./hints";
 import Image from "next/image";
 import type { Operator } from "@prisma/client";
-
-type Props = {
-  amtGuesses: number;
-  allOperators: Operator[];
-};
+import { GameModeContext } from "~/pages/arknights-wordle";
 
 const Professsions = [
   "Vanguard",
@@ -21,13 +17,18 @@ const Professsions = [
   "Specialist",
 ];
 
-export default function HintOperatorList({ amtGuesses, allOperators }: Props) {
+export default function HintOperatorList() {
+
+  const {allOperators, guesses} = React.useContext(GameModeContext)
+
+  const amtGuesses = guesses.length
+
   const [showAlert, setShowAlert] = React.useState(false);
   const [selectedProfession, setSelectedProfession] =
     React.useState<string>("");
 
   React.useEffect(() => {
-    const setAmtGuesses = () => {
+    const initAlerts = () => {
       if (
         amtGuesses == HintBreakpoints.one.valueOf() ||
         amtGuesses == HintBreakpoints.two.valueOf()
@@ -35,7 +36,7 @@ export default function HintOperatorList({ amtGuesses, allOperators }: Props) {
         setShowAlert(true);
       }
     };
-    setAmtGuesses();
+    initAlerts();
   }, [amtGuesses]);
 
   const sortedRarityOperators: Record<string, Operator[]> = {

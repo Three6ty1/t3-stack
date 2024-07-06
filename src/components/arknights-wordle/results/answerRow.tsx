@@ -6,6 +6,8 @@ import AnswerBoxCost from "./answerBoxCost";
 import type { Correctness, Range } from "~/helper/helper";
 import AnswerBoxAllegiance from "./answerBoxAllegiance";
 import AnswerBoxRarity from "./answerBoxRarity";
+import { GameModeContext } from "~/pages/arknights-wordle";
+import React from "react";
 
 export const animationDelay = 225;
 type Props = {
@@ -15,11 +17,12 @@ type Props = {
 
 export default function AnswerRow({ guess, index }: Props) {
   // Get the current guess through local storage to persist animation logic
-  const ls = localStorage.getItem("guesses");
-  const pastGuesses = ls ? (JSON.parse(ls) as unknown as GuessResult[]) : [];
+
+  const {guesses, endlessGuesses, isNormalMode} = React.useContext(GameModeContext)
+
   let divStyle = "answer-row flex flex-col p-1 leading-2 break-all text-white";
 
-  const op = pastGuesses[index];
+  const op = isNormalMode ? guesses[index] : endlessGuesses[index];
   if (!op) {
     return <>Loading...</>;
   }

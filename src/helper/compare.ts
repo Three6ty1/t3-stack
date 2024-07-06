@@ -70,13 +70,15 @@ const compareGuessLogic = (answer: Operator, guess: Operator):GuessResult => {
 }
 
 // Compare the guess with the operator of the day
-export const compareGuess = (guessOp: Operator, guesses: string[], correctOp: Operator):CompareResponse => {
+export const compareGuess = (guessOp: Operator, pastGuesses: GuessResult[], correctOp: Operator):CompareResponse => {
+    const guesses = pastGuesses.map((guess) => guess.name);
+    
     if (guesses.includes(guessOp.name)) {
+        console.log("dupe")
         return {
             guessResult: null,
             valid: false,
-            error: "Operator has already been guessed: "
-
+            error: "Operator has already been guessed",
         }
     }
 

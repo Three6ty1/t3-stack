@@ -3,24 +3,20 @@ import React from "react";
 import Result from "./result";
 import type { Operator } from "@prisma/client";
 
-type Props = {
-  handleSubmit: (
-    guess: Operator,
-    callback: (success: boolean) => void,
-  ) => void;
-  allOperators: Operator[];
-};
+interface SearchContextValue {
+  results: Operator[],
+  setResults: (v: Operator[]) => void,
+}
 
-export default function Search({ handleSubmit, allOperators }: Props) {
+export const SearchContext = React.createContext<SearchContextValue>(undefined as unknown as SearchContextValue)
+
+export default function Search() {
   const [results, setResults] = React.useState<Operator[]>([]);
 
   return (
     <div className="flex w-full flex-col items-center">
-      <SearchBar
-        setResults={(value) => setResults(value)}
-        handleSubmit={handleSubmit}
-        allOperators={allOperators}
-      />
+      <SearchContext.Provider value={{results, setResults}}>
+      <SearchBar />
       {results.length > 0 && (
         <div
           className="no-scrollbar .no-scrollbar::-webkit-scrollbar my-2 flex 
@@ -32,12 +28,11 @@ export default function Search({ handleSubmit, allOperators }: Props) {
             <Result
               key={index}
               operator={op}
-              handleSubmit={handleSubmit}
-              setResults={(value) => setResults(value)}
             />
           ))}
         </div>
       )}
+      </SearchContext.Provider>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import type { GuessResult } from "~/helper/compare";
 import { Range, Correctness } from "~/helper/helper";
 import React from "react";
+import { GameModeContext } from "~/pages/arknights-wordle";
 
 type Props = {
   gameId: number;
@@ -10,12 +10,10 @@ export default function ShareBox({ gameId }: Props) {
   const [shareString, setShareString] = React.useState("");
   const [isVisible, setIsVisible] = React.useState(false);
 
+  const {guesses} = React.useContext(GameModeContext)
+
   React.useEffect(() => {
     const generateshareString = () => {
-      const ls = localStorage.getItem("guesses");
-      const guesses: GuessResult[] = ls
-        ? (JSON.parse(ls) as unknown as GuessResult[])
-        : [];
       let newString = String(guesses.length);
       guesses.length > 1 ? newString += " tries." : newString += " try!";
       newString += "\n";
@@ -62,7 +60,7 @@ export default function ShareBox({ gameId }: Props) {
     };
 
     generateshareString();
-  }, []);
+  });
 
   const handleShare = () => {
     const newString = `Arknights Wordle #${gameId}\nOperator guessed in ` + shareString + "https://three6ty1.vercel.app/arknights-wordle";
@@ -89,7 +87,7 @@ export default function ShareBox({ gameId }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center pb-10 align-middle">
       <h1 className="text-main font-bold">Share your results!</h1>
       <div className="flex flex-row items-center justify-evenly space-x-3">
         <button
