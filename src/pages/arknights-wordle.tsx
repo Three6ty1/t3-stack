@@ -17,6 +17,7 @@ import Head from "next/head";
 import PastGuesses from "~/components/arknights-wordle/results/pastGuesses";
 import SearchAndShare from "~/components/arknights-wordle/searchAndShare";
 import SearchError from "~/components/arknights-wordle/search/searchError";
+import Alert from "~/components/arknights-wordle/alert";
 
 interface GameModeContextValue {
   allOperators: Operator[],
@@ -210,6 +211,7 @@ export default function ArknightsWordle({
         <meta name="description" content="An Arknights Wordle parody as a personal/passion project. Type in an operators name and try to guess the correct operator using 7 different categories. Created by Three6ty1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Alert />
       <main
         id="ak-wordle-root"
         className="justify-top flex h-full w-full flex-col items-center p-5 pt-10 text-center align-middle font-sans"
